@@ -28,6 +28,7 @@
      keymap
      org
      perspectives
+     progconfig
      search
      syntax-checking
      ;; themes-megapack
@@ -153,7 +154,8 @@ layers configuration."
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
 
   ;; Avy
-  (define-key evil-normal-state-map (kbd "s") 'avy-goto-char-2)
+  (define-key evil-normal-state-map (kbd "s") 'ace-jump-mode)
+  (define-key evil-normal-state-map (kbd "S") 'avy-goto-char-2)
   (define-key evil-motion-state-map (kbd "z") 'avy-goto-char-2)
   (define-key evil-visual-state-map (kbd "z") 'avy-goto-char-2)
 
@@ -186,6 +188,7 @@ layers configuration."
     "gr" 'ggtags-find-reference
     "pj" 'project-explorer-toggle
     )
+  (setq-default truncate-lines 0)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
