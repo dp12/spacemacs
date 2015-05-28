@@ -19,7 +19,7 @@
      auctex
      auto-completion
      better-defaults
-     colors
+     (colors :variables colors-enable-nyan-cat-progress-bar t)
      fasd
      ggtags
      (git :variables
