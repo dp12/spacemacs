@@ -1,0 +1,8 @@
+# name: doxygen function bloc 
+# key: dblk
+# --
+/**
+ * @brief ${1:brief}
+ * @param ${2:parameter}
+ * @return ${3:retval}
+ */$0

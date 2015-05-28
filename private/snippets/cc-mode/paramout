@@ -1,0 +1,4 @@
+# name: param out
+# key: pao
+# --
+* @param[out] ${1:name} ${2:description}

@@ -1,0 +1,6 @@
+# name: C begin src
+# key: cbs
+# --
+#+begin_src C
+$0
+#+end_src

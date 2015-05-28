@@ -189,6 +189,7 @@ layers configuration."
     "pj" 'project-explorer-toggle
     )
   (setq-default truncate-lines 0)
+  (setq dired-dwim-target t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

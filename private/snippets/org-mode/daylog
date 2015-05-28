@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: daylog
+# key: dyl
+# binding: direct-keybinding
+# --
+** $0
+*** Tasks [/]
+*** Notes
