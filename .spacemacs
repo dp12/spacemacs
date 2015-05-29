@@ -20,6 +20,7 @@
      auto-completion
      better-defaults
      (colors :variables colors-enable-nyan-cat-progress-bar t)
+     custom
      ;; fasd
      ggtags
      (git :variables
@@ -29,7 +30,6 @@
      org
      perspectives
      progconfig
-     search
      syntax-checking
      ;; themes-megapack
      )
