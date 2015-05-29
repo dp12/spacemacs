@@ -20,7 +20,7 @@
      auto-completion
      better-defaults
      (colors :variables colors-enable-nyan-cat-progress-bar t)
-     fasd
+     ;; fasd
      ggtags
      (git :variables
           git-gutter-use-fringe t)
@@ -76,8 +76,9 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   ;; dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Consolas"
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -149,7 +150,9 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  (global-set-key (kbd "C-c f") 'helm-for-files)
+  ;; System Settings
+  (setq-default truncate-lines 0)
+
   (global-set-key (kbd "C-x f") 'recentf-open-files)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
 
@@ -164,6 +167,7 @@ layers configuration."
     '(progn
        (define-key dired-mode-map "a" 'helm-ag)
        (define-key dired-mode-map "W" 'wdired-change-to-wdired-mode)
+       (setq dired-dwim-target t)
        ))
 
   ;; Helm
@@ -173,6 +177,7 @@ layers configuration."
   (setq helm-recentf-fuzzy-match t)
   (setq helm-buffers-fuzzy-match t)
   ;; (setq helm-locate-fuzzy-match t)
+  (global-set-key (kbd "C-c f") 'helm-for-files)
 
   ;; Leader keys
   (evil-leader/set-key
@@ -188,9 +193,21 @@ layers configuration."
     "gr" 'ggtags-find-reference
     "pj" 'project-explorer-toggle
     )
-  (setq-default truncate-lines 0)
-  (setq dired-dwim-target t)
-  )
+
+  ;; Org-mode
+  (setq org-todo-keywords
+        (quote ((sequence "TODO(t)" "PENDING(p)" "|" "DONE(d!)")
+                (sequence "WAITING(w@/!)" "MAYBE(m)" "PROJECT(P@)" "|" "CANCELLED(c@/!)"))))
+  (setq org-todo-keyword-faces
+        '(
+          ("TODO"  . (:foreground "red" :weight bold))
+          ("WAITING"  . (:foreground "olivedrab" :weight bold))
+          ("MAYBE"  . (:foreground "chocolate" :weight bold))
+          ("PENDING"  . (:foreground "orange" :weight bold))
+          ("PROJECT"  . (:foreground "steelblue" :weight bold))
+          ("DONE"  . (:foreground "green2" :weight bold))
+          ("CANCELED"  . shadow)
+          )) )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
