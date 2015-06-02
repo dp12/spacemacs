@@ -235,6 +235,11 @@ layers configuration."
   (defalias 'chi 'c-toggle-hungry-state)
   )
 
+(setq dotspacemacs-additional-packages
+      '(
+        ag
+        ))
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
