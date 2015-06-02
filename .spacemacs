@@ -152,6 +152,20 @@ before layers configuration."
 layers configuration."
   ;; System Settings
   (setq-default truncate-lines 0)
+  (setq uniquify-buffer-name-style 'reverse)
+  (setq uniquify-separator " :: ")
+  (setq uniquify-after-kill-buffer-p t)
+  (setq uniquify-ignore-buffers-re "^\\*")
+  (global-set-key (kbd "C-x <down>") 'winner-redo)
+  (global-set-key (kbd "C-x <up>") 'winner-undo)
+  (global-set-key (kbd "C-c <left>") 'windmove-left)
+  (global-set-key (kbd "C-c <right>") 'windmove-right)
+  (global-set-key (kbd "C-c <down>") 'windmove-down)
+  (global-set-key (kbd "C-c <up>") 'windmove-up)
+  (define-key evil-normal-state-map (kbd "C-c <left>") 'windmove-left)
+  (define-key evil-normal-state-map (kbd "C-c <right>") 'windmove-right)
+  (define-key evil-normal-state-map (kbd "C-c <down>") 'windmove-down)
+  (define-key evil-normal-state-map (kbd "C-c <up>") 'windmove-up)
 
   (global-set-key (kbd "C-x f") 'recentf-open-files)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
@@ -178,6 +192,13 @@ layers configuration."
   (setq helm-buffers-fuzzy-match t)
   ;; (setq helm-locate-fuzzy-match t)
   (global-set-key (kbd "C-c f") 'helm-for-files)
+  (global-set-key (kbd "C-c i") 'helm-semantic-or-imenu)
+  (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+  (setq helm-swoop-split-direction 'split-window-horizontally)
+
+  ;; Ido
+  (ido-everywhere t)
+  (setq ido-use-virtual-buffers t)
 
   ;; Leader keys
   (evil-leader/set-key
@@ -207,7 +228,11 @@ layers configuration."
           ("PROJECT"  . (:foreground "steelblue" :weight bold))
           ("DONE"  . (:foreground "green2" :weight bold))
           ("CANCELED"  . shadow)
-          )) )
+          ))
+
+  ;; Aliases
+  (defalias 'chi 'c-toggle-hungry-state)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
