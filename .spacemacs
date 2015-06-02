@@ -22,7 +22,7 @@
      (colors :variables colors-enable-nyan-cat-progress-bar t)
      c-c++
      custom
-     ;; fasd
+     fasd
      ggtags
      (git :variables
           git-gutter-use-fringe t)
@@ -31,6 +31,7 @@
      org
      perspectives
      progconfig
+     search
      syntax-checking
      ;; themes-megapack
      )
@@ -193,6 +194,7 @@ layers configuration."
   (setq helm-buffers-fuzzy-match t)
   ;; (setq helm-locate-fuzzy-match t)
   (global-set-key (kbd "C-c f") 'helm-for-files)
+  (global-set-key (kbd "C-c F") 'fiplr-find-file)
   (global-set-key (kbd "C-c i") 'helm-semantic-or-imenu)
   (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
   (setq helm-swoop-split-direction 'split-window-horizontally)
@@ -206,6 +208,8 @@ layers configuration."
     "ed" 'ediff-buffers
     "dj" 'dired-jump
     "do" 'dired-jump-other-window
+    "fp" 'fiplr-find-file
+    "hf" 'helm-for-files
     "hgd" 'helm-gtags-dwim
     "hgs" 'helm-gtags-select
     "hgr" 'helm-gtags-find-rtag
@@ -238,6 +242,7 @@ layers configuration."
 (setq dotspacemacs-additional-packages
       '(
         ag
+        project-explorer
         ))
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -256,6 +261,9 @@ layers configuration."
    [default default default italic underline success warning error])
  '(magit-diff-use-overlays nil)
  '(projectile-project-root-files-bottom-up (quote (".git" ".hg" ".fslckout" ".bzr" "_darcs")))
+ '(projectile-project-root-files-functions
+   (quote
+    (projectile-root-top-down projectile-root-top-down-recurring)))
  '(projectile-project-root-files-top-down-recurring (quote (".svn" "CVS" "Makefile" ".projectile")))
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
