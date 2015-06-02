@@ -20,6 +20,7 @@
      auto-completion
      better-defaults
      (colors :variables colors-enable-nyan-cat-progress-bar t)
+     c-c++
      custom
      ;; fasd
      ggtags
@@ -171,7 +172,7 @@ layers configuration."
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
 
   ;; Avy
-  (define-key evil-normal-state-map (kbd "s") 'ace-jump-mode)
+  (define-key evil-normal-state-map (kbd "s") 'avy-goto-word-1)
   (define-key evil-normal-state-map (kbd "S") 'avy-goto-char-2)
   (define-key evil-motion-state-map (kbd "z") 'avy-goto-char-2)
   (define-key evil-visual-state-map (kbd "z") 'avy-goto-char-2)
