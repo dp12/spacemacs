@@ -68,7 +68,6 @@ which require an initialization must be listed explicitly in the list.")
         try-expand-dabbrev-all-buffers
         try-expand-dabbrev-from-kill
         try-expand-tag))
-(global-set-key "\C-xl" 'my-expand-lines)
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:

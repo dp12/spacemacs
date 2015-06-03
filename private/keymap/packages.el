@@ -25,7 +25,7 @@ which require an initialization must be listed explicitly in the list.")
 ;; For each package, define a function keymap/init-<package-keymap>
 ;;
 (defun keymap/init-key-chord ()
-  "Initialize my package"
+  "Initialize key-chord"
 (use-package key-chord
     :init
     (progn
@@ -58,6 +58,29 @@ which require an initialization must be listed explicitly in the list.")
       (key-chord-define-global "TP" 'org-toggle-pretty-entities)
       (key-chord-define-global "WM" 'whitespace-mode)
       (key-chord-define evil-insert-state-map "kj" 'evil-normal-state)
+      )
+    ))
+
+
+(defun keymap/init-hydra ()
+  "Initialize hydra"
+  (use-package hydra
+    :init
+    (progn
+      (defhydra hydra-git-gutter (global-map "C-c")
+        "Git Gutter"
+        ("n" git-gutter:next-hunk "next hunk")
+        ("p" git-gutter:previous-hunk "prev hunk")
+        ("V" git-gutter:revert-hunk "revert hunk")
+        ("=" git-gutter:popup-hunk "popup hunk")
+        ("S" git-gutter:stage-hunk "stage hunk")
+        ("c" recenter-top-bottom "recenter window")
+        ("l" recenter-top-bottom "recenter window")
+        ("q" nil "quit"))
+      (defhydra hydra-hippie-line (global-map "C-x")
+        "Expand Line"
+        ("l" my-expand-lines "hippie line")
+        ("q" nil "quit"))
       )
     ))
 ;;

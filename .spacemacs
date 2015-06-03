@@ -171,6 +171,7 @@ layers configuration."
 
   (global-set-key (kbd "C-x f") 'recentf-open-files)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
+  (setq projectile-indexing-method 'native)
 
   ;; Avy
   (define-key evil-normal-state-map (kbd "s") 'avy-goto-word-1)
