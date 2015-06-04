@@ -33,7 +33,7 @@
      progconfig
      search
      syntax-checking
-     ;; themes-megapack
+     themes-megapack
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -69,7 +69,9 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-light
+   dotspacemacs-themes '(
+                         sanityinc-solarized-light
+                         solarized-light
                          solarized-dark
                          leuven
                          monokai
@@ -78,9 +80,8 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   ;; dotspacemacs-default-font '("Source Code Pro"
-   dotspacemacs-default-font '("Consolas"
-                               :size 16
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -198,7 +199,7 @@ layers configuration."
   (global-set-key (kbd "C-c F") 'fiplr-find-file)
   (global-set-key (kbd "C-c i") 'helm-semantic-or-imenu)
   (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-  (setq helm-swoop-split-direction 'split-window-horizontally)
+  (setq helm-swoop-split-direction 'split-window-vertically)
 
   ;; Ido
   (ido-everywhere t)
