@@ -205,6 +205,10 @@ layers configuration."
   (ido-everywhere t)
   (setq ido-use-virtual-buffers t)
 
+  ;; Org-mode
+  (setq org-bullets-bullet-list '("⌘" "▶" "▲" "⇨"))
+  ;; (setq org-bullets-bullet-list '("♠" "♣" "♥" "♦"))
+
   ;; Leader keys
   (evil-leader/set-key
     "ed" 'ediff-buffers
