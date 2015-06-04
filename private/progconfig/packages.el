@@ -30,8 +30,10 @@ which require an initialization must be listed explicitly in the list.")
   (use-package corral
     :init
     (progn
-      (global-set-key (kbd "M-(") 'corral-parentheses-backward)
-      (global-set-key (kbd "M-)") 'corral-parentheses-forward)
+      (global-set-key (kbd "M-9") 'corral-parentheses-backward)
+      (global-set-key (kbd "M-0") 'corral-parentheses-forward)
+      (define-key evil-normal-state-map (kbd "M-9") 'corral-parentheses-backward)
+      (define-key evil-normal-state-map (kbd "M-0") 'corral-parentheses-forward)
       (global-set-key (kbd "M-[") 'corral-brackets-backward)
       (global-set-key (kbd "M-]") 'corral-brackets-forward)
       (global-set-key (kbd "M-{") 'corral-braces-backward)
@@ -81,6 +83,13 @@ which require an initialization must be listed explicitly in the list.")
     (next-line)))
 (global-set-key (kbd "M-;") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "C-M-;") 'comment-dwim)
+
+;; Company
+(eval-after-load 'company
+  '(progn
+     (setq company-show-numbers t)
+))
+
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
