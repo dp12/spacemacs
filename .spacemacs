@@ -222,6 +222,17 @@ layers configuration."
     "pj" 'project-explorer-toggle
     )
 
+  ;; Magit
+  (eval-after-load "magit"
+    '(progn
+      (define-key magit-status-mode-map (kbd "J s") 'magit-jump-to-staged)
+      (define-key magit-status-mode-map (kbd "J u") 'magit-jump-to-unstaged)
+      (define-key magit-status-mode-map (kbd "J t") 'magit-jump-to-untracked)
+      (define-key magit-status-mode-map (kbd "J z") 'magit-jump-to-stashes)
+      (define-key magit-status-mode-map (kbd "{") 'evil-backward-paragraph)
+      (define-key magit-status-mode-map (kbd "}") 'evil-forward-paragraph)
+      ))
+
   ;; Org-mode
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "PENDING(p)" "|" "DONE(d!)")
