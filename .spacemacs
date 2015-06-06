@@ -32,6 +32,7 @@
      perspectives
      progconfig
      search
+     sicp
      syntax-checking
      themes-megapack
      )
