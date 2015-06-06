@@ -24,11 +24,14 @@ which require an initialization must be listed explicitly in the list.")
 ;; For each package, define a function ggtags/init-<package-ggtags>
 ;;
 (defun ggtags/init-ggtags ()
-  "Initialize my package"
-  (define-key evil-normal-state-map (kbd "M-.") 'ggtags-find-tag-dwim)
-  (add-hook 'c-mode-common-hook
-          (lambda ()
-            (ggtags-mode 1)))
+  "Initialize ggtags"
+  (use-package ggtags
+    :init
+    (progn
+      (define-key evil-normal-state-map (kbd "M-.") 'ggtags-find-tag-dwim)
+      (add-hook 'c-mode-common-hook
+                (lambda ()
+                  (ggtags-mode 1)))))
   )
 ;;
 ;; Often the body of an initialize function uses `use-package'
