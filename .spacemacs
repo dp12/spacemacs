@@ -187,7 +187,8 @@ layers configuration."
   ;; Dired
   (eval-after-load 'dired
     '(progn
-       (define-key dired-mode-map "a" 'helm-ag)
+       (define-key dired-mode-map "a" 'ag)
+       (define-key dired-mode-map "A" 'helm-ag)
        (define-key dired-mode-map "W" 'wdired-change-to-wdired-mode)
        (setq dired-dwim-target t)
        ))
@@ -280,6 +281,7 @@ layers configuration."
  '(ahs-inhibit-face-list nil)
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
+ '(evil-exchange-highlight-face (quote evil-ex-search))
  '(magit-diff-use-overlays nil)
  '(projectile-project-root-files-bottom-up (quote (".git" ".hg" ".fslckout" ".bzr" "_darcs")))
  '(projectile-project-root-files-functions
