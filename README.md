@@ -19,28 +19,28 @@ On Linux, run the reverse:
 ## Layers 
 ### ggtags
 
-    Initializes ggtags for exploring source code. Use `M-.` to run ggtags-find-tag-dwim and find definition/references.
+Initializes ggtags for exploring source code. Use `M-.` to run ggtags-find-tag-dwim and find definition/references.
 
 ### keymap
 
-    Adds special keymappings, using key-chord and hydra.
+Adds special keymappings, using key-chord and hydra.
 
 ### progconfig
 
-    Conveniences for everyday programming. Includes corral for paren/bracket wrapping, ws-butler for auto-deletion of whitespace, and dtrt-indent to auto-detect indentation settings.
+Conveniences for everyday programming. Includes corral for paren/bracket wrapping, ws-butler for auto-deletion of whitespace, and dtrt-indent to auto-detect indentation settings.
 
 ### search
 
-    Initializes fiplr for Cmd-T/Ctrl-P like file search.
+Initializes fiplr for Cmd-T/Ctrl-P like file search.
 
 ### sicp
 
-    Includes quack and geiser for doing SICP.
+Includes quack and geiser for doing SICP.
 
 ### snippets
 
-    Snippets for yasnippet expansion.
+Snippets for yasnippet expansion.
 
 ### custom    
 
-    Personal packages and configurations. Comment out in dotspacemacs-configuration-layers if unused.
+Personal packages and configurations. Comment out in dotspacemacs-configuration-layers if unused.
