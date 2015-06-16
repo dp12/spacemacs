@@ -72,8 +72,7 @@ before layers configuration."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          sanityinc-solarized-light
-                         solarized-light
-                         solarized-dark
+                         sanityinc-solarized-dark
                          leuven
                          monokai
                          zenburn)
