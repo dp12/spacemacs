@@ -73,8 +73,8 @@ before layers configuration."
    dotspacemacs-themes '(
                          sanityinc-solarized-light
                          sanityinc-solarized-dark
-                         leuven
                          monokai
+                         leuven
                          zenburn)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -172,6 +172,10 @@ layers configuration."
   (define-key evil-normal-state-map (kbd "C-c <right>") 'windmove-right)
   (define-key evil-normal-state-map (kbd "C-c <down>") 'windmove-down)
   (define-key evil-normal-state-map (kbd "C-c <up>") 'windmove-up)
+  (global-set-key (kbd "C-M-S-<right>") 'sp-slurp-hybrid-sexp)
+  (global-set-key (kbd "C-M-S-<down>") 'sp-push-hybrid-sexp)
+  (global-set-key (kbd "C-M-S-<up>") 'sp-transpose-hybrid-sexp)
+  (global-set-key (kbd "C-M-S-k") 'sp-kill-hybrid-sexp)
 
   (global-set-key (kbd "C-x f") 'recentf-open-files)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
