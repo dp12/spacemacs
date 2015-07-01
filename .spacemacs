@@ -186,6 +186,7 @@ layers configuration."
   (define-key evil-normal-state-map (kbd "S") 'avy-goto-char-2)
   (define-key evil-motion-state-map (kbd "z") 'avy-goto-char-2)
   (define-key evil-visual-state-map (kbd "z") 'avy-goto-char-2)
+  (setq avy-keys (number-sequence ?a ?z))
 
   ;; Dired
   (eval-after-load 'dired
