@@ -16,7 +16,7 @@
      ;; Example of useful layers you may want to use right away
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
-     auctex
+     ;; auctex
      auto-completion
      better-defaults
      (colors :variables colors-enable-nyan-cat-progress-bar t)
@@ -28,6 +28,7 @@
           git-gutter-use-fringe t)
      ;; markdown
      keymap
+     latex
      org
      perspectives
      progconfig
@@ -35,6 +36,7 @@
      sicp
      syntax-checking
      themes-megapack
+     version-control
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
