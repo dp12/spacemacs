@@ -82,8 +82,8 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 15
+   dotspacemacs-default-font '("Ubuntu Mono"
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -211,9 +211,12 @@ layers configuration."
   (global-set-key (kbd "C-c i") 'helm-semantic-or-imenu)
   (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
   (setq helm-swoop-split-direction 'split-window-vertically)
+  ;; use search query at the cursor  (default)
+  (setq helm-swoop-pre-input-function
+        (lambda () (thing-at-point 'symbol)))
 
   ;; Ido
-  (ido-everywhere t)
+  ;; (ido-everywhere t)
   (setq ido-use-virtual-buffers t)
 
   ;; Org-mode
@@ -242,7 +245,7 @@ layers configuration."
     '(progn
       (define-key magit-status-mode-map (kbd "J s") 'magit-jump-to-staged)
       (define-key magit-status-mode-map (kbd "J u") 'magit-jump-to-unstaged)
-      (define-key magit-status-mode-map (kbd "J t") 'magit-jump-to-untracked)
+      (define-key magit-status-mode-map (kbd "J n") 'magit-jump-to-untracked)
       (define-key magit-status-mode-map (kbd "J z") 'magit-jump-to-stashes)
       (define-key magit-status-mode-map (kbd "{") 'evil-backward-paragraph)
       (define-key magit-status-mode-map (kbd "}") 'evil-forward-paragraph)
