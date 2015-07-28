@@ -38,6 +38,12 @@
       (setq geiser-active-implementations '(racket))
       )))
 
+;; Custom Info Pages Setup
+(require 'info)
+(setq Info-directory-list
+      (cons (expand-file-name "~/info/")
+            Info-default-directory-list))
+
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
