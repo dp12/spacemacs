@@ -75,6 +75,7 @@ before layers configuration."
    dotspacemacs-themes '(
                          sanityinc-solarized-light
                          sanityinc-solarized-dark
+                         gruvbox
                          monokai
                          leuven
                          zenburn)
