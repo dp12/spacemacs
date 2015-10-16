@@ -19,10 +19,11 @@
      ;; auctex
      auto-completion
      better-defaults
-     (colors :variables colors-enable-nyan-cat-progress-bar t)
+     colors
+     ;; (colors :variables colors-enable-nyan-cat-progress-bar t)
      c-c++
      custom
-     fasd
+     ;; fasd
      ggtags
      (git :variables
           git-gutter-use-fringe t)
@@ -74,7 +75,7 @@ before layers configuration."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          sanityinc-solarized-light
-                         sanityinc-solarized-dark
+                         solarized-dark
                          gruvbox
                          monokai
                          leuven
@@ -91,7 +92,7 @@ before layers configuration."
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
-   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-emacs-leader-key "M-M"
    ;; Major mode leader key is a shortcut key which is the equivalent of
    ;; pressing `<leader> m`. Set it to `nil` to disable it.
    dotspacemacs-major-mode-leader-key ","
@@ -198,6 +199,7 @@ layers configuration."
        (define-key dired-mode-map "A" 'helm-ag)
        (define-key dired-mode-map "W" 'wdired-change-to-wdired-mode)
        (setq dired-dwim-target t)
+       (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode t)))
        ))
 
   ;; Helm
@@ -239,6 +241,7 @@ layers configuration."
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
     "pj" 'project-explorer-toggle
+    "gB" 'magit-blame-quit
     )
 
   ;; Magit
