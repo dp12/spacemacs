@@ -247,10 +247,10 @@ layers configuration."
   ;; Magit
   (eval-after-load "magit"
     '(progn
-      (define-key magit-status-mode-map (kbd "J s") 'magit-jump-to-staged)
-      (define-key magit-status-mode-map (kbd "J u") 'magit-jump-to-unstaged)
-      (define-key magit-status-mode-map (kbd "J n") 'magit-jump-to-untracked)
-      (define-key magit-status-mode-map (kbd "J z") 'magit-jump-to-stashes)
+      (define-key magit-status-mode-map (kbd "M-j s") 'magit-jump-to-staged)
+      (define-key magit-status-mode-map (kbd "M-j u") 'magit-jump-to-unstaged)
+      (define-key magit-status-mode-map (kbd "M-j n") 'magit-jump-to-untracked)
+      (define-key magit-status-mode-map (kbd "M-j z") 'magit-jump-to-stashes)
       (define-key magit-status-mode-map (kbd "{") 'evil-backward-paragraph)
       (define-key magit-status-mode-map (kbd "}") 'evil-forward-paragraph)
       ))
