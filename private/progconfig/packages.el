@@ -90,6 +90,14 @@ which require an initialization must be listed explicitly in the list.")
      (setq company-show-numbers t)
 ))
 
+;; Python
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)
+            (setq python-indent 4)))
+
+
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
