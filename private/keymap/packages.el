@@ -62,13 +62,11 @@ which require an initialization must be listed explicitly in the list.")
   (use-package hydra
     :init
     (progn
-      (defhydra hydra-git-gutter (global-map "C-c")
-        "Git Gutter"
-        ("n" git-gutter:next-hunk "next hunk")
-        ("p" git-gutter:previous-hunk "prev hunk")
-        ("V" git-gutter:revert-hunk "revert hunk")
-        ("=" git-gutter:popup-hunk "popup hunk")
-        ("S" git-gutter:stage-hunk "stage hunk")
+      (defhydra hydra-diff-hl (global-map "C-c")
+        "diff-hl"
+        ("n" diff-hl-next-hunk "next hunk")
+        ("p" diff-hl-previous-hunk "prev hunk")
+        ("V" diff-hl-revert-hunk "revert hunk")
         ("c" recenter-top-bottom "recenter window")
         ("l" recenter-top-bottom "recenter window")
         ("q" nil "quit"))
