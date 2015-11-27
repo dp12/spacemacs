@@ -34,17 +34,13 @@ which require an initialization must be listed explicitly in the list.")
       ; Common
       (key-chord-define-global "bj" 'bookmark-jump)
       (key-chord-define-global "qr" 'query-replace)
+      (key-chord-define-global "QR" 'query-replace-regexp)
       (key-chord-define-global "VV" 'other-window)
       (key-chord-define-global "vv" 'other-window)
 
       ; Helm
       (key-chord-define-global "HG" 'helm-swoop)
       (key-chord-define-global "HB" 'helm-bookmarks)
-
-      ; Multiple Cursors
-      (key-chord-define-global "CN" 'mc/mark-next-like-this)
-      (key-chord-define-global "CP" 'mc/mark-previous-like-this)
-      (key-chord-define-global "CX" 'mc/mark-more-like-this-extended)
 
       ; Tagging
       (key-chord-define-global "qg" 'ggtags-find-tag-dwim)
