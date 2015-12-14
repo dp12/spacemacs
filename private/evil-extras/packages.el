@@ -29,7 +29,7 @@
     (progn
       (defvar evil-mc-mode-line-prefix "ⓜ"
         "Override of the default mode line string for `evil-mc-mode'.")
-      (global-evil-mc-mode 1)
+      ;; (global-evil-mc-mode 1)
       ))
   )
 ;;

@@ -97,6 +97,9 @@ which require an initialization must be listed explicitly in the list.")
             (setq tab-width 4)
             (setq python-indent 4)))
 
+(add-hook 'c-mode-hook
+          (lambda()
+            (spacemacs/toggle-fill-column-indicator-on)))
 
 ;;
 ;; Often the body of an initialize function uses `use-package'

@@ -296,6 +296,7 @@ layers configuration."
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
+    "mc" 'evil-mc-mode
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
     )
@@ -307,6 +308,7 @@ layers configuration."
       (define-key magit-status-mode-map (kbd "M-j u") 'magit-jump-to-unstaged)
       (define-key magit-status-mode-map (kbd "M-j n") 'magit-jump-to-untracked)
       (define-key magit-status-mode-map (kbd "M-j z") 'magit-jump-to-stashes)
+      (define-key magit-status-mode-map (kbd "M-j k") 'magit-discard)
       (define-key magit-status-mode-map (kbd "{") 'evil-backward-paragraph)
       (define-key magit-status-mode-map (kbd "}") 'evil-forward-paragraph)
       ))
@@ -352,6 +354,7 @@ layers configuration."
    [default default default italic underline success warning error])
  '(evil-exchange-highlight-face (quote evil-ex-search))
  '(magit-diff-use-overlays nil)
+ '(projectile-globally-ignored-files (quote ("TAGS *.html *.o *.su")))
  '(projectile-project-root-files-bottom-up (quote (".git" ".hg" ".fslckout" ".bzr" "_darcs")))
  '(projectile-project-root-files-functions
    (quote
