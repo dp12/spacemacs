@@ -30,6 +30,7 @@ values."
      ;; (colors :variables colors-enable-nyan-cat-progress-bar t)
      c-c++
      custom
+     deft
      evil-extras
      eyebrowse
      ggtags
@@ -50,7 +51,8 @@ values."
      unimpaired
      version-control
      ,@(unless (string= system-type "windows-nt")
-               '(fasd))
+         '(fasd
+           gtags))
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -95,12 +97,12 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         monokai
                          sanityinc-solarized-light
                          spacemacs-dark
-                         spacemacs-light
                          solarized-dark
-                         monokai
                          leuven
+                         seti
                          zenburn)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
