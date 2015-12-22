@@ -30,8 +30,8 @@ values."
      ;; (colors :variables colors-enable-nyan-cat-progress-bar t)
      c-c++
      custom
-     ;; fasd
      evil-extras
+     eyebrowse
      ggtags
      (git :variables
           git-gutter-use-fringe t)
@@ -43,10 +43,14 @@ values."
      progconfig
      python
      search
+     semantic
      sicp
      syntax-checking
      themes-megapack
+     unimpaired
      version-control
+     ,@(unless (string= system-type "windows-nt")
+               '(fasd))
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -204,6 +208,8 @@ values."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
+  (setq-default
+        evil-shift-round nil)
   )
 
 (defun dotspacemacs/user-config ()
@@ -214,6 +220,7 @@ layers configuration."
   (global-visual-line-mode t)
   (diminish 'visual-line-mode)
   (setq-default truncate-lines 0)
+  (add-hook 'text-mode-hook 'auto-fill-mode)
   (modify-syntax-entry ?_ "w")
   (setq uniquify-buffer-name-style 'reverse)
   (setq uniquify-separator " :: ")
@@ -248,6 +255,14 @@ layers configuration."
   (define-key evil-visual-state-map (kbd "z") 'avy-goto-char-2)
   (setq avy-keys (number-sequence ?a ?z))
 
+  ;; Evil
+  (define-key evil-normal-state-map (kbd "+") 'spacemacs/evil-numbers-increase)
+  (define-key evil-normal-state-map (kbd "-") 'spacemacs/evil-numbers-decrease)
+  (define-key evil-normal-state-map (kbd "[s") (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
+  (define-key evil-normal-state-map (kbd "]s") (lambda (n) (interactive "p")
+    (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
+  (define-key evil-normal-state-map (kbd "M-w") 'evil-delete-backward-word)
+
   ;; Dired
   (eval-after-load 'dired
     '(progn
@@ -255,6 +270,7 @@ layers configuration."
        (define-key dired-mode-map "A" 'helm-ag)
        (define-key dired-mode-map "W" 'wdired-change-to-wdired-mode)
        (setq dired-dwim-target t)
+       (setq diff-hl-dired-mode t)
        (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode t)))
        ))
 
@@ -327,6 +343,9 @@ layers configuration."
           ("DONE"  . (:foreground "green2" :weight bold))
           ("CANCELED"  . shadow)
           ))
+
+  ;; Theme
+  (setq powerline-default-separator 'alternate)
 
   ;; Aliases
   (defalias 'chi 'c-toggle-hungry-state)
