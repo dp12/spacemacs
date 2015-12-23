@@ -33,7 +33,6 @@ values."
      deft
      evil-extras
      eyebrowse
-     ggtags
      (git :variables
           git-gutter-use-fringe t)
      ;; markdown
@@ -50,6 +49,7 @@ values."
      themes-megapack
      unimpaired
      version-control
+     vinegar
      ,@(unless (string= system-type "windows-nt")
          '(fasd
            gtags))
