@@ -14,6 +14,7 @@
   '(
     ;; package searchs go here
     fiplr
+    find-file-in-project
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -30,6 +31,11 @@ which require an initialization must be listed explicitly in the list.")
     (progn
       ))
   )
+
+(defun search/init-find-file-in-project ()
+  "Initialize my package"
+  (use-package find-file-in-project))
+
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:

@@ -35,6 +35,7 @@ values."
      eyebrowse
      (git :variables
           git-gutter-use-fringe t)
+     gtags
      ;; markdown
      keymap
      latex
@@ -51,8 +52,7 @@ values."
      version-control
      vinegar
      ,@(unless (string= system-type "windows-nt")
-         '(fasd
-           gtags))
+         '(fasd))
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -242,6 +242,7 @@ layers configuration."
   (global-set-key (kbd "C-M-S-<down>") 'sp-push-hybrid-sexp)
   (global-set-key (kbd "C-M-S-<up>") 'sp-transpose-hybrid-sexp)
   (global-set-key (kbd "C-M-S-k") 'sp-kill-hybrid-sexp)
+  (define-key evil-normal-state-map (kbd "M-.") 'ggtags-find-tag-dwim)
 
   (global-set-key (kbd "C-x f") 'recentf-open-files)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
@@ -297,7 +298,7 @@ layers configuration."
   (setq ido-use-virtual-buffers t)
 
   ;; Org-mode
-  (setq org-bullets-bullet-list '("⌘" "▶" "▲" "⇨"))
+  ;; (setq org-bullets-bullet-list '("⌘" "▶" "▲" "⇨"))
   ;; (setq org-bullets-bullet-list '("♠" "♣" "♥" "♦"))
 
   ;; Leader keys
@@ -306,6 +307,7 @@ layers configuration."
     "dj" 'dired-jump
     "do" 'dired-jump-other-window
     "fp" 'fiplr-find-file
+    "fi" 'find-file-in-project
     "hf" 'helm-for-files
     "hgd" 'helm-gtags-dwim
     "hgs" 'helm-gtags-select
@@ -327,6 +329,7 @@ layers configuration."
       (define-key magit-status-mode-map (kbd "M-j n") 'magit-jump-to-untracked)
       (define-key magit-status-mode-map (kbd "M-j z") 'magit-jump-to-stashes)
       (define-key magit-status-mode-map (kbd "M-j k") 'magit-discard)
+      (define-key magit-status-mode-map (kbd "M-j g") 'magit-refresh-all)
       (define-key magit-status-mode-map (kbd "{") 'evil-backward-paragraph)
       (define-key magit-status-mode-map (kbd "}") 'evil-forward-paragraph)
       ))
@@ -375,6 +378,7 @@ layers configuration."
    [default default default italic underline success warning error])
  '(evil-exchange-highlight-face (quote evil-ex-search))
  '(magit-diff-use-overlays nil)
+ '(paradox-github-token t)
  '(projectile-globally-ignored-files (quote ("TAGS *.html *.o *.su")))
  '(projectile-project-root-files-bottom-up (quote (".git" ".hg" ".fslckout" ".bzr" "_darcs")))
  '(projectile-project-root-files-functions
@@ -387,5 +391,6 @@ layers configuration."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822")) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
