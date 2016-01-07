@@ -39,7 +39,7 @@ which require an initialization must be listed explicitly in the list.")
       (key-chord-define-global "vv" 'other-window)
 
       ; Helm
-      (key-chord-define-global "HG" 'helm-swoop)
+      (key-chord-define-global "HG" 'helm-multi-swoop-all)
       (key-chord-define-global "HB" 'helm-bookmarks)
 
       ; Tagging
@@ -62,11 +62,14 @@ which require an initialization must be listed explicitly in the list.")
   (use-package hydra
     :init
     (progn
-      (defhydra hydra-diff-hl (global-map "C-c")
-        "diff-hl"
-        ("n" diff-hl-next-hunk "next hunk")
-        ("p" diff-hl-previous-hunk "prev hunk")
-        ("V" diff-hl-revert-hunk "revert hunk")
+      (defhydra hydra-git-gutter+ (global-map "C-c")
+        "git-gutter+"
+        ("n" git-gutter+-next-hunk "next hunk")
+        ("p" git-gutter+-previous-hunk "prev hunk")
+        ("V" git-gutter+-revert-hunk "revert hunk")
+        ("r" git-gutter+-revert-hunk "revert hunk")
+        ("=" git-gutter+-show-hunk "show hunk")
+        ("+" git-gutter+-show-hunk-inline-at-point "show hunk inline")
         ("c" recenter-top-bottom "recenter window")
         ("l" recenter-top-bottom "recenter window")
         ("q" nil "quit"))
