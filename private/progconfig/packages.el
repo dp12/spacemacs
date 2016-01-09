@@ -14,7 +14,6 @@
   '(
     ;; package progconfigs go here
     corral
-    ws-butler
     dtrt-indent
     )
   "List of all packages to install and/or initialize. Built-in packages
@@ -42,18 +41,8 @@ which require an initialization must be listed explicitly in the list.")
       (electric-pair-mode 1))
     ))
 
-(defun progconfig/init-ws-butler ()
-  (use-package ws-butler
-    :init
-    (progn
-      (ws-butler-mode 1)))
-  )
-
 (defun progconfig/init-dtrt-indent ()
-  (use-package dtrt-indent
-    :init
-    (progn
-      (dtrt-indent-mode t)))
+  (use-package dtrt-indent)
   )
 
 (defun my-expand-lines ()

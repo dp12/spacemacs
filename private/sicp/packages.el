@@ -39,10 +39,11 @@
       )))
 
 ;; Custom Info Pages Setup
-(require 'info)
-(setq Info-directory-list
-      (cons (expand-file-name "~/info/")
-            Info-default-directory-list))
+(when (not (eq system-type 'windows-nt))
+  (require 'info)
+  (setq Info-directory-list
+        (cons (expand-file-name "~/info/")
+              Info-default-directory-list)))
 
 ;;
 ;; Often the body of an initialize function uses `use-package'
