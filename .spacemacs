@@ -23,7 +23,6 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auctex
      auto-completion
      better-defaults
      colors
@@ -116,6 +115,7 @@ values."
                          sanityinc-solarized-light
                          spacemacs-dark
                          solarized-dark
+                         moe-dark
                          leuven
                          seti
                          zenburn)
@@ -396,6 +396,24 @@ layers configuration. You are free to put any user code."
           ("DONE"  . (:foreground "green2" :weight bold))
           ("CANCELED"  . shadow)
           ))
+
+  ;; LaTeX
+  (cond
+   ((string-equal system-type "darwin")
+    (progn (setq TeX-view-program-selection '((output-pdf "Skim")))))
+   ((string-equal system-type "gnu/linux")
+    (progn (setq TeX-view-program-selection '((output-pdf "Okular"))))))
+
+  (setq TeX-source-correlate-mode t)
+  (setq TeX-source-correlate-start-server t)
+  (setq TeX-source-correlate-method 'synctex)
+  (setq TeX-view-program-list
+        '(("Okular" "okular --unique %o#src:%n`pwd`/./%b")
+          ("Skim" "displayline -b -g %n %o %b")
+          ("Zathura" "zathura-sync.sh %n:1:%b %o")))
+  (cond
+   ((spacemacs/system-is-mac) (setq TeX-view-program-selection '((output-pdf "Skim"))))
+   ((spacemacs/system-is-linux) (setq TeX-view-program-selection '((output-pdf "Zathura")))))
 
   ;; Theme
   (setq powerline-default-separator 'alternate)
