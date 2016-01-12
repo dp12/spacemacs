@@ -365,19 +365,21 @@ layers configuration. You are free to put any user code."
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
     "W"  'spacemacs/workspaces-micro-state
+    "l"  'spacemacs/workspaces-micro-state
+    "L"  'spacemacs/layouts-micro-state
     )
 
   ;; Magit
   (eval-after-load "magit"
     '(progn
-      (define-key magit-status-mode-map (kbd "M-j s") 'magit-jump-to-staged)
-      (define-key magit-status-mode-map (kbd "M-j u") 'magit-jump-to-unstaged)
-      (define-key magit-status-mode-map (kbd "M-j n") 'magit-jump-to-untracked)
-      (define-key magit-status-mode-map (kbd "M-j z") 'magit-jump-to-stashes)
-      (define-key magit-status-mode-map (kbd "M-j k") 'magit-discard)
-      (define-key magit-status-mode-map (kbd "M-j g") 'magit-refresh-all)
-      (define-key magit-status-mode-map (kbd "{") 'evil-backward-paragraph)
-      (define-key magit-status-mode-map (kbd "}") 'evil-forward-paragraph)
+      (define-key magit-mode-map (kbd "M-j s") 'magit-jump-to-staged)
+      (define-key magit-mode-map (kbd "M-j u") 'magit-jump-to-unstaged)
+      (define-key magit-mode-map (kbd "M-j n") 'magit-jump-to-untracked)
+      (define-key magit-mode-map (kbd "M-j z") 'magit-jump-to-stashes)
+      (define-key magit-mode-map (kbd "M-j k") 'magit-discard)
+      (define-key magit-mode-map (kbd "M-j g") 'magit-refresh-all)
+      (define-key magit-mode-map (kbd "{") 'evil-backward-paragraph)
+      (define-key magit-mode-map (kbd "}") 'evil-forward-paragraph)
       ))
 
   ;; Org-mode
