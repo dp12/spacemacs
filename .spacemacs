@@ -30,8 +30,7 @@ values."
      c-c++
      custom
      deft
-     evil-extras
-     eyebrowse
+     (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)     eyebrowse
      (git :variables
           git-gutter-use-fringe t)
      gtags
@@ -45,6 +44,7 @@ values."
      search
      semantic
      sicp
+     ;; spacemacs-ivy
      syntax-checking
      themes-megapack
      unimpaired
@@ -297,10 +297,10 @@ layers configuration. You are free to put any user code."
   (setq spacemacs-mode-line-minor-modesp nil)
 
   ;; Avy
-  (define-key evil-normal-state-map (kbd "s") 'avy-goto-word-1)
-  (define-key evil-normal-state-map (kbd "S") 'avy-goto-char-2)
-  (define-key evil-motion-state-map (kbd "z") 'avy-goto-char-2)
-  (define-key evil-visual-state-map (kbd "z") 'avy-goto-char-2)
+  ;; (define-key evil-normal-state-map (kbd "s") 'avy-goto-word-1)
+  ;; (define-key evil-normal-state-map (kbd "S") 'avy-goto-char-2)
+  ;; (define-key evil-motion-state-map (kbd "z") 'avy-goto-char-2)
+  ;; (define-key evil-visual-state-map (kbd "z") 'avy-goto-char-2)
   (setq avy-keys (number-sequence ?a ?z))
 
   ;; Evil
@@ -372,14 +372,14 @@ layers configuration. You are free to put any user code."
   ;; Magit
   (eval-after-load "magit"
     '(progn
-      (define-key magit-mode-map (kbd "M-j s") 'magit-jump-to-staged)
-      (define-key magit-mode-map (kbd "M-j u") 'magit-jump-to-unstaged)
-      (define-key magit-mode-map (kbd "M-j n") 'magit-jump-to-untracked)
-      (define-key magit-mode-map (kbd "M-j z") 'magit-jump-to-stashes)
-      (define-key magit-mode-map (kbd "M-j k") 'magit-discard)
-      (define-key magit-mode-map (kbd "M-j g") 'magit-refresh-all)
-      (define-key magit-mode-map (kbd "{") 'evil-backward-paragraph)
-      (define-key magit-mode-map (kbd "}") 'evil-forward-paragraph)
+      (evil-define-key evil-magit-state magit-mode-map (kbd "M-j s") 'magit-jump-to-staged)
+      (evil-define-key evil-magit-state magit-mode-map (kbd "M-j u") 'magit-jump-to-unstaged)
+      (evil-define-key evil-magit-state magit-mode-map (kbd "M-j n") 'magit-jump-to-untracked)
+      (evil-define-key evil-magit-state magit-mode-map (kbd "M-j z") 'magit-jump-to-stashes)
+      (evil-define-key evil-magit-state magit-mode-map (kbd "M-j k") 'magit-discard)
+      (evil-define-key evil-magit-state magit-mode-map (kbd "M-j g") 'magit-refresh-all)
+      (evil-define-key evil-magit-state magit-mode-map (kbd "{") 'evil-backward-paragraph)
+      (evil-define-key evil-magit-state magit-mode-map (kbd "}") 'evil-forward-paragraph)
       ))
 
   ;; Org-mode

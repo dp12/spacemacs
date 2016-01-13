@@ -93,6 +93,11 @@ which require an initialization must be listed explicitly in the list.")
             (spacemacs/toggle-fill-column-indicator-on)
             (dtrt-indent-mode t)))
 
+;; Forth
+(add-to-list 'load-path "~/.emacs.d/private/progconfig/")
+(require 'gforth)
+(add-to-list 'auto-mode-alist '("\\.eForth\\'" . forth-mode))
+
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
