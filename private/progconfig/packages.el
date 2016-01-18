@@ -79,6 +79,10 @@ which require an initialization must be listed explicitly in the list.")
      (setq company-show-numbers t)
 ))
 
+;; Gtags
+(with-eval-after-load 'helm-gtags
+  (diminish 'helm-gtags-mode))
+
 ;; Python
 (add-hook 'python-mode-hook
           (lambda ()
@@ -90,13 +94,14 @@ which require an initialization must be listed explicitly in the list.")
 (add-hook 'c-mode-hook
           (lambda()
             (ggtags-mode t)
+            (diminish 'ggtags-mode)
             (spacemacs/toggle-fill-column-indicator-on)
             (dtrt-indent-mode t)))
 
 ;; Forth
-(add-to-list 'load-path "~/.emacs.d/private/progconfig/")
-(require 'gforth)
-(add-to-list 'auto-mode-alist '("\\.eForth\\'" . forth-mode))
+;; (add-to-list 'load-path "~/.emacs.d/private/progconfig/")
+;; (require 'gforth)
+;; (add-to-list 'auto-mode-alist '("\\.eForth\\'" . forth-mode))
 
 ;;
 ;; Often the body of an initialize function uses `use-package'

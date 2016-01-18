@@ -30,13 +30,14 @@ values."
      c-c++
      custom
      deft
-     (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)     eyebrowse
+     (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
+     eyebrowse
      (git :variables
           git-gutter-use-fringe t)
      gtags
      ;; markdown
      keymap
-     latex
+     (latex :variables latex-enable-auto-fill nil)
      org
      perspectives
      progconfig
