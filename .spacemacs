@@ -310,6 +310,8 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "]s") (lambda (n) (interactive "p")
     (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
   (define-key evil-normal-state-map (kbd "M-w") 'evil-delete-backward-word)
+  (defvar evil-mc-mode-line-prefix "ⓜ"
+    "Override of the default mode line string for `evil-mc-mode'.")
 
   ;; Dired
   (eval-after-load 'dired
