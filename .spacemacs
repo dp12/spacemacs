@@ -345,7 +345,8 @@ layers configuration. You are free to put any user code."
   (setq ido-use-virtual-buffers t)
 
   ;; Org-mode
-  (setq org-bullets-bullet-list '("⌘" "▶" "▲" "⇨"))
+  (setq org-bullets-bullet-list '("◉" "◎" "⚫" "○" "►" "◇"))
+  ;; (setq org-bullets-bullet-list '("⌘" "▶" "▲" "⇨"))
   ;; (setq org-bullets-bullet-list '("♠" "♣" "♥" "♦"))
 
   ;; Leader keys
@@ -386,17 +387,17 @@ layers configuration. You are free to put any user code."
 
   ;; Org-mode
   (setq org-todo-keywords
-        (quote ((sequence "TODO(t)" "PENDING(p)" "|" "DONE(d!)")
-                (sequence "WAITING(w@/!)" "MAYBE(m)" "PROJECT(P@)" "|" "CANCELLED(c@/!)"))))
+        (quote ((sequence "☛ TODO(t)" "↻ PENDING(p)" "|" "✔ DONE(d!)")
+                (sequence "⚑ WAITING(w@/!)" "⚁ MAYBE(m)" "PROJECT(P@)" "|" "✘ CANCELLED(c@/!)"))))
   (setq org-todo-keyword-faces
         '(
-          ("TODO"  . (:foreground "red" :weight bold))
-          ("WAITING"  . (:foreground "olivedrab" :weight bold))
-          ("MAYBE"  . (:foreground "chocolate" :weight bold))
-          ("PENDING"  . (:foreground "orange" :weight bold))
+          ("☛ TODO"  . (:foreground "red" :weight bold))
+          ("⚑ WAITING"  . (:foreground "olivedrab" :weight bold))
+          ("⚁ MAYBE"  . (:foreground "chocolate" :weight bold))
+          ("↻ PENDING"  . (:foreground "orange" :weight bold))
           ("PROJECT"  . (:foreground "steelblue" :weight bold))
-          ("DONE"  . (:foreground "green2" :weight bold))
-          ("CANCELED"  . shadow)
+          ("✔ DONE"  . (:foreground "green2" :weight bold))
+          ("✘ CANCELED"  . shadow)
           ))
 
   ;; LaTeX
