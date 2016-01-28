@@ -302,6 +302,8 @@ layers configuration. You are free to put any user code."
   ;; (define-key evil-motion-state-map (kbd "z") 'avy-goto-char-2)
   ;; (define-key evil-visual-state-map (kbd "z") 'avy-goto-char-2)
   (setq avy-keys (number-sequence ?a ?z))
+  (set-face-attribute 'evil-snipe-first-match-face nil :inherit nil :background "gold" :foreground "black" :box '(:line-width 2 :color "lawn green" :style released-button))
+  (set-face-attribute 'evil-snipe-matches-face nil :inherit nil :foreground "black" :box '(:line-width 2 :color "lawn green" :style released-button))
 
   ;; Evil
   (define-key evil-normal-state-map (kbd "+") 'spacemacs/evil-numbers-increase)
