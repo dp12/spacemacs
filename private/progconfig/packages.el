@@ -94,7 +94,7 @@ which require an initialization must be listed explicitly in the list.")
 (add-hook 'c-mode-hook
           (lambda()
             (ggtags-mode t)
-            (diminish 'ggtags-mode)
+            (diminish 'ggtags-mode "Ⓖ")
             (spacemacs/toggle-fill-column-indicator-on)
             (dtrt-indent-mode t)))
 
