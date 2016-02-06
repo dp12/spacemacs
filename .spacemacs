@@ -374,19 +374,6 @@ layers configuration. You are free to put any user code."
     "L"  'spacemacs/layouts-micro-state
     )
 
-  ;; Magit
-  (eval-after-load "magit"
-    '(progn
-      (evil-define-key evil-magit-state magit-mode-map (kbd "M-j s") 'magit-jump-to-staged)
-      (evil-define-key evil-magit-state magit-mode-map (kbd "M-j u") 'magit-jump-to-unstaged)
-      (evil-define-key evil-magit-state magit-mode-map (kbd "M-j n") 'magit-jump-to-untracked)
-      (evil-define-key evil-magit-state magit-mode-map (kbd "M-j z") 'magit-jump-to-stashes)
-      (evil-define-key evil-magit-state magit-mode-map (kbd "M-j k") 'magit-discard)
-      (evil-define-key evil-magit-state magit-mode-map (kbd "M-j g") 'magit-refresh-all)
-      (evil-define-key evil-magit-state magit-mode-map (kbd "{") 'evil-backward-paragraph)
-      (evil-define-key evil-magit-state magit-mode-map (kbd "}") 'evil-forward-paragraph)
-      ))
-
   ;; Org-mode
   (setq org-todo-keywords
         (quote ((sequence "☛ TODO(t)" "↻ PENDING(p)" "|" "✔ DONE(d!)")
