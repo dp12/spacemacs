@@ -30,7 +30,7 @@ values."
      c-c++
      custom
      deft
-     (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
+     evil-snipe
      eyebrowse
      (git :variables
           git-gutter-use-fringe t)
@@ -297,7 +297,7 @@ layers configuration. You are free to put any user code."
   (setq spacemacs-mode-line-minor-modesp nil)
 
   ;; Avy
-  ;; (define-key evil-normal-state-map (kbd "s") 'avy-goto-word-1)
+  (define-key evil-normal-state-map (kbd "n") 'avy-goto-word-1)
   ;; (define-key evil-normal-state-map (kbd "S") 'avy-goto-char-2)
   ;; (define-key evil-motion-state-map (kbd "z") 'avy-goto-char-2)
   ;; (define-key evil-visual-state-map (kbd "z") 'avy-goto-char-2)
