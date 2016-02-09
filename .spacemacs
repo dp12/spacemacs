@@ -39,7 +39,6 @@ values."
      keymap
      (latex :variables latex-enable-auto-fill nil)
      org
-     perspectives
      progconfig
      ;; python
      (ranger :variables ranger-show-preview t)
