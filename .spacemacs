@@ -41,7 +41,8 @@ values."
      org
      perspectives
      progconfig
-     python
+     ;; python
+     (ranger :variables ranger-show-preview t)
      search
      semantic
      sicp
@@ -296,14 +297,16 @@ layers configuration. You are free to put any user code."
   ;; Spacemacs
   (setq spacemacs-mode-line-minor-modesp nil)
 
-  ;; Avy
+  ;; Avy and evil-snipe
   (define-key evil-normal-state-map (kbd "n") 'avy-goto-word-1)
   ;; (define-key evil-normal-state-map (kbd "S") 'avy-goto-char-2)
   ;; (define-key evil-motion-state-map (kbd "z") 'avy-goto-char-2)
   ;; (define-key evil-visual-state-map (kbd "z") 'avy-goto-char-2)
   (setq avy-keys (number-sequence ?a ?z))
-  (set-face-attribute 'evil-snipe-first-match-face nil :inherit nil :background "gold" :foreground "black" :box '(:line-width 2 :color "lawn green" :style released-button))
-  (set-face-attribute 'evil-snipe-matches-face nil :inherit nil :foreground "black" :box '(:line-width 2 :color "lawn green" :style released-button))
+  (set-face-attribute 'evil-snipe-first-match-face nil :inherit nil :background "gold" :box '(:color "lawn green" :style released-button))
+  (set-face-attribute 'evil-snipe-matches-face nil :inherit nil :box '(:color "lawn green" :style released-button))
+  (setq evil-snipe-scope 'buffer)
+  (setq evil-snipe-repeat-scope 'buffer)
 
   ;; Evil
   (define-key evil-normal-state-map (kbd "+") 'spacemacs/evil-numbers-increase)
@@ -314,6 +317,8 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "M-w") 'evil-delete-backward-word)
   (defvar evil-mc-mode-line-prefix "ⓜ"
     "Override of the default mode line string for `evil-mc-mode'.")
+  (eval-after-load "ycmd"
+      '(diminish 'ycmd-mode "Ⓨ"))
 
   ;; Dired
   (eval-after-load 'dired
@@ -359,10 +364,6 @@ layers configuration. You are free to put any user code."
     "fp" 'fiplr-find-file
     "fi" 'find-file-in-project
     "hf" 'helm-for-files
-    "hgd" 'helm-gtags-dwim
-    "hgs" 'helm-gtags-select
-    "hgr" 'helm-gtags-find-rtag
-    "hgt" 'helm-gtags-find-tag
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
@@ -449,5 +450,7 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(avy-lead-face ((t (:foreground "red"))))
+ '(avy-lead-face-0 ((t (:foreground "dark orange"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
