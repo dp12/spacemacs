@@ -338,9 +338,7 @@ layers configuration. You are free to put any user code."
   (setq helm-imenu-fuzzy-match t)
   (setq helm-recentf-fuzzy-match t)
   (setq helm-buffers-fuzzy-match t)
-  ;; (setq helm-locate-fuzzy-match t)
-  (global-set-key (kbd "C-c f") 'helm-for-files)
-  (global-set-key (kbd "C-c F") 'fiplr-find-file)
+  (setq helm-locate-fuzzy-match nil)
   (global-set-key (kbd "C-c i") 'helm-semantic-or-imenu)
   (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
   (setq helm-swoop-split-direction 'split-window-vertically)
@@ -364,6 +362,7 @@ layers configuration. You are free to put any user code."
     "do" 'dired-jump-other-window
     "fp" 'fiplr-find-file
     "fi" 'find-file-in-project
+    "oi" 'helm-semantic-or-imenu
     "hf" 'helm-for-files
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision

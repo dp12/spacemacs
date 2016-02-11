@@ -2,15 +2,19 @@
 This is a custom spacemacs configuration, optimized for C/C++ development.
 
 ## Installation
-To install, git clone the repository into your root directory and symlink .spacemacs.
+To install, git clone the repository into your root directory and symlink .spacemacs and the yasnippets folder.
 
 On Windows, with a root directory of "C:\home":
 
 `mklink "C:\home\.spacemacs" "C:\home\spacemacs\.spacemacs"`
 
+`mklink /j "C:\home\.emacs.d\private\snippets" "C:\home\spacemacs\private\snippets\"`
+
 On Linux, run the reverse:
 
 `ln -s ~/spacemacs/.spacemacs ~/.spacemacs`
+
+`ln -s ~/spacemacs/private/snippets ~/.emacs.d/private/snippets`
 
 ## Layers
 ### keymap
