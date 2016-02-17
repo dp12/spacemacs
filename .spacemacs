@@ -294,8 +294,10 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-M-S-<up>") 'sp-transpose-hybrid-sexp)
   (global-set-key (kbd "C-M-S-k") 'sp-kill-hybrid-sexp)
   (define-key evil-normal-state-map (kbd "M-.") 'ggtags-find-tag-dwim)
+  (define-key evil-normal-state-map (kbd "C-M-.") 'helm-gtags-find-tag-other-window)
 
   (global-set-key (kbd "C-x f") 'recentf-open-files)
+  (global-set-key (kbd "M-?") 'company-complete)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
   (setq projectile-indexing-method 'native)
 
