@@ -64,7 +64,7 @@ which require an initialization must be listed explicitly in the list.")
         "git-gutter+"
         ("n" git-gutter+-next-hunk "next")
         ("p" git-gutter+-previous-hunk "prev")
-        ("V" git-gutter+-revert-hunk "revert")
+        ("v" git-gutter+-revert-hunk "revert")
         ("r" git-gutter+-revert-hunk "revert")
         ("=" git-gutter+-show-hunk "show")
         ("+" git-gutter+-show-hunk-inline-at-point "show inline")
