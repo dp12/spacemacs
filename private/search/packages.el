@@ -26,11 +26,7 @@ which require an initialization must be listed explicitly in the list.")
 ;;
 (defun search/init-fiplr ()
   "Initialize my package"
-  (use-package fiplr
-    :init
-    (progn
-      ))
-  )
+  (use-package fiplr))
 
 (defun search/init-find-file-in-project ()
   "Initialize my package"

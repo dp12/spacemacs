@@ -58,8 +58,8 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(ag)
-   ;; A list of packages and/or extensions that will not be install and loaded.
+   dotspacemacs-additional-packages '(ag project-explorer pt)
+
    dotspacemacs-excluded-packages '(evil-search-highlight-persist)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -260,7 +260,11 @@ any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
   (setq-default
       evil-shift-round nil)
-  )
+  (when (string-equal system-type "windows-nt")
+    (set-fontset-font t '(#x2680 . #x26FF) (font-spec :family "DejaVu Sans Mono" :size 20))
+    (set-fontset-font t '(#x26aa . #x26ac) (font-spec :family "DejaVu Sans Mono" :size 20))
+    )
+)
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -382,7 +386,7 @@ layers configuration. You are free to put any user code."
   (setq org-todo-keyword-faces
         '(
           ("☛ TODO"  . (:foreground "red" :weight bold))
-          ("⚑ WAITING"  . (:foreground "olivedrab" :weight bold))
+          ("⚑ WAITING"  . (:foreground "purple" :weight bold))
           ("⚁ MAYBE"  . (:foreground "chocolate" :weight bold))
           ("↻ PENDING"  . (:foreground "orange" :weight bold))
           ("PROJECT"  . (:foreground "steelblue" :weight bold))
@@ -414,12 +418,6 @@ layers configuration. You are free to put any user code."
   ;; Aliases
   (defalias 'chi 'c-toggle-hungry-state)
   )
-
-(setq dotspacemacs-additional-packages
-      '(
-        ag
-        project-explorer
-        ))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
