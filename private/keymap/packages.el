@@ -33,9 +33,7 @@ which require an initialization must be listed explicitly in the list.")
 
       ; Common
       (key-chord-define-global "bj" 'bookmark-jump)
-      (key-chord-define-global "qr" 'query-replace)
-      (key-chord-define-global "QR" 'query-replace-regexp)
-      (key-chord-define-global "VV" 'other-window)
+      (key-chord-define-global "qr" 'vr/query-replace)
       (key-chord-define-global "vv" 'other-window)
 
       ; Helm

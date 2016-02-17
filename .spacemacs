@@ -58,7 +58,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(ag project-explorer pt)
+   dotspacemacs-additional-packages '(ag project-explorer pt visual-regexp-steroids)
 
    dotspacemacs-excluded-packages '(evil-search-highlight-persist)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -308,8 +308,8 @@ layers configuration. You are free to put any user code."
   ;; (define-key evil-motion-state-map (kbd "z") 'avy-goto-char-2)
   ;; (define-key evil-visual-state-map (kbd "z") 'avy-goto-char-2)
   (setq avy-keys (number-sequence ?a ?z))
-  (set-face-attribute 'evil-snipe-first-match-face nil :inherit nil :background "gold" :box '(:color "lawn green" :style released-button))
-  (set-face-attribute 'evil-snipe-matches-face nil :inherit nil :box '(:color "lawn green" :style released-button))
+  (set-face-attribute 'evil-snipe-first-match-face nil :inherit nil :foreground "black" :background "orange" :box '(:color "lawn green" :style released-button))
+  (set-face-attribute 'evil-snipe-matches-face nil :inherit nil :foreground "red" :box '(:color "lawn green" :style released-button))
   (setq evil-snipe-scope 'buffer)
   (setq evil-snipe-repeat-scope 'buffer)
 
@@ -366,12 +366,13 @@ layers configuration. You are free to put any user code."
     "do" 'dired-jump-other-window
     "fp" 'fiplr-find-file
     "fi" 'find-file-in-project
-    "oi" 'helm-semantic-or-imenu
     "hf" 'helm-for-files
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
     "mc" 'evil-mc-mode
+    "oi" 'helm-semantic-or-imenu
+    "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
     "W"  'spacemacs/workspaces-micro-state
