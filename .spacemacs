@@ -320,6 +320,18 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "]s") (lambda (n) (interactive "p")
     (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
   (define-key evil-normal-state-map (kbd "M-w") 'evil-delete-backward-word)
+
+  ;; Make v$ exclude the carriage return
+  (evil-define-motion evil-last-non-blank (count)
+    "Move the cursor to the last non-blank character
+on the current line. If COUNT is given, move COUNT - 1
+lines downward first."
+    :type inclusive
+    (evil-end-of-line count)
+    (re-search-backward "^\\|[^[:space:]]")
+    (setq evil-this-type (if (eolp) 'exclusive 'inclusive)))
+  (define-key evil-visual-state-map "$" 'evil-last-non-blank)
+
   (defvar evil-mc-mode-line-prefix "ⓜ"
     "Override of the default mode line string for `evil-mc-mode'.")
   (eval-after-load "ycmd"
