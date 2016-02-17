@@ -361,6 +361,10 @@ lines downward first."
   ;; use search query at the cursor  (default)
   (setq helm-swoop-pre-input-function
         (lambda () (thing-at-point 'symbol)))
+  ;; Show function/variable tags in helm-semantic-or-imenu
+  (with-eval-after-load 'helm-semantic
+    (push '(c-mode . semantic-format-tag-summarize) helm-semantic-display-style)
+    (push '(c++-mode . semantic-format-tag-summarize) helm-semantic-display-style))
 
   ;; Ido
   ;; (ido-everywhere t)
