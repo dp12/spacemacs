@@ -99,9 +99,12 @@ which require an initialization must be listed explicitly in the list.")
             (dtrt-indent-mode t)))
 
 ;; Forth
-;; (add-to-list 'load-path "~/.emacs.d/private/progconfig/")
-;; (require 'gforth)
-;; (add-to-list 'auto-mode-alist '("\\.eForth\\'" . forth-mode))
+(add-to-list 'load-path "~/spacemacs/private/progconfig/")
+(require 'gforth)
+(add-to-list 'auto-mode-alist '("\\.eForth\\'" . forth-mode))
+
+;; Intel Hex mode
+(require 'intel-hex-mode)
 
 ;;
 ;; Often the body of an initialize function uses `use-package'

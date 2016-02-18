@@ -380,6 +380,7 @@ lines downward first."
 
   ;; Leader keys
   (evil-leader/set-key
+    "bx" 'ace-swap-window
     "ed" 'ediff-buffers
     "dj" 'dired-jump
     "do" 'dired-jump-other-window
