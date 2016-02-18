@@ -373,6 +373,7 @@ lines downward first."
   (setq ido-use-virtual-buffers t)
 
   ;; Org-mode
+  (require 'org-mouse)
   (setq org-bullets-bullet-list '("◉" "◎" "⚫" "○" "►" "◇"))
   ;; (setq org-bullets-bullet-list '("⌘" "▶" "▲" "⇨"))
   ;; (setq org-bullets-bullet-list '("♠" "♣" "♥" "♦"))
