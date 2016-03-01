@@ -27,7 +27,7 @@ values."
      better-defaults
      colors
      ;; (colors :variables colors-enable-nyan-cat-progress-bar t)
-     c-c++
+     (c-c++ :variables c-c++-enable-clang-support t)
      custom
      deft
      evil-snipe
@@ -387,6 +387,7 @@ lines downward first."
     "fp" 'fiplr-find-file
     "fi" 'find-file-in-project
     "hf" 'helm-for-files
+    "hx" 'hexl-mode
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference

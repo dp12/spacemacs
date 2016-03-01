@@ -38,6 +38,8 @@ which require an initialization must be listed explicitly in the list.")
       (global-set-key (kbd "M-{") 'corral-braces-backward)
       (global-set-key (kbd "M-}") 'corral-braces-forward)
       (global-set-key (kbd "M-\"") 'corral-double-quotes-backward)
+      (fset 'corral-parentheses-at-point [escape ?i ?  escape ?l ?\M-0 ?F ?\( ?h ?x])
+      (global-set-key (kbd "C-M-0") 'corral-parentheses-at-point)
       (electric-pair-mode 1))
     ))
 
@@ -94,7 +96,7 @@ which require an initialization must be listed explicitly in the list.")
 (add-hook 'c-mode-hook
           (lambda()
             (ggtags-mode t)
-            (diminish 'ggtags-mode "Ⓖ")
+            (diminish 'ggtags-mode)
             (spacemacs/toggle-fill-column-indicator-on)
             (dtrt-indent-mode t)))
 
