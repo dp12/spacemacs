@@ -3,6 +3,6 @@
 # key: dyl
 # binding: direct-keybinding
 # --
-** $0
+** `(let ((x (org-time-stamp nil))))` 
 *** Tasks [/]
 *** Notes
