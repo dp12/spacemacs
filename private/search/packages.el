@@ -15,6 +15,7 @@
     ;; package searchs go here
     fiplr
     find-file-in-project
+    dired-narrow
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -25,12 +26,16 @@ which require an initialization must be listed explicitly in the list.")
 ;; For each package, define a function search/init-<package-search>
 ;;
 (defun search/init-fiplr ()
-  "Initialize my package"
+  "Initialize fiplr"
   (use-package fiplr))
 
 (defun search/init-find-file-in-project ()
-  "Initialize my package"
+  "Initialize find-file-in-project"
   (use-package find-file-in-project))
+
+(defun search/init-dired-narrow ()
+  "Initialize dired-narrow"
+  (use-package dired-narrow))
 
 ;;
 ;; Often the body of an initialize function uses `use-package'

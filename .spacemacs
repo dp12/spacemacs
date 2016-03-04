@@ -316,6 +316,7 @@ layers configuration. You are free to put any user code."
   (setq evil-snipe-repeat-scope 'buffer)
 
   ;; Evil
+  (setq evil-move-cursor-back nil)
   (define-key evil-normal-state-map (kbd "+") 'spacemacs/evil-numbers-increase)
   (define-key evil-normal-state-map (kbd "-") 'spacemacs/evil-numbers-decrease)
   (define-key evil-normal-state-map (kbd "[s") (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
@@ -345,6 +346,7 @@ lines downward first."
        (define-key dired-mode-map "a" 'ag)
        (define-key dired-mode-map "A" 'helm-ag)
        (define-key dired-mode-map "W" 'wdired-change-to-wdired-mode)
+       (define-key dired-mode-map (kbd "M-n") 'dired-narrow)
        (setq dired-dwim-target t)
        (setq diff-hl-dired-mode t)
        (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode t)))
