@@ -387,7 +387,7 @@ lines downward first."
 
   ;; Org-mode
   (require 'org-mouse)
-  (setq org-bullets-bullet-list '("◉" "◎" "⚫" "○" "►" "◇"))
+  (setq org-bullets-bullet-list '("◉" "◎" "○" "►" "◇" "■"))
   ;; (setq org-bullets-bullet-list '("⌘" "▶" "▲" "⇨"))
   ;; (setq org-bullets-bullet-list '("♠" "♣" "♥" "♦"))
 
