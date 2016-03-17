@@ -316,7 +316,7 @@ layers configuration. You are free to put any user code."
   (setq evil-snipe-repeat-scope 'buffer)
 
   ;; Evil
-  (setq evil-move-cursor-back nil)
+  ;; (setq evil-move-cursor-back nil)
   (define-key evil-normal-state-map (kbd "+") 'spacemacs/evil-numbers-increase)
   (define-key evil-normal-state-map (kbd "-") 'spacemacs/evil-numbers-decrease)
   (define-key evil-normal-state-map (kbd "[s") (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))

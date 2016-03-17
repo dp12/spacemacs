@@ -100,7 +100,9 @@ which require an initialization must be listed explicitly in the list.")
             (ggtags-mode t)
             (diminish 'ggtags-mode)
             (spacemacs/toggle-fill-column-indicator-on)
-            (dtrt-indent-mode t)))
+            (dtrt-indent-mode t)
+            (push '(?8 . ("/* " . " */")) evil-surround-pairs-alist)
+            ))
 
 ;; Forth
 (add-to-list 'load-path "~/spacemacs/private/progconfig/")

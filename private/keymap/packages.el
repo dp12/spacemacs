@@ -32,7 +32,7 @@ which require an initialization must be listed explicitly in the list.")
       (key-chord-mode 1)
 
       ; Common
-      (key-chord-define-global "bj" 'bookmark-jump)
+      ;; (key-chord-define-global "bj" 'bookmark-jump)
       (key-chord-define-global "qr" 'query-replace)
       (key-chord-define-global "QR" 'vr/query-replace)
       (key-chord-define-global "vv" 'other-window)
