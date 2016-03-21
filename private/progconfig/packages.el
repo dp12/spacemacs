@@ -102,7 +102,10 @@ which require an initialization must be listed explicitly in the list.")
             (diminish 'ggtags-mode)
             (spacemacs/toggle-fill-column-indicator-on)
             (dtrt-indent-mode t)
+            ;; Use 8 to /* wrap */ a word
             (push '(?8 . ("/* " . " */")) evil-surround-pairs-alist)
+            ;; Treat _ as PART_OF_A_WORD
+            (modify-syntax-entry ?_ "w")
             ))
 
 ;; Forth
