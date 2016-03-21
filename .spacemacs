@@ -340,6 +340,17 @@ lines downward first."
   (eval-after-load "ycmd"
       '(diminish 'ycmd-mode "Ⓨ"))
 
+  ;; Ediff
+  ;; From http://stackoverflow.com/questions/9656311/conflict-resolution-with-emacs-ediff-how-can-i-take-the-changes-of-both-version
+  (defun ediff-copy-both-to-C ()
+    (interactive)
+    (ediff-copy-diff ediff-current-difference nil 'C nil
+                     (concat
+                      (ediff-get-region-contents ediff-current-difference 'A ediff-control-buffer)
+                      (ediff-get-region-contents ediff-current-difference 'B ediff-control-buffer))))
+  (defun add-d-to-ediff-mode-map () (define-key ediff-mode-map "d" 'ediff-copy-both-to-C))
+  (add-hook 'ediff-keymap-setup-hook 'add-d-to-ediff-mode-map)
+
   ;; Dired
   (eval-after-load 'dired
     '(progn
@@ -399,8 +410,7 @@ lines downward first."
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
     "W"  'spacemacs/workspaces-micro-state
-    "l"  'spacemacs/workspaces-micro-state
-    "L"  'spacemacs/layouts-micro-state
+    "L"  'spacemacs/workspaces-micro-state
     )
 
   ;; Org-mode

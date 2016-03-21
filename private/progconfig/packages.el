@@ -93,9 +93,10 @@ which require an initialization must be listed explicitly in the list.")
             (setq indent-tabs-mode nil)
             (setq tab-width 4)
             (setq python-indent 4)
-            (dtrt-indent-mode t)))
+            ))
 
-(add-hook 'c-mode-hook
+;; C-like languages (e.g. C, C++, Java, Python)
+(add-hook 'c-mode-common-hook
           (lambda()
             (ggtags-mode t)
             (diminish 'ggtags-mode)
