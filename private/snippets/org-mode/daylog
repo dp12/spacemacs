@@ -4,5 +4,5 @@
 # binding: direct-keybinding
 # --
 ** `(let ((x (org-time-stamp nil))))` 
-*** Tasks [/]
+*** Tasks [/] $0
 *** Notes
