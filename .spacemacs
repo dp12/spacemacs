@@ -274,7 +274,6 @@ layers configuration. You are free to put any user code."
   (global-visual-line-mode t)
   (diminish 'visual-line-mode)
   (setq-default truncate-lines 0)
-  (modify-syntax-entry ?_ "w")
   (setq uniquify-buffer-name-style 'reverse)
   (setq uniquify-separator " :: ")
   (setq uniquify-after-kill-buffer-p t)
