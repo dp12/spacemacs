@@ -335,6 +335,8 @@ lines downward first."
     (setq evil-this-type (if (eolp) 'exclusive 'inclusive)))
   (define-key evil-visual-state-map "$" 'evil-last-non-blank)
 
+  ;; Evil multiple-cursors
+  (define-key evil-normal-state-map (kbd "[m") 'evil-mc-mode)
   (defvar evil-mc-mode-line-prefix "ⓜ"
     "Override of the default mode line string for `evil-mc-mode'.")
   (eval-after-load "ycmd"

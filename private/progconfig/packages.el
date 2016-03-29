@@ -15,6 +15,8 @@
     ;; package progconfigs go here
     corral
     dtrt-indent
+    irony
+    company-irony
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -47,6 +49,34 @@ which require an initialization must be listed explicitly in the list.")
 
 (defun progconfig/init-dtrt-indent ()
   (use-package dtrt-indent)
+  )
+
+(defun progconfig/init-irony ()
+  (use-package irony
+    :diminish "Ⓘ"
+    :defer t
+    :init
+    (add-hook 'c++-mode-hook 'irony-mode)
+    (add-hook 'c-mode-hook 'irony-mode)
+    (add-hook 'objc-mode-hook 'irony-mode)
+    :config
+    ;; replace the `completion-at-point' and `complete-symbol' bindings in
+    ;; irony-mode's buffers by irony-mode's function
+    (defun my-irony-mode-hook ()
+      (define-key irony-mode-map [remap completion-at-point]
+        'irony-completion-at-point-async)
+      (define-key irony-mode-map [remap complete-symbol]
+        'irony-completion-at-point-async))
+    (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+    (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+    )
+  )
+
+(defun progconfig/init-company-irony ()
+  (use-package company-irony
+    :config
+    (eval-after-load 'company
+      '(add-to-list 'company-backends 'company-irony)))
   )
 
 (defun my-expand-lines ()
