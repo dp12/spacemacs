@@ -25,8 +25,8 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
-     colors
-     ;; (colors :variables colors-enable-nyan-cat-progress-bar t)
+     ;; colors
+     (colors :variables colors-enable-nyan-cat-progress-bar t)
      (c-c++ :variables c-c++-enable-clang-support t)
      custom
      deft
@@ -302,6 +302,7 @@ layers configuration. You are free to put any user code."
 
   ;; Spacemacs
   (setq spacemacs-mode-line-minor-modesp nil)
+  (setq spaceline-version-control-p nil)
 
   ;; Avy and evil-snipe
   (define-key evil-normal-state-map (kbd "n") 'avy-goto-word-1)
