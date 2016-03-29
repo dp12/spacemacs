@@ -322,6 +322,8 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "[s") (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
   (define-key evil-normal-state-map (kbd "]s") (lambda (n) (interactive "p")
     (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
+  (define-key evil-normal-state-map (kbd "[w") 'eyebrowse-next-window-config)
+  (define-key evil-normal-state-map (kbd "]w") 'eyebrowse-prev-window-config)
   (define-key evil-normal-state-map (kbd "M-w") 'evil-delete-backward-word)
 
   ;; Make v$ exclude the carriage return
