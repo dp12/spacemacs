@@ -49,6 +49,10 @@ which require an initialization must be listed explicitly in the list.")
       (key-chord-define-global "QG" 'helm-gtags-dwim)
       (key-chord-define-global "QC" 'helm-gtags-find-rtag)
       (key-chord-define-global "QW" 'helm-gtags-pop-stack)
+
+      ; Spacemacs
+      (key-chord-define-global "NC" 'spacemacs/toggle-nyan-cat-progress-bar)
+
       ; Special
       (key-chord-define-global "TP" 'org-toggle-pretty-entities)
       (key-chord-define-global "WM" 'whitespace-mode)
