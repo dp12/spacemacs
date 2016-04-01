@@ -58,7 +58,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(ag project-explorer pt visual-regexp-steroids)
+   dotspacemacs-additional-packages '(ag project-explorer mode-icons pt visual-regexp-steroids)
 
    dotspacemacs-excluded-packages '(evil-search-highlight-persist)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -278,6 +278,7 @@ layers configuration. You are free to put any user code."
   (setq uniquify-separator " :: ")
   (setq uniquify-after-kill-buffer-p t)
   (setq uniquify-ignore-buffers-re "^\\*")
+  (mode-icons-mode)
   (global-set-key (kbd "C-x <down>") 'winner-redo)
   (global-set-key (kbd "C-x <up>") 'winner-undo)
   (global-set-key (kbd "C-c <left>") 'windmove-left)
@@ -365,6 +366,7 @@ lines downward first."
        (setq dired-dwim-target t)
        (setq diff-hl-dired-mode t)
        (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode t)))
+       (setq dired-listing-switches "--group-directories-first -alh")
        ))
 
   ;; Helm
