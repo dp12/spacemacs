@@ -299,7 +299,34 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-x f") 'recentf-open-files)
   (global-set-key (kbd "M-?") 'company-complete)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
+  (define-key ido-buffer-completion-map (kbd "C-w") 'ido-kill-buffer-at-head)
   (setq projectile-indexing-method 'native)
+
+  ;; Desktop Save
+  ;; Automatically save and restore sessions
+  (setq desktop-dirname             "~/.emacs.d/desktop/"
+        desktop-base-file-name      "emacs.desktop"
+        desktop-base-lock-name      "lock"
+        desktop-path                (list desktop-dirname)
+        desktop-save                'if-exists
+        desktop-restore-eager       5
+        desktop-files-not-to-save   "^$" ;reload tramp paths
+        desktop-load-locked-desktop nil
+        desktop-globals-to-save
+        (append '((extended-command-history . 30)
+                  (file-name-history        . 100)
+                  (grep-history             . 30)
+                  (compile-history          . 30)
+                  (minibuffer-history       . 50)
+                  (query-replace-history    . 60)
+                  (read-expression-history  . 60)
+                  (regexp-history           . 60)
+                  (regexp-search-ring       . 20)
+                  (search-ring              . 20)
+                  (shell-command-history    . 50)
+                  tags-file-name
+                  register-alist)))
+  (desktop-save-mode 1)
 
   ;; Spacemacs
   (setq spacemacs-mode-line-minor-modesp nil)
