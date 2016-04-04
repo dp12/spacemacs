@@ -83,6 +83,12 @@ which require an initialization must be listed explicitly in the list.")
         "Expand Line"
         ("l" my-expand-lines "hippie line")
         ("q" nil "quit"))
+      (defhydra hydra-kill-buffer (global-map "C-x")
+        "Kill Buffer"
+        ("k" (lambda () (interactive) (kill-buffer nil)) "assassinate buffer" :color red)
+        ("K" kill-buffer "kill buffer")
+        ("x" (lambda () (interactive) (kill-buffer nil)) "assassinate buffer" :color blue)
+        ("q" nil "quit"))
       (defhydra hydra-org (global-map "C-c o" :color red :columns 3)
         "Org Mode Movements"
         ("n" outline-next-visible-heading "next heading")
