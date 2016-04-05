@@ -236,7 +236,7 @@ values."
    dotspacemacs-highlight-delimiters 'all
    ;; If non nil advises quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server nil
+   dotspacemacs-persistent-server t
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
@@ -396,6 +396,13 @@ lines downward first."
        (setq dired-listing-switches "--group-directories-first -alh")
        ))
 
+  (defun kill-dired-buffers()
+    (interactive)
+    (mapc (lambda (buffer)
+            (when (eq 'dired-mode (buffer-local-value 'major-mode buffer))
+              (kill-buffer buffer)))
+          (buffer-list)))
+
   ;; Helm
   (setq helm-M-x-fuzzy-match t)
   (setq helm-semantic-fuzzy-match t)
@@ -427,7 +434,9 @@ lines downward first."
   ;; Leader keys
   (evil-leader/set-key
     "bx" 'ace-swap-window
+    "bk" (kbd "C-x k")
     "ed" 'ediff-buffers
+    "DD" 'kill-dired-buffers
     "dj" 'dired-jump
     "do" 'dired-jump-other-window
     "fp" 'fiplr-find-file
