@@ -299,7 +299,8 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-x f") 'recentf-open-files)
   (global-set-key (kbd "M-?") 'company-complete)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
-  (define-key ido-buffer-completion-map (kbd "C-w") 'ido-kill-buffer-at-head)
+  (with-eval-after-load 'ido
+    (define-key ido-buffer-completion-map (kbd "C-w") 'ido-kill-buffer-at-head))
   (setq projectile-indexing-method 'native)
 
   ;; Desktop Save
