@@ -410,7 +410,6 @@ lines downward first."
   (setq helm-recentf-fuzzy-match t)
   (setq helm-buffers-fuzzy-match t)
   (setq helm-locate-fuzzy-match nil)
-  (global-set-key (kbd "C-c i") 'helm-semantic-or-imenu)
   (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
   (setq helm-swoop-split-direction 'split-window-vertically)
   ;; use search query at the cursor  (default)
