@@ -58,7 +58,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(ag project-explorer mode-icons pt visual-regexp-steroids)
+   dotspacemacs-additional-packages '(ag project-explorer mode-icons pt visual-regexp-steroids zop-to-char)
 
    dotspacemacs-excluded-packages '(evil-search-highlight-persist)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -296,6 +296,7 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "M-.") 'ggtags-find-tag-dwim)
   (define-key evil-normal-state-map (kbd "C-M-.") 'helm-gtags-find-tag-other-window)
 
+  (global-set-key (kbd "M-z") 'zop-to-char)
   (global-set-key (kbd "C-x f") 'recentf-open-files)
   (global-set-key (kbd "M-?") 'company-complete)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
