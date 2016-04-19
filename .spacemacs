@@ -236,7 +236,7 @@ values."
    dotspacemacs-highlight-delimiters 'all
    ;; If non nil advises quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server t
+   dotspacemacs-persistent-server nil
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
@@ -300,8 +300,6 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-x f") 'recentf-open-files)
   (global-set-key (kbd "M-?") 'company-complete)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
-  (with-eval-after-load 'ido
-    (define-key ido-buffer-completion-map (kbd "C-w") 'ido-kill-buffer-at-head))
   (setq projectile-indexing-method 'native)
 
   ;; Desktop Save
@@ -340,7 +338,7 @@ layers configuration. You are free to put any user code."
   ;; (define-key evil-motion-state-map (kbd "z") 'avy-goto-char-2)
   ;; (define-key evil-visual-state-map (kbd "z") 'avy-goto-char-2)
   (setq avy-keys (number-sequence ?a ?z))
-  (set-face-attribute 'evil-snipe-first-match-face nil :inherit nil :foreground "black" :background "orange" :box '(:color "lawn green" :style released-button))
+  ;; (set-face-attribute 'evil-snipe-first-match-face nil :inherit nil :foreground "black" :background "orange" :box '(:color "lawn green" :style released-button))
   (set-face-attribute 'evil-snipe-matches-face nil :inherit nil :foreground "red" :box '(:color "lawn green" :style released-button))
   (setq evil-snipe-scope 'buffer)
   (setq evil-snipe-repeat-scope 'buffer)
@@ -426,6 +424,8 @@ lines downward first."
   ;; Ido
   ;; (ido-everywhere t)
   (setq ido-use-virtual-buffers t)
+  (with-eval-after-load 'ido
+    (define-key ido-buffer-completion-map (kbd "C-w") 'ido-kill-buffer-at-head))
 
   ;; Org-mode
   (require 'org-mouse)
