@@ -40,7 +40,8 @@
 '(font-lock-doc-face ((t (:foreground "#3c4e2d"))))
 '(font-lock-function-name-face ((t (:foreground "#60A365"))))
 ;; '(font-lock-keyword-face ((t (:foreground "#95CC5E"))))
-'(font-lock-keyword-face ((t (:foreground "#D65940"))))
+;; '(font-lock-keyword-face ((t (:foreground "#D65940"))))
+'(font-lock-keyword-face ((t (:foreground "#db784d"))))
 '(font-lock-negation-char-face ((t nil)))
 '(font-lock-preprocessor-face ((t (:foreground "#95CC5E"))))
 '(font-lock-regexp-grouping-backslash ((t (:inherit (bold)))))
@@ -74,8 +75,10 @@
 
 ;; Add face for operators
 (defface font-lock-operator-face '((t :foreground "#d65940")) "Basic face for operators.")
-(defface font-lock-conditionals-face '((t :foreground "#db784d")) "Basic face for operators.")
-(defvar conditionals-regexp (rx bow (or "if" "else" "elif" "switch" "case" "then") eow))
+;; (defface font-lock-conditionals-face '((t :foreground "#db784d")) "Basic face for conditionals.")
+(defface font-lock-conditionals-face '((t :foreground "#d65940")) "Basic face for conditionals.")
+(defvar conditionals-regexp (rx bow (or "if" "else" "elif" "switch" "case" "then" "for" "while" "do") eow))
+(defvar more-constants-regexp (rx bow (or "TRUE" "FALSE") eow))
 
 (add-hook 'c-mode-common-hook (lambda ()
                                 (progn
@@ -83,8 +86,9 @@
                                                         '(("[&*=+^%!~?]" 0 'font-lock-operator-face)))
                                 ;; Highlight more carefully to avoid #include paths
                                 (font-lock-add-keywords nil
-                                                        '(("[^a-z][<>-/][^a-z]" 0 'font-lock-operator-face)))
-                                ;; (font-lock-add-keywords nil `((,conditionals-regexp . 'font-lock-conditionals-face)))
+                                                        '(("[^a-z*/-][<>/-][^a-z*/-]" 0 'font-lock-operator-face)))
+                                (font-lock-add-keywords nil `((,more-constants-regexp . 'font-lock-constant-face)))
+                                (font-lock-add-keywords nil `((,conditionals-regexp . 'font-lock-conditionals-face)))
                                 )))
 
 ;; (defface font-lock-operator-face '((t :foreground "#d65940"))
