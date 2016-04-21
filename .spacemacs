@@ -26,7 +26,9 @@ values."
      auto-completion
      better-defaults
      ;; colors
-     (colors :variables colors-enable-nyan-cat-progress-bar t)
+     (colors :variables
+             colors-enable-nyan-cat-progress-bar t
+             nyan-bar-length 8)
      (c-c++ :variables c-c++-enable-clang-support t)
      custom
      deft
@@ -299,6 +301,8 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "M-z") 'zop-to-char)
   (global-set-key (kbd "C-x f") 'recentf-open-files)
   (global-set-key (kbd "M-?") 'company-complete)
+  (global-set-key (kbd "M-I") 'company-irony)
+  (global-set-key (kbd "M-Y") 'company-ycmd)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
   (setq projectile-indexing-method 'native)
 
@@ -529,4 +533,5 @@ lines downward first."
  '(avy-lead-face ((t (:foreground "red"))))
  '(avy-lead-face-0 ((t (:foreground "dark orange"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ '(evil-snipe-first-match-face ((t (:inherit isearch :box (:line-width 2 :color "red" :style released-button))))))
