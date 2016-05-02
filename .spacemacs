@@ -266,6 +266,8 @@ in `dotspacemacs/user-config'."
     (set-fontset-font t '(#x2680 . #x26FF) (font-spec :family "DejaVu Sans Mono" :size 20))
     (set-fontset-font t '(#x26aa . #x26ac) (font-spec :family "DejaVu Sans Mono" :size 20))
     )
+  (add-to-list 'load-path "~/spacemacs/themes")
+  (add-to-list 'custom-theme-load-path "~/spacemacs/themes")
 )
 
 (defun dotspacemacs/user-config ()
