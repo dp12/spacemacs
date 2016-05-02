@@ -1,8 +1,8 @@
 ## Overview
-This is a custom spacemacs configuration, optimized for C/C++ development.
+This is a custom spacemacs configuration, optimized for C/C++ development. Features company-irony for completion and various hydra conveniences.
 
 ## Installation
-To install, git clone the repository into your root directory and symlink .spacemacs and the yasnippets folder.
+To install, git clone the repository into your root directory and symlink the .spacemacs file and the yasnippets folder.
 
 On Windows, with a root directory of "C:\home":
 
