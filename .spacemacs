@@ -150,7 +150,7 @@ values."
    ;; and TAB or <C-m> and RET.
    ;; In the terminal, these pairs are generally indistinguishable, so this only
    ;; works in the GUI. (default nil)
-   dotspacemacs-distinguish-gui-tab nil
+   dotspacemacs-distinguish-gui-tab t
    ;; (Not implemented) dotspacemacs-distinguish-gui-ret nil
    ;; The command key used for Evil commands (ex-commands) and
    ;; Emacs commands (M-x).
@@ -359,6 +359,7 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "[w") 'eyebrowse-next-window-config)
   (define-key evil-normal-state-map (kbd "]w") 'eyebrowse-prev-window-config)
   (define-key evil-normal-state-map (kbd "M-w") 'evil-delete-backward-word)
+  (setq evil-want-C-i-jump t)
 
   ;; Make v$ exclude the carriage return
   (evil-define-motion evil-last-non-blank (count)
@@ -432,6 +433,9 @@ lines downward first."
   (setq ido-use-virtual-buffers t)
   (with-eval-after-load 'ido
     (define-key ido-buffer-completion-map (kbd "C-w") 'ido-kill-buffer-at-head))
+  (defun ido-clear-virtual-buffers ()
+    (interactive)
+    (setq buffer-name-history '()))
 
   ;; Org-mode
   (require 'org-mouse)
@@ -454,6 +458,7 @@ lines downward first."
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
+    "ix" 'ido-clear-virtual-buffers
     "mc" 'evil-mc-mode
     "oi" 'helm-semantic-or-imenu
     "ga" 'projectile-find-other-file-other-window
