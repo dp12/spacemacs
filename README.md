@@ -1,10 +1,10 @@
 ## Table of Contents
-* [Overview](#wiki-Overview)
-* [Installation](#wiki-Installation)
-* [Custom Keybindings](#wiki-Custom Keybindings)
-* [Emacs-style Keybindings](#wiki-Emacs-style Keybindings)
-* [Evil-style Keybindings](#wiki-Evil-style Keybindings)
-* [Layers](#wiki-Layers)
+* [Overview](#spacemacs-Overview)
+* [Installation](#spacemacs-Installation)
+* [Custom Keybindings](#spacemacs-Custom Keybindings)
+* [Emacs-style Keybindings](#spacemacs-Emacs-style Keybindings)
+* [Evil-style Keybindings](#spacemacs-Evil-style Keybindings)
+* [Layers](#spacemacs-Layers)
 
 ## <a name="Overview"/> Overview
 This is a custom spacemacs configuration, optimized for C/C++ development. Features company-irony for completion and various hydra conveniences.
