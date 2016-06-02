@@ -461,6 +461,7 @@ lines downward first."
     "ix" 'ido-clear-virtual-buffers
     "mc" 'evil-mc-mode
     "oi" 'helm-semantic-or-imenu
+    "ou" 'org-previous-visible-heading
     "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
