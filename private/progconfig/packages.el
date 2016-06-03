@@ -17,6 +17,7 @@
     dtrt-indent
     irony
     company-irony
+    evil-multiedit
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -39,6 +40,7 @@ which require an initialization must be listed explicitly in the list.")
       (global-set-key (kbd "M-]") 'corral-brackets-forward)
       (global-set-key (kbd "M-{") 'corral-braces-backward)
       (global-set-key (kbd "M-}") 'corral-braces-forward)
+      (global-set-key (kbd "M-'") 'corral-single-quotes-forward)
       (global-set-key (kbd "M-\"") 'corral-double-quotes-forward)
       (global-set-key (kbd "C-M-0") (kbd "<escape> SPC u M-0"))
       (global-set-key (kbd "C-M-]") (kbd "<escape> SPC u M-]"))
@@ -78,6 +80,13 @@ which require an initialization must be listed explicitly in the list.")
     (eval-after-load 'company
       '(add-to-list 'company-backends 'company-irony)))
   )
+
+(defun progconfig/init-evil-multiedit ()
+  "Initialize evil-multiedit"
+  (use-package evil-multiedit
+    :config
+    (evil-multiedit-default-keybinds)
+    ))
 
 (defun my-expand-lines ()
   (interactive)
@@ -136,6 +145,8 @@ which require an initialization must be listed explicitly in the list.")
             (push '(?8 . ("/* " . " */")) evil-surround-pairs-alist)
             ;; Treat _ as PART_OF_A_WORD
             (modify-syntax-entry ?_ "w")
+            ;; Indent case labels in switch-case statements
+            (c-set-offset 'case-label '+)
             ))
 
 ;; Forth
