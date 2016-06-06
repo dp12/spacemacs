@@ -460,6 +460,7 @@ lines downward first."
     "gr" 'ggtags-find-reference
     "ix" 'ido-clear-virtual-buffers
     "mc" 'evil-mc-mode
+    "mi" 'evil-matchit-mode
     "oi" 'helm-semantic-or-imenu
     "ou" 'org-previous-visible-heading
     "ga" 'projectile-find-other-file-other-window
