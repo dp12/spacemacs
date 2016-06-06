@@ -503,7 +503,8 @@ lines downward first."
    ((spacemacs/system-is-linux) (setq TeX-view-program-selection '((output-pdf "Zathura")))))
 
   ;; Theme
-  (setq powerline-default-separator 'alternate)
+  (setq powerline-default-separator 'contour)
+  (spaceline-compile)
 
   ;; Aliases
   (defalias 'chi 'c-toggle-hungry-state)
