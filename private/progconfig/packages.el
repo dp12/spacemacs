@@ -38,7 +38,7 @@ which require an initialization must be listed explicitly in the list.")
           (right-char))
         (evil-escape)
         (setq current-prefix-arg '(4))
-        (call-interactively corral-command)))
+        (call-interactively corral-command))
 
       (global-set-key (kbd "M-9") 'corral-parentheses-backward)
       (global-set-key (kbd "M-0") 'corral-parentheses-forward)
