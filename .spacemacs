@@ -53,14 +53,15 @@ values."
      unimpaired
      version-control
      vinegar
-     ,@(unless (string= system-type "windows-nt")
-         '(fasd))
+     ycmd
+     ;; ,@(unless (string= system-type "windows-nt")
+     ;;     '(fasd))
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(ag project-explorer mode-icons pt visual-regexp-steroids zop-to-char)
+   dotspacemacs-additional-packages '(ag f project-explorer mode-icons pt visual-regexp-steroids zop-to-char)
 
    dotspacemacs-excluded-packages '(evil-search-highlight-persist)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -116,6 +117,8 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         glowfish-contrast
+                         doom-one
                          monokai
                          sanityinc-solarized-light
                          spacemacs-dark
@@ -130,7 +133,7 @@ values."
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
                                :size 16
-                               :weight normal
+                               :weight semibold
                                :width normal
                                :powerline-scale 1.1)
    ;; The leader key
@@ -268,6 +271,12 @@ in `dotspacemacs/user-config'."
     )
   (add-to-list 'load-path "~/spacemacs/themes")
   (add-to-list 'custom-theme-load-path "~/spacemacs/themes")
+
+  (require 'base16-default-dark-theme)
+  (require 'glowfish-contrast-theme)
+  (require 'hyrule-contrast-theme)
+  (require 'slime-contrast-theme)
+  (require 'tomorrow-night-paradise-theme)
 )
 
 (defun dotspacemacs/user-config ()
@@ -305,34 +314,35 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "M-?") 'company-complete)
   (global-set-key (kbd "M-I") 'company-irony)
   (global-set-key (kbd "M-Y") 'company-ycmd)
+  (define-key yas-minor-mode-map [backtab] 'hippie-expand)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
   (setq projectile-indexing-method 'native)
 
   ;; Desktop Save
   ;; Automatically save and restore sessions
-  (setq desktop-dirname             "~/.emacs.d/desktop/"
-        desktop-base-file-name      "emacs.desktop"
-        desktop-base-lock-name      "lock"
-        desktop-path                (list desktop-dirname)
-        desktop-save                'if-exists
-        desktop-restore-eager       5
-        desktop-files-not-to-save   "^$" ;reload tramp paths
-        desktop-load-locked-desktop nil
-        desktop-globals-to-save
-        (append '((extended-command-history . 30)
-                  (file-name-history        . 100)
-                  (grep-history             . 30)
-                  (compile-history          . 30)
-                  (minibuffer-history       . 50)
-                  (query-replace-history    . 60)
-                  (read-expression-history  . 60)
-                  (regexp-history           . 60)
-                  (regexp-search-ring       . 20)
-                  (search-ring              . 20)
-                  (shell-command-history    . 50)
-                  tags-file-name
-                  register-alist)))
-  (desktop-save-mode 1)
+  ;; (setq desktop-dirname             "~/.emacs.d/desktop/"
+  ;;       desktop-base-file-name      "emacs.desktop"
+  ;;       desktop-base-lock-name      "lock"
+  ;;       desktop-path                (list desktop-dirname)
+  ;;       desktop-save                'if-exists
+  ;;       desktop-restore-eager       5
+  ;;       desktop-files-not-to-save   "^$" ;reload tramp paths
+  ;;       desktop-load-locked-desktop nil
+  ;;       desktop-globals-to-save
+  ;;       (append '((extended-command-history . 30)
+  ;;                 (file-name-history        . 100)
+  ;;                 (grep-history             . 30)
+  ;;                 (compile-history          . 30)
+  ;;                 (minibuffer-history       . 50)
+  ;;                 (query-replace-history    . 60)
+  ;;                 (read-expression-history  . 60)
+  ;;                 (regexp-history           . 60)
+  ;;                 (regexp-search-ring       . 20)
+  ;;                 (search-ring              . 20)
+  ;;                 (shell-command-history    . 50)
+  ;;                 tags-file-name
+  ;;                 register-alist)))
+  ;; (desktop-save-mode 1)
 
   ;; Spacemacs
   (setq spacemacs-mode-line-minor-modesp nil)
@@ -344,7 +354,6 @@ layers configuration. You are free to put any user code."
   ;; (define-key evil-motion-state-map (kbd "z") 'avy-goto-char-2)
   ;; (define-key evil-visual-state-map (kbd "z") 'avy-goto-char-2)
   (setq avy-keys (number-sequence ?a ?z))
-  ;; (set-face-attribute 'evil-snipe-first-match-face nil :inherit nil :foreground "black" :background "orange" :box '(:color "lawn green" :style released-button))
   (set-face-attribute 'evil-snipe-matches-face nil :inherit nil :foreground "red" :box '(:color "lawn green" :style released-button))
   (setq evil-snipe-scope 'buffer)
   (setq evil-snipe-repeat-scope 'buffer)
@@ -461,6 +470,7 @@ lines downward first."
     "ix" 'ido-clear-virtual-buffers
     "mc" 'evil-mc-mode
     "mi" 'evil-matchit-mode
+    "ms" 'evilmi-select-items
     "oi" 'helm-semantic-or-imenu
     "ou" 'org-previous-visible-heading
     "ga" 'projectile-find-other-file-other-window
