@@ -172,6 +172,17 @@ which require an initialization must be listed explicitly in the list.")
 ;; Intel Hex mode
 (require 'intel-hex-mode)
 
+;; Rotate-text (cycle between labels)
+(require 'rotate-text)
+(autoload 'rotate-text "rotate-text" nil t)
+(autoload 'rotate-text-backward "rotate-text" nil t)
+(setq rotate-text-words '(("true" "false")
+                          ("front" "rear" "back")
+                          ("left" "right")
+                          ("set" "get")
+                          ("uint8_t" "uint16_t" "uint32_t")))
+(global-set-key (kbd "C-%") 'rotate-text)
+
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:

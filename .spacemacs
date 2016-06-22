@@ -45,6 +45,7 @@ values."
      ;; python
      (ranger :variables ranger-show-preview t)
      search
+     search-engine
      semantic
      sicp
      ;; spacemacs-ivy
@@ -460,6 +461,7 @@ lines downward first."
     "DD" 'kill-dired-buffers
     "dj" 'dired-jump
     "do" 'dired-jump-other-window
+    "ew" 'eww
     "fp" 'fiplr-find-file
     "fi" 'find-file-in-project
     "hf" 'helm-for-files
@@ -554,4 +556,5 @@ lines downward first."
  '(avy-lead-face-0 ((t (:foreground "dark orange"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(evil-snipe-first-match-face ((t (:inherit isearch :box (:line-width 2 :color "red" :style released-button))))))
+ '(evil-snipe-first-match-face ((t (:inherit nil :foreground "magenta" :underline "magenta"))))
+ '(hl-line ((t (:underline "chartreuse")))))
