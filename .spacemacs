@@ -273,11 +273,11 @@ in `dotspacemacs/user-config'."
   (add-to-list 'load-path "~/spacemacs/themes")
   (add-to-list 'custom-theme-load-path "~/spacemacs/themes")
 
-  (require 'base16-default-dark-theme)
+  ;; (require 'base16-default-dark-theme)
   (require 'glowfish-contrast-theme)
-  (require 'hyrule-contrast-theme)
-  (require 'slime-contrast-theme)
-  (require 'tomorrow-night-paradise-theme)
+  ;; (require 'hyrule-contrast-theme)
+  ;; (require 'slime-contrast-theme)
+  ;; (require 'tomorrow-night-paradise-theme)
 )
 
 (defun dotspacemacs/user-config ()
