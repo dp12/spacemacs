@@ -33,7 +33,8 @@ which require an initialization must be listed explicitly in the list.")
     :init
     (progn
       (ivy-mode t)
-      (diminish 'ivy-mode "ⓥ")
+      (eval-after-load "diminish"
+        '(diminish 'ivy-mode "ⓥ"))
       (setq ivy-use-virtual-buffers t)
       (global-set-key (kbd "C-c C-r") 'ivy-resume)
       (global-set-key (kbd "<f6>") 'ivy-resume)
