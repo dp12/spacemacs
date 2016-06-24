@@ -469,6 +469,7 @@ lines downward first."
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
+    "ib" 'counsel-bookmark
     "ix" 'ido-clear-virtual-buffers
     "mc" 'evil-mc-mode
     "mi" 'evil-matchit-mode
