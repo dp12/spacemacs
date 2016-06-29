@@ -470,6 +470,7 @@ lines downward first."
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
     "bi" 'counsel-bookmark
+    "ib" 'counsel-bookmark
     "ix" 'ido-clear-virtual-buffers
     "mc" 'evil-mc-mode
     "mi" 'evil-matchit-mode
