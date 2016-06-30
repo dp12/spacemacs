@@ -18,6 +18,7 @@
     irony
     company-irony
     evil-multiedit
+    string-inflection
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -102,6 +103,9 @@ which require an initialization must be listed explicitly in the list.")
     :config
     (evil-multiedit-default-keybinds)
     ))
+
+(defun progconfig/init-string-inflection ()
+  (use-package string-inflection))
 
 (defun my-expand-lines ()
   (interactive)

@@ -125,8 +125,17 @@ which require an initialization must be listed explicitly in the list.")
         ("\"" corral-double-quotes-forward "Forward")
         ("." hydra-repeat "Repeat"))
       (global-set-key (kbd "C-c c") #'hydra-corral/body)
+      (defhydra hydra-string-inflection (global-map "C-c")
+        "String Inflection"
+        ("I" string-inflection-cycle "cycle")
+        ("u" string-inflection-underscore "under_bar")
+        ("c" string-inflection-lower-camelcase "littleCamel")
+        ("C" string-inflection-camelcase "BigCamel")
+        ("j" string-inflection-java-style-cycle "java cycle")
+        ("q" nil "quit"))
       )
     ))
+
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
