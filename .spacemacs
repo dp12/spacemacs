@@ -269,6 +269,7 @@ in `dotspacemacs/user-config'."
   (when (string-equal system-type "windows-nt")
     (set-fontset-font t '(#x2680 . #x26FF) (font-spec :family "DejaVu Sans Mono" :size 20))
     (set-fontset-font t '(#x26aa . #x26ac) (font-spec :family "DejaVu Sans Mono" :size 20))
+    (setq-default ispell-program-name "C:/bin/Aspell/bin/aspell.exe")
     )
   (add-to-list 'load-path "~/spacemacs/themes")
   (add-to-list 'custom-theme-load-path "~/spacemacs/themes")
@@ -464,6 +465,7 @@ lines downward first."
     "DD" 'kill-dired-buffers
     "dj" 'dired-jump
     "do" 'dired-jump-other-window
+    "dO" 'dired-omit-mode
     "ew" 'eww
     "fp" 'fiplr-find-file
     "fi" 'find-file-in-project
@@ -473,6 +475,7 @@ lines downward first."
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
     "bi" 'counsel-bookmark
+    "bj" 'counsel-bookmark
     "ib" 'counsel-bookmark
     "ix" 'ido-clear-virtual-buffers
     "mc" 'evil-mc-mode
