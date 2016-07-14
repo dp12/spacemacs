@@ -48,6 +48,7 @@ values."
      search-engine
      semantic
      sicp
+     spell-checking
      ;; spacemacs-ivy
      syntax-checking
      themes-megapack
@@ -270,6 +271,7 @@ in `dotspacemacs/user-config'."
     (set-fontset-font t '(#x2680 . #x26FF) (font-spec :family "DejaVu Sans Mono" :size 20))
     (set-fontset-font t '(#x26aa . #x26ac) (font-spec :family "DejaVu Sans Mono" :size 20))
     (setq-default ispell-program-name "C:/bin/Aspell/bin/aspell.exe")
+    (setq flyspell-issue-message-flag nil)
     )
   (add-to-list 'load-path "~/spacemacs/themes")
   (add-to-list 'custom-theme-load-path "~/spacemacs/themes")
