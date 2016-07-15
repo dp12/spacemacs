@@ -5,11 +5,11 @@
 ;; Author: Henrik Lissner <http://github/hlissner>
 ;; Maintainer: Henrik Lissner <henrik@lissner.net>
 ;; Created: May 22, 2016
-;; Modified: May 22, 2016
-;; Version: 1.0.0
+;; Modified: June 15, 2016
+;; Version: 1.0.4
 ;; Keywords: dark, blue, atom, one, seek
 ;; Homepage: https://github.com/hlissner/evil-snipe
-;; Package-Requires: ((dash "2.12.1"))
+;; Package-Requires: ((dash "2.12.0"))
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
@@ -43,12 +43,12 @@
 
 ;;
 
-(defcustom doom-enable-bright-minibuffer t
+(defcustom doom-enable-bright-minibuffer nil
   "If non-nil, minibuffer will be brighter when active."
   :group 'doom
   :type 'boolean)
 
-(defcustom doom-enable-bright-buffers t
+(defcustom doom-enable-bright-buffers window-system
   "If non-nil, code and source buffers will be brighter than special, popup or
 temporary buffers."
   :group 'doom
@@ -64,7 +64,6 @@ temporary buffers."
   :group 'doom
   :type 'boolean)
 
-;;
 
 ;; Color helper functions
 ;; Shamelessly *borrowed* from solarized
@@ -93,11 +92,20 @@ temporary buffers."
 
     ;; Brighten up file buffers; darken special and popup buffers
     (when doom-enable-bright-buffers
+      ;; Don't let this interface with face-remap
+      (defun doom*face-remap-add-relative (orig-fn &rest args)
+        (let ((remap (assq (nth 0 args) face-remapping-alist)))
+          (when remap (setf (nth 0 args) (cadr remap))))
+        (apply orig-fn args))
+
+      (advice-add 'face-remap-add-relative :around 'doom*face-remap-add-relative)
+
       (defun doom|brighten-buffer (&rest _)
         (setq-local face-remapping-alist
-                    '((default doom-default)
-                      (hl-line doom-hl-line)
-                      (linum doom-linum))))
+                    (append face-remapping-alist
+                            '((default doom-default)
+                              (hl-line doom-hl-line)
+                              (linum doom-linum)))))
 
       (add-hook 'find-file-hook 'doom|brighten-buffer))
 
@@ -106,7 +114,8 @@ temporary buffers."
       (defun doom|brighten-minibuffer ()
         (with-selected-window (minibuffer-window)
           (setq-local face-remapping-alist
-                      '((default doom-minibuffer-active)))))
+                      (append face-remapping-alist
+                              '((default doom-minibuffer-active))))))
 
       (add-hook 'minibuffer-setup-hook 'doom|brighten-minibuffer))))
 
