@@ -15,6 +15,7 @@
     ;; package searchs go here
     counsel
     dired-narrow
+    dired-subtree
     fiplr
     find-file-in-project
     swiper
@@ -54,6 +55,14 @@ which require an initialization must be listed explicitly in the list.")
 (defun search/init-dired-narrow ()
   "Initialize dired-narrow"
   (use-package dired-narrow))
+
+(defun search/init-dired-subtree ()
+  (use-package dired-subtree
+    :ensure t
+    :after dired
+    :config
+    (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
+    (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map)))
 
 (defun search/init-fiplr ()
   "Initialize fiplr"

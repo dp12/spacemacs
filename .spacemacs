@@ -324,6 +324,7 @@ layers configuration. You are free to put any user code."
   (define-key yas-minor-mode-map [backtab] 'hippie-expand)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
   (setq projectile-indexing-method 'native)
+  (add-to-list 'auto-mode-alist '("\\.bin\\'" . hexl-mode))
 
   ;; Desktop Save
   ;; Automatically save and restore sessions
@@ -464,7 +465,7 @@ lines downward first."
     "bx" 'ace-swap-window
     "bk" (kbd "C-x k")
     "ed" 'ediff-buffers
-    "DD" 'kill-dired-buffers
+    "dK" 'kill-dired-buffers
     "dj" 'dired-jump
     "do" 'dired-jump-other-window
     "dO" 'dired-omit-mode
