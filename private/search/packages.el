@@ -80,6 +80,7 @@ which require an initialization must be listed explicitly in the list.")
     (define-key ivy-minibuffer-map (kbd "C-w") 'ivy-next-history-element)
     (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line-or-history)
     (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line-or-history)
+    (define-key ivy-minibuffer-map (kbd "C-u") 'ivy-kill-line)
   ))
 ;;
 ;; Often the body of an initialize function uses `use-package'
