@@ -469,6 +469,8 @@ lines downward first."
     "dj" 'dired-jump
     "do" 'dired-jump-other-window
     "dO" 'dired-omit-mode
+    "dg" 'dumb-jump-go
+    "db" 'dumb-jump-back
     "ew" 'eww
     "fp" 'fiplr-find-file
     "fi" 'find-file-in-project
