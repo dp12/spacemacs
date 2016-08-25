@@ -42,7 +42,7 @@ values."
      (latex :variables latex-enable-auto-fill nil)
      org
      progconfig
-     ;; python
+     python
      (ranger :variables ranger-show-preview t)
      search
      search-engine
@@ -63,7 +63,9 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(ag f project-explorer mode-icons pt visual-regexp-steroids zop-to-char)
+   dotspacemacs-additional-packages '(ag f project-explorer mode-icons pt
+                                         visual-regexp-steroids zop-to-char cedit
+                                         dumb-jump rtags)
 
    dotspacemacs-excluded-packages '(evil-search-highlight-persist)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -474,11 +476,15 @@ lines downward first."
     "ew" 'eww
     "fp" 'fiplr-find-file
     "fi" 'find-file-in-project
+    "fd" 'find-file-in-current-directory
     "hf" 'helm-for-files
     "hx" 'hexl-mode
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
+    "rd" 'rtags-find-symbol-at-point
+    "rf" 'rtags-find-references-at-point
+    "rt" 'rtags-taglist
     "bi" 'counsel-bookmark
     "bj" 'counsel-bookmark
     "ib" 'counsel-bookmark
