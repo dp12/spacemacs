@@ -479,6 +479,8 @@ lines downward first."
     "fd" 'find-file-in-current-directory
     "hf" 'helm-for-files
     "hx" 'hexl-mode
+    "h." 'highlight-symbol-at-point
+    "hr" 'unhighlight-regexp
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
