@@ -457,6 +457,7 @@ lines downward first."
     (setq buffer-name-history '()))
 
   ;; Org-mode
+  (require 'org-drill)
   (require 'org-mouse)
   (setq org-bullets-bullet-list '("◉" "◎" "○" "►" "◇" "■"))
   ;; (setq org-bullets-bullet-list '("⌘" "▶" "▲" "⇨"))
@@ -560,6 +561,9 @@ lines downward first."
    [default default default italic underline success warning error])
  '(evil-exchange-highlight-face (quote evil-ex-search))
  '(magit-diff-use-overlays nil)
+ '(org-modules
+   (quote
+    (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m org-drill org-velocity)))
  '(paradox-github-token t)
  '(projectile-globally-ignored-files (quote ("TAGS *.html *.o *.su")))
  '(projectile-project-root-files-bottom-up (quote (".git" ".hg" ".fslckout" ".bzr" "_darcs")))
