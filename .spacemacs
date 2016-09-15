@@ -450,9 +450,9 @@ lines downward first."
 
   ;; Ido
   ;; (ido-everywhere t)
+  (add-hook 'ido-setup-hook
+            (lambda () (define-key ido-completion-map (kbd "C-w") 'ido-kill-buffer-at-head)))
   ;; (setq ido-use-virtual-buffers t)
-  (with-eval-after-load 'ido
-    (define-key ido-buffer-completion-map (kbd "C-w") 'ido-kill-buffer-at-head))
   (defun ido-clear-virtual-buffers ()
     (interactive)
     (setq buffer-name-history '()))
