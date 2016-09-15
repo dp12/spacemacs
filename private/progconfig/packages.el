@@ -168,6 +168,8 @@ which require an initialization must be listed explicitly in the list.")
             (modify-syntax-entry ?_ "w")
             ;; Indent case labels in switch-case statements
             (c-set-offset 'case-label '+)
+            ;; Visual-line-mode slows down swiper
+            (setq visual-line-mode nil)
             ))
 
 ;; Forth

@@ -5,15 +5,13 @@
 (deftheme doom-one
   "A dark theme inspired by Atom One Dark")
 
-(doom-init)
-
 (let ((c '((class color) (min-colors 89)))
       (bold   doom-enable-bold)
       (italic doom-enable-italic)
 
       (black          "#141a22")
       (white          "#EEEEEE")
-      (grey           "#525E6C")
+      (grey           (if window-system "#525E6C" "#525252"))
       (grey-d         "#3D3D48")
       (grey-dd        "#20272e")
       (yellow         "#ECBE7B")
@@ -32,12 +30,12 @@
       (green-d        "#86B20E"))
 
   (let* ((bg             "#262c34")
-         (bg-d           "#1f252b")
-         (fg             "#C5CACF")
+         (bg-d           (if window-system "#1f252b" "#1f1f1f"))
+         (fg             "#B5BABF")
 
          (highlight      blue)
          (vertical-bar   black)
-         (current-line   "#21272d")
+         (current-line   (if window-system "#21272d" "#000000"))
          (selection      blue-d)
          (builtin        magenta)
          (comments       grey)
@@ -58,15 +56,15 @@
          (search-rest-fg blue)
          ;; line number column
          (linum-bg       bg-d)
-         (linum-fg       (doom-darken cyan-d 0.55))
+         (linum-fg       (if window-system (doom-darken cyan-d 0.55) grey))
          (linum-hl-fg    blue)
          (linum-hl-bg    bg-d)
          ;; mode line
          (modeline-fg    white)
          (modeline-fg-l  blue)
-         (modeline-bg    bg-d)
+         (modeline-bg    (if window-system bg-d current-line))
          (modeline-fg-inactive grey)
-         (modeline-bg-inactive bg-d)
+         (modeline-bg-inactive (if window-system bg-d current-line))
          ;; vcs
          (vc-modified    yellow-d)
          (vc-added       green)
@@ -75,24 +73,30 @@
     (custom-theme-set-faces
      'doom-one
      ;; Doom faces
-     `(doom-default           ((,c (:inherit default :background ,bg))))
+     `(doom-default
+       ((((type graphic)) :inherit default :background ,bg)
+        (t                :inherit default)))
+     `(doom-hl-line
+       ((((type graphic)) :background ,current-line)
+        (t                :inherit hl-line)))
+     `(doom-linum
+       ((((type graphic)) :inherit linum :background ,bg)
+        (t                :inherit linum)))
      `(doom-minibuffer-active ((,c (:background ,bg))))
-     `(doom-hl-line           ((,c (:background ,current-line))))
-     `(doom-linum             ((,c (:inherit linum :background ,bg))))
      `(doom-nlinum-highlight  ((,c (:foreground ,linum-hl-fg :bold nil))))
      `(doom-flycheck-error    ((,c (:underline nil :foreground ,black :background ,red))))
      `(doom-flycheck-warning  ((,c (:underline nil :foreground ,black :background ,yellow))))
      `(doom-flycheck-info     ((,c (:underline nil :foreground ,black :background ,green))))
      ;; Base
-     `(bold                   ((,c (:weight ,(if bold 'bold 'normal)))))
+     `(bold                   ((,c (:weight ,(if bold 'bold 'normal) :color ,white))))
      `(italic                 ((,c (:slant  ,(if italic 'italic 'normal)))))
      `(bold-italic            ((,c (:weight ,(if bold 'bold 'normal) :slant ,(if italic 'italic 'normal) :foreground ,white))))
      ;; Global
      `(default                ((,c (:background ,bg-d :foreground ,fg))))
-     `(fringe                 ((,c (:inherit doom-default))))
+     `(fringe                 ((,c (:inherit doom-default :foreground ,comments))))
      `(region                 ((,c (:background ,blue-d :bold ,bold))))
      `(highlight              ((,c (:background ,blue :foreground ,black))))
-     `(hl-line                ((,c (:background ,(if doom-enable-bright-buffers bg current-line)))))
+     `(hl-line                ((,c (:background ,bg))))
      `(cursor                 ((,c (:background ,white))))
      `(shadow                 ((,c (:foreground ,violet))))
      `(minibuffer-prompt      ((,c (:foreground ,blue))))
@@ -126,19 +130,28 @@
      `(font-lock-regexp-grouping-construct   ((,c (:foreground ,operators :bold ,bold))))
      ;; Modeline
      `(mode-line                   ((,c (:foreground ,modeline-fg :background ,modeline-bg))))
+     `(mode-line-2                 ((,c (:foreground ,modeline-fg-l :background ,modeline-bg))))
      `(mode-line-inactive          ((,c (:foreground ,modeline-fg-inactive :background ,modeline-bg-inactive))))
+
+     ;; Custom modeline faces
+     `(mode-line-highlight         ((,c (:foreground ,black :background ,yellow))))
+     `(mode-line-is-modified       ((,c (:foreground ,red :bold ,bold))))
+     `(mode-line-buffer-path       ((,c (:foreground ,modeline-fg-l))))
+     `(mode-line-count-face        ((,c (:foreground ,black :background ,modeline-fg-l))))
+     `(mode-line-vcs-info          ((,c (:inherit success))))
+     `(mode-line-vcs-warning       ((,c (:inherit error))))
+     ;; Powerline/Spaceline
      `(spaceline-highlight-face    ((,c (:foreground ,black :background ,yellow))))
      `(powerline-active1           ((,c (:foreground ,modeline-fg-l :background ,modeline-bg))))
      `(powerline-active2           ((,c (:foreground ,modeline-fg-l :background ,modeline-bg))))
      `(powerline-inactive1         ((,c (:foreground ,modeline-fg-inactive :background ,modeline-bg-inactive))))
      `(powerline-inactive2         ((,c (:foreground ,modeline-fg-inactive :background ,modeline-bg-inactive))))
-     ;; Custom modeline faces
-     `(mode-line-is-modified       ((,c (:foreground ,red :bold ,bold))))
-     `(mode-line-buffer-file       ((,c (:foreground ,modeline-fg :bold ,bold))))
-     `(mode-line-buffer-path       ((,c (:foreground ,modeline-fg-l))))
-     `(mode-line-count-face        ((,c (:foreground ,black :background ,modeline-fg-l))))
-     `(mode-line-vcs-info          ((,c (:inherit success))))
-     `(mode-line-vcs-warning       ((,c (:inherit error))))
+
+     ;; Dired/dired-k
+     `(dired-directory             ((,c (:foreground ,orange))))
+     `(dired-ignored               ((,c (:foreground ,comments))))
+     `(dired-k-directory           ((,c (:foreground ,blue))))
+
      ;; Search
      `(isearch                     ((,c (:foreground ,search-bg :inverse-video t))))
      `(isearch-lazy-highlight-face ((,c (:background ,search-rest-bg))))
@@ -211,16 +224,30 @@
      `(hs-face            ((,c (:foreground ,comments :background ,bg-d))))
      `(hs-fringe-face     ((,c (:foreground ,blue))))
      ;; iedit
-     `(iedit-occurrence           ((,c (:foreground ,magenta :bold ,bold :inverse-video t))))
-     `(iedit-read-only-occurrence ((,c (:inherit region))))
+     `(iedit-occurrence            ((,c (:foreground ,magenta :bold ,bold :inverse-video t))))
+     `(iedit-read-only-occurrence  ((,c (:inherit region))))
+     ;; ivy
+     ;; `(ivy-current-match  ((,c (:foreground ,orange))))
+     `(ivy-minibuffer-match-face-1 ((,c (:background ,grey-d))))
+     `(ivy-minibuffer-match-face-2 ((,c (:background ,green :foreground ,black))))
+     `(ivy-minibuffer-match-face-3 ((,c (:background ,orange :foreground ,black))))
+     `(ivy-minibuffer-match-face-4 ((,c (:background ,magenta :foreground ,black))))
      ;; neotree
-     `(neo-root-dir-face           ((,c (:foreground ,green))))
+     `(neo-root-dir-face           ((,c (:foreground ,green :background ,bg))))
      `(neo-file-link-face          ((,c (:foreground ,fg))))
      `(neo-dir-link-face           ((,c (:foreground ,blue))))
      `(neo-expand-btn-face         ((,c (:foreground ,blue))))
      ;; pos-tip
      `(popup                       ((,c (:inherit tooltip))))
      `(popup-tip-face              ((,c (:inherit tooltip))))
+     ;; swiper
+     `(swiper-line-face            ((,c (:background ,blue-d))))
+     `(swiper-match-face-1         ((,c (:background ,grey-d))))
+     `(swiper-match-face-2         ((,c (:background ,green :foreground ,black))))
+     `(swiper-match-face-3         ((,c (:background ,orange :foreground ,black))))
+     `(swiper-match-face-4         ((,c (:background ,magenta :foreground ,black))))
+     ;; stripe-buffer
+     `(stripe-highlight            ((,c (:background ,bg))))
      ;; Volatile highlights
      `(vhl/default-face            ((,c (:background ,grey-d))))
      ;; Rainbow delimiters
@@ -275,10 +302,12 @@
      `(web-mode-block-control-face     ((,c (:foreground ,orange))))
      ;;`(web-mode-html-tag-bracket-face  ((,c (:foreground ,operators))))
      ;; markdown-mode
-     `(markdown-header-face           ((,c (:foreground ,red :bold ,bold))))
+     `(markdown-header-face           ((,c (:foreground ,red :bold nil))))
      `(markdown-header-delimiter-face ((,c (:inherit markdown-header-face))))
-     `(markdown-blockquote-face ((,c (:foreground ,violet))))
-     `(markdown-markup-face     ((,c (:foreground ,operators))))
+     `(markdown-metadata-key-face     ((,c (:foreground ,red))))
+     ;; `(markdown-blockquote-face ((,c (:foreground ,violet))))
+     `(markdown-markup-face     ((,c (:foreground ,grey))))
+     ;; `(markdown-markup-face     ((,c (:foreground ,operators))))
      `(markdown-pre-face        ((,c (:foreground ,green))))
      `(markdown-inline-face     ((,c (:foreground ,cyan))))
      `(markdown-list-face       ((,c (:foreground ,magenta))))
@@ -291,8 +320,8 @@
      `(markdown-header-face-5   ((,c (:inherit markdown-header-face))))
      `(markdown-header-face-6   ((,c (:inherit markdown-header-face))))
      ;;`(markdown-header-rule-face       ((,c (:inherit shadow))))
-     ;;`(markdown-italic-face            ((,c (:inherit italic))))
-     ;;`(markdown-bold-face              ((,c (:inherit bold))))
+     `(markdown-italic-face            ((,c (:inherit italic :foreground ,violet))))
+     `(markdown-bold-face              ((,c (:inherit bold :foreground ,orange))))
      ;;`(markdown-link-face              ((,c (:inherit shadow))))
      ;;`(markdown-link-title-face        ((,c (:inherit link))))
      ;;`(markdown-url-face               ((,c (:inherit link))))
@@ -305,17 +334,17 @@
      `(org-document-info         ((,c (:foreground ,orange))))
      `(org-document-info-keyword ((,c (:foreground ,grey-d))))
      `(org-meta-line             ((,c (:foreground ,doc-comments))))
-     `(org-block-begin-line      ((,c (:background ,current-line :foreground ,doc-comments))))
+     `(org-block-begin-line      ((,c (:background ,current-line :foreground ,comments))))
      `(org-block-end-line        ((,c (:inherit org-block-begin-line))))
      `(org-block-background      ((,c (:background ,current-line))))
      `(org-archived              ((,c (:foreground ,grey))))
-     `(org-document-title        ((,c (:foreground ,cyan))))
+     `(org-document-title        ((,c (:foreground ,cyan :height 1.2))))
      `(org-level-1               ((,c (:background ,current-line :foreground ,blue :bold ,bold :height 1.2 :box (:line-width 4 :color ,current-line)))))
      `(org-level-2               ((,c (                          :foreground ,blue-l))))
-     `(org-level-3               ((,c (                          :foreground nil))))
-     `(org-level-4               ((,c (                          :foreground nil))))
-     `(org-level-5               ((,c (                          :foreground nil))))
-     `(org-level-6               ((,c (                          :foreground nil))))
+     `(org-level-3               ((,c (                          :foreground ,white))))
+     `(org-level-4               ((,c (                          :foreground ,white))))
+     `(org-level-5               ((,c (                          :foreground ,white))))
+     `(org-level-6               ((,c (                          :foreground ,white))))
      `(org-code                  ((,c (:foreground ,orange))))
      `(org-verbatim              ((,c (:foreground ,green))))
      `(org-formula               ((,c (:foreground ,cyan))))
@@ -330,7 +359,9 @@
      `(org-checkbox              ((,c (:inherit org-todo))))
      `(org-checkbox-statistics-todo ((,c (:inherit org-todo))))
      `(org-checkbox-statistics-done ((,c (:inherit org-done))))
-     )
+     ;; Custom org-mode faces
+     `(org-list-bullet           ((,c (:foreground ,cyan))))
+     `(message-header-name ((,c (:foreground ,green)))))
 
     (custom-theme-set-variables
      'doom-one

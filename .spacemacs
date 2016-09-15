@@ -48,7 +48,7 @@ values."
      search-engine
      semantic
      sicp
-     spell-checking
+     ;; spell-checking
      ;; spacemacs-ivy
      syntax-checking
      themes-megapack
@@ -65,7 +65,8 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(ag f project-explorer mode-icons pt
                                          visual-regexp-steroids zop-to-char cedit
-                                         dumb-jump rtags)
+                                         dumb-jump rtags color-theme-solarized
+                                         zerodark-theme)
 
    dotspacemacs-excluded-packages '(evil-search-highlight-persist)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -290,7 +291,7 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   ;; System Settings
-  (global-visual-line-mode t)
+  ;; (global-visual-line-mode t) ;; Don't do this with swiper - too slow
   (diminish 'visual-line-mode)
   (setq-default truncate-lines 0)
   (setq uniquify-buffer-name-style 'reverse)
@@ -449,7 +450,7 @@ lines downward first."
 
   ;; Ido
   ;; (ido-everywhere t)
-  (setq ido-use-virtual-buffers t)
+  ;; (setq ido-use-virtual-buffers t)
   (with-eval-after-load 'ido
     (define-key ido-buffer-completion-map (kbd "C-w") 'ido-kill-buffer-at-head))
   (defun ido-clear-virtual-buffers ()
@@ -538,7 +539,7 @@ lines downward first."
    ((spacemacs/system-is-linux) (setq TeX-view-program-selection '((output-pdf "Zathura")))))
 
   ;; Theme
-  (setq powerline-default-separator 'contour)
+  (setq powerline-default-separator 'nil)
   (spaceline-compile)
 
   ;; Aliases
@@ -581,5 +582,5 @@ lines downward first."
  '(avy-lead-face-0 ((t (:foreground "dark orange"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(evil-snipe-first-match-face ((t (:inherit nil :foreground "magenta" :underline "magenta"))))
- '(hl-line ((t (:underline "chartreuse")))))
+ '(evil-snipe-first-match-face ((t (:inherit nil :foreground "red" :underline "red"))))
+ '(hl-line ((t (:underline "goldenrod")))))
