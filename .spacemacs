@@ -399,6 +399,7 @@ lines downward first."
     "Override of the default mode line string for `evil-mc-mode'.")
   (eval-after-load "ycmd"
       '(diminish 'ycmd-mode "Ⓨ"))
+  (setq request-message-level -1) ;; make ycmd less annoying
 
   ;; Ediff
   ;; From http://stackoverflow.com/questions/9656311/conflict-resolution-with-emacs-ediff-how-can-i-take-the-changes-of-both-version
@@ -469,10 +470,10 @@ lines downward first."
     "bx" 'ace-swap-window
     "bk" (kbd "C-x k")
     "ed" 'ediff-buffers
-    "dK" 'kill-dired-buffers
+    "dk" 'kill-dired-buffers
     "dj" 'dired-jump
     "do" 'dired-jump-other-window
-    "dO" 'dired-omit-mode
+    "ds" 'dired-omit-mode
     "dg" 'dumb-jump-go
     "db" 'dumb-jump-back
     "ew" 'eww
@@ -583,4 +584,7 @@ lines downward first."
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
  '(evil-snipe-first-match-face ((t (:inherit nil :foreground "red" :underline "red"))))
+ '(helm-swoop-target-line-block-face ((t (:inherit highlight))))
+ '(helm-swoop-target-line-face ((t (:inherit highlight))))
+ '(helm-swoop-target-word-face ((t (:inherit company-tooltip-selection))))
  '(hl-line ((t (:underline "goldenrod")))))
