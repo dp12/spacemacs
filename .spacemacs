@@ -293,7 +293,8 @@ layers configuration. You are free to put any user code."
   ;; System Settings
   ;; (global-visual-line-mode t) ;; Don't do this with swiper - too slow
   (diminish 'visual-line-mode)
-  (setq-default truncate-lines 0)
+  (spacemacs/toggle-truncate-lines-on)
+  ;; (setq-default truncate-lines 0)
   (setq uniquify-buffer-name-style 'reverse)
   (setq uniquify-separator " :: ")
   (setq uniquify-after-kill-buffer-p t)
