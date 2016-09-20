@@ -190,6 +190,8 @@ which require an initialization must be listed explicitly in the list.")
                           ("set" "get")
                           ("uint8_t" "uint16_t" "uint32_t")))
 (global-set-key (kbd "C-%") 'rotate-text)
+(global-set-key (kbd "M-P") 'rotate-text-backward)
+(global-set-key (kbd "M-p") 'rotate-text)
 
 ;;
 ;; Often the body of an initialize function uses `use-package'
