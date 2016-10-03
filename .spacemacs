@@ -23,6 +23,7 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     asm
      auto-completion
      better-defaults
      ;; colors
@@ -37,8 +38,10 @@ values."
      (git :variables
           git-gutter-use-fringe t)
      gtags
+     imenu-list
+     ivy
      ;; markdown
-     keymap
+	   keymap
      (latex :variables latex-enable-auto-fill nil)
      org
      progconfig
@@ -66,7 +69,7 @@ values."
    dotspacemacs-additional-packages '(ag f project-explorer mode-icons pt
                                          visual-regexp-steroids zop-to-char cedit
                                          dumb-jump rtags color-theme-solarized
-                                         zerodark-theme)
+                                         zerodark-theme showkey)
 
    dotspacemacs-excluded-packages '(evil-search-highlight-persist)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
