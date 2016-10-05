@@ -507,7 +507,18 @@ lines downward first."
     "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
-    "W"  'spacemacs/workspaces-micro-state
+    "w1" 'eyebrowse-switch-to-window-config-1
+    "w2" 'eyebrowse-switch-to-window-config-2
+    "w3" 'eyebrowse-switch-to-window-config-3
+    "w4" 'eyebrowse-switch-to-window-config-4
+    "w5" 'eyebrowse-switch-to-window-config-5
+    "w6" 'eyebrowse-switch-to-window-config-6
+    "w7" 'eyebrowse-switch-to-window-config-7
+    "w8" 'eyebrowse-switch-to-window-config-8
+    "w9" 'eyebrowse-switch-to-window-config-9
+    "wx" 'eyebrowse-close-window-config
+    "wn" 'eyebrowse-rename-window-config
+    "w TAB" 'eyebrowse-last-window-config
     "L"  'spacemacs/workspaces-micro-state
     )
 
