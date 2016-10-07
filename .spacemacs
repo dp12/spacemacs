@@ -462,6 +462,15 @@ lines downward first."
     (interactive)
     (setq buffer-name-history '()))
 
+  ;; Ivy
+  (setq ivy-re-builders-alist
+        '((counsel-imenu . ivy--regex-fuzzy)
+          (counsel-bookmark . ivy--regex-fuzzy)
+          (counsel-git . ivy--regex-fuzzy)
+          (ivy-switch-buffer . ivy--regex-fuzzy)
+          (t . ivy--regex-plus)))
+
+
   ;; Org-mode
   (require 'org-drill)
   (require 'org-mouse)
