@@ -306,6 +306,7 @@ layers configuration. You are free to put any user code."
   (setq sp-highlight-wrap-overlay nil)
   (setq sp-highlight-wrap-tag-overlay nil)
   (mode-icons-mode)
+  (global-set-key (kbd "C-x b") 'ido-switch-buffer)
   (global-set-key (kbd "C-x <down>") 'winner-redo)
   (global-set-key (kbd "C-x <up>") 'winner-undo)
   (global-set-key (kbd "C-c <left>") 'windmove-left)
