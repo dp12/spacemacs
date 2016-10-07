@@ -480,6 +480,8 @@ lines downward first."
 
   ;; Leader keys
   (evil-leader/set-key
+    "ak" 'avy-kill-whole-line
+    "ay" 'avy-copy-line
     "bx" 'ace-swap-window
     "bk" (kbd "C-x k")
     "ed" 'ediff-buffers
