@@ -487,7 +487,7 @@ lines downward first."
     "dk" 'kill-dired-buffers
     "dj" 'dired-jump
     "do" 'dired-jump-other-window
-    "ds" 'dired-omit-mode
+    "d." 'dired-omit-mode
     "dg" 'dumb-jump-go
     "db" 'dumb-jump-back
     "ew" 'eww
@@ -498,6 +498,7 @@ lines downward first."
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
     "hf" 'helm-for-files
+    "hm" 'helm-man-woman
     "hx" 'hexl-mode
     "h." 'highlight-symbol-at-point
     "hr" 'unhighlight-regexp
@@ -505,7 +506,7 @@ lines downward first."
     "rd" 'rtags-find-symbol-at-point
     "rf" 'rtags-find-references-at-point
     "rt" 'rtags-taglist
-    "bi" 'counsel-bookmark
+    "ry" 'helm-show-kill-ring
     "bj" 'counsel-bookmark
     "ib" 'counsel-bookmark
     "ix" 'ido-clear-virtual-buffers
