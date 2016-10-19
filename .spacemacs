@@ -34,7 +34,6 @@ values."
      custom
      deft
      evil-snipe
-     eyebrowse
      (git :variables
           git-gutter-use-fringe t)
      gtags
@@ -55,7 +54,6 @@ values."
      ;; spacemacs-ivy
      syntax-checking
      themes-megapack
-     unimpaired
      version-control
      vinegar
      ycmd
