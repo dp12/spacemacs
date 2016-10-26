@@ -460,15 +460,36 @@ lines downward first."
   (defun ido-clear-virtual-buffers ()
     (interactive)
     (setq buffer-name-history '()))
+  (setq ido-enable-flex-matching t)
 
   ;; Ivy
-  (setq ivy-re-builders-alist
-        '((counsel-imenu . ivy--regex-fuzzy)
-          (counsel-bookmark . ivy--regex-fuzzy)
-          (counsel-git . ivy--regex-fuzzy)
-          (ivy-switch-buffer . ivy--regex-fuzzy)
-          (t . ivy--regex-plus)))
+  (global-set-key "\C-s" 'swiper)
+  (define-key ivy-minibuffer-map (kbd "C-w") 'ivy-next-history-element)
+  (define-key ivy-minibuffer-map (kbd "C-s") 'ivy-next-history-element)
+  (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line-or-history)
+  (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line-or-history)
+  (define-key ivy-minibuffer-map (kbd "C-u") 'ivy-kill-line)
 
+  (setq ivy-re-builders-alist
+       '((counsel-imenu . ivy--regex-fuzzy)
+         (counsel-bookmark . ivy--regex-fuzzy)
+         (counsel-git . ivy--regex-fuzzy)
+         (ivy-switch-buffer . ivy--regex-fuzzy)
+         (t . ivy--regex-plus)))
+
+  (global-set-key (kbd "C-c C-r") 'ivy-resume)
+  (global-set-key (kbd "<f6>") 'ivy-resume)
+  (global-set-key (kbd "M-x") 'counsel-M-x)
+  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+  (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+  (global-set-key (kbd "<f1> l") 'counsel-load-library)
+  (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+  (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+  (global-set-key (kbd "C-c g") 'counsel-git)
+  (global-set-key (kbd "C-c j") 'counsel-git-grep)
+  (global-set-key (kbd "C-c k") 'counsel-ag)
+  (global-set-key (kbd "C-x l") 'counsel-locate)
 
   ;; Org-mode
   (require 'org-drill)
