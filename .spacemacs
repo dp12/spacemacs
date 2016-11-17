@@ -39,7 +39,7 @@ values."
      asm
      auto-completion
      better-defaults
-     helm
+     ;; helm
      emacs-lisp
      (colors :variables
              colors-enable-nyan-cat-progress-bar t
@@ -355,7 +355,6 @@ you should place your code here."
   (setq sp-highlight-wrap-overlay nil)
   (setq sp-highlight-wrap-tag-overlay nil)
   (mode-icons-mode)
-  (global-set-key (kbd "C-x b") 'ido-switch-buffer)
   (global-set-key (kbd "C-x <down>") 'winner-redo)
   (global-set-key (kbd "C-x <up>") 'winner-undo)
   (global-set-key (kbd "C-c <left>") 'windmove-left)
