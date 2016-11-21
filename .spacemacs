@@ -537,7 +537,7 @@ lines downward first."
     "hx" 'hexl-mode
     "h." 'highlight-symbol-at-point
     "hr" 'unhighlight-regexp
-    "if" 'ivy-recentf
+    "if" 'counsel-recentf
     "rd" 'rtags-find-symbol-at-point
     "rf" 'rtags-find-references-at-point
     "rt" 'rtags-taglist
