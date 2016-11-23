@@ -1,2 +1,2 @@
-/private/custom/
-/private/snippets/**/*.el
+private/custom/
+**/.yas-compiled-snippets.el
