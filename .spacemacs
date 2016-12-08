@@ -81,7 +81,8 @@ values."
    dotspacemacs-additional-packages '(ag project-explorer mode-icons pt
                                       visual-regexp-steroids zop-to-char
                                       dumb-jump rtags color-theme-solarized
-                                      zerodark-theme helm-ag)
+                                      zerodark-theme helm-ag helm-gtags
+                                      helm-swoop projectile-ripgrep)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -444,7 +445,7 @@ lines downward first."
   ;; Dired
   (eval-after-load 'dired
     '(progn
-       (define-key dired-mode-map "a" 'ag)
+       (define-key dired-mode-map "a" 'projectile-ripgrep)
        (define-key dired-mode-map "A" 'helm-ag)
        (define-key dired-mode-map "W" 'wdired-change-to-wdired-mode)
        (define-key dired-mode-map (kbd "M-n") 'dired-narrow)
@@ -541,6 +542,7 @@ lines downward first."
     "rd" 'rtags-find-symbol-at-point
     "rf" 'rtags-find-references-at-point
     "rt" 'rtags-taglist
+    "rg" 'projectile-ripgrep
     "ry" 'helm-show-kill-ring
     "bj" 'counsel-bookmark
     "ib" 'counsel-bookmark
@@ -615,17 +617,22 @@ lines downward first."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ag-arguments (quote ("--smart-case" "--stats" "-U")))
- '(ag-ignore-list (quote ("*.html" "*.js" "*.map" "*.xml")))
+ '(ag-ignore-list (quote ("*.html" "*.js" "*.map" "*.xml" "*.json")))
  '(evil-want-Y-yank-to-eol nil)
  '(helm-ag-base-command "ag --nocolor --nogroup -U")
- '(helm-ag-ignore-patterns (quote ("*.html" "*.js" "*.map" "*.xml")))
+ '(helm-ag-ignore-patterns (quote ("*.html" "*.js" "*.map" "*.xml" "*.json")))
+ '(helm-ag-use-agignore t)
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m org-drill org-velocity)))
  '(package-selected-packages
    (quote
-    (mmm-mode markdown-toc markdown-mode macrostep helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-gtags helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet gh-md elisp-slime-nav auto-compile packed ace-jump-helm-line zop-to-char zonokai-theme zerodark-theme zenburn-theme zen-and-art-theme yapfify x86-lookup ws-butler window-numbering which-key wgrep volatile-highlights visual-regexp-steroids vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme string-inflection stickyfunc-enhance srefactor spacemacs-theme spaceline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smex smeargle showkey seti-theme rtags reverse-theme restart-emacs ranger rainbow-mode rainbow-identifiers rainbow-delimiters railscasts-theme quelpa quack pyvenv pytest pyenv-mode py-isort purple-haze-theme pt project-explorer professional-theme popwin planet-theme pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pastels-on-dark-theme paradox orgit organic-green-theme org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme neotree nasm-mode naquadah-theme mwim mustang-theme move-text monokai-theme monochrome-theme molokai-theme moe-theme mode-icons minimal-theme material-theme majapahit-theme magit-gitflow lush-theme lorem-ipsum live-py-mode linum-relative link-hint light-soap-theme key-chord jbeans-theme jazz-theme ivy-hydra ir-black-theme inkpot-theme info+ indent-guide imenu-list ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt heroku-theme hemisu-theme help-fns+ helm-make helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ggtags geiser gandalf-theme flycheck-ycmd flycheck-pos-tip flx-ido flatui-theme flatland-theme firebelly-theme fiplr find-file-in-project fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-snipe evil-numbers evil-nerd-commenter evil-multiedit evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu espresso-theme engine-mode dumb-jump dtrt-indent dracula-theme django-theme disaster dired-subtree dired-narrow diff-hl deft define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cython-mode cyberpunk-theme counsel-projectile corral company-ycmd company-statistics company-irony company-c-headers company-auctex company-anaconda column-enforce-mode color-theme-solarized color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-identifiers-mode cmake-mode clues-theme clean-aindent-mode clang-format cherry-blossom-theme cedit busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent ag afternoon-theme adaptive-wrap ace-window ace-link ac-ispell)))
- '(projectile-globally-ignored-files (quote ("TAGS *.html *.o *.su")))
+    (projectile-ripgrep ripgrep yasnippet helm-core with-editor request-deferred deferred company swiper highlight git-commit anaconda-mode counsel smartparens ycmd request helm projectile ivy magit magit-popup powerline dash spinner hydra mmm-mode markdown-toc markdown-mode macrostep helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-gtags helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet gh-md elisp-slime-nav auto-compile packed ace-jump-helm-line zop-to-char zonokai-theme zerodark-theme zenburn-theme zen-and-art-theme yapfify x86-lookup ws-butler window-numbering which-key wgrep volatile-highlights visual-regexp-steroids vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme string-inflection stickyfunc-enhance srefactor spacemacs-theme spaceline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smex smeargle showkey seti-theme rtags reverse-theme restart-emacs ranger rainbow-mode rainbow-identifiers rainbow-delimiters railscasts-theme quelpa quack pyvenv pytest pyenv-mode py-isort purple-haze-theme pt project-explorer professional-theme popwin planet-theme pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pastels-on-dark-theme paradox orgit organic-green-theme org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme neotree nasm-mode naquadah-theme mwim mustang-theme move-text monokai-theme monochrome-theme molokai-theme moe-theme mode-icons minimal-theme material-theme majapahit-theme magit-gitflow lush-theme lorem-ipsum live-py-mode linum-relative link-hint light-soap-theme key-chord jbeans-theme jazz-theme ivy-hydra ir-black-theme inkpot-theme info+ indent-guide imenu-list ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt heroku-theme hemisu-theme help-fns+ helm-make helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ggtags geiser gandalf-theme flycheck-ycmd flycheck-pos-tip flx-ido flatui-theme flatland-theme firebelly-theme fiplr find-file-in-project fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-snipe evil-numbers evil-nerd-commenter evil-multiedit evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu espresso-theme engine-mode dumb-jump dtrt-indent dracula-theme django-theme disaster dired-subtree dired-narrow diff-hl deft define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cython-mode cyberpunk-theme counsel-projectile corral company-ycmd company-statistics company-irony company-c-headers company-auctex company-anaconda column-enforce-mode color-theme-solarized color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-identifiers-mode cmake-mode clues-theme clean-aindent-mode clang-format cherry-blossom-theme cedit busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent ag afternoon-theme adaptive-wrap ace-window ace-link ac-ispell)))
+ '(projectile-project-root-files-functions
+   (quote
+    (projectile-root-top-down projectile-root-top-down-recurring)))
+ '(projectile-project-root-files-top-down-recurring (quote (".projectile" ".svn" "CVS" "Makefile")))
+ '(ripgrep-arguments (quote ("--no-ignore-vcs")))
  '(zerodark-use-high-contrast-in-mode-line nil))
 
 (custom-set-faces
