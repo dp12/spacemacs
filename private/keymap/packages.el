@@ -38,7 +38,6 @@ which require an initialization must be listed explicitly in the list.")
 
       ; Helm
       (key-chord-define-global "jn" 'helm-swoop)
-      (key-chord-define-global "HG" 'helm-multi-swoop-all)
       (key-chord-define-global "HB" 'helm-bookmarks)
 
       ; Tagging
