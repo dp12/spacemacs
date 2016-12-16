@@ -154,10 +154,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(glowfish-contrast
-                         zerodark
+   dotspacemacs-themes '(doom-one
+                         glowfish-contrast
                          monokai
-                         doom-one
+                         zerodark
                          sanityinc-solarized-light
                          spacemacs-dark
                          leuven
@@ -445,7 +445,7 @@ lines downward first."
   ;; Dired
   (eval-after-load 'dired
     '(progn
-       (define-key dired-mode-map "a" 'projectile-ripgrep)
+       (define-key dired-mode-map "a" 'ripgrep-regexp)
        (define-key dired-mode-map "A" 'helm-ag)
        (define-key dired-mode-map "W" 'wdired-change-to-wdired-mode)
        (define-key dired-mode-map (kbd "M-n") 'dired-narrow)
