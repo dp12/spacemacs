@@ -1,0 +1,5 @@
+# name: case statement
+# key: cas
+# --
+case ${1:item}:
+     break;$0
