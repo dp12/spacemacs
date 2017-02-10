@@ -17,6 +17,7 @@
     dtrt-indent
     irony
     company-irony
+    rtags
     evil-multiedit
     string-inflection
     )
@@ -74,12 +75,13 @@ which require an initialization must be listed explicitly in the list.")
     :diminish "Ⓘ"
     :defer t
     :init
-    (add-hook 'c++-mode-hook 'irony-mode)
-    (add-hook 'c-mode-hook 'irony-mode)
-    (add-hook 'objc-mode-hook 'irony-mode)
+    ;; (add-hook 'c++-mode-hook 'irony-mode)
+    ;; (add-hook 'c-mode-hook 'irony-mode)
+    ;; (add-hook 'objc-mode-hook 'irony-mode)
     :config
     ;; replace the `completion-at-point' and `complete-symbol' bindings in
     ;; irony-mode's buffers by irony-mode's function
+    (define-key evil-normal-state-map (kbd "[r") 'irony-mode)
     (defun my-irony-mode-hook ()
       (define-key irony-mode-map [remap completion-at-point]
         'irony-completion-at-point-async)
@@ -96,6 +98,55 @@ which require an initialization must be listed explicitly in the list.")
     (eval-after-load 'company
       '(add-to-list 'company-backends 'company-irony)))
   )
+
+(defun rtags-evil-standard-keybindings (mode)
+  (evil-leader/set-key-for-mode mode
+    "r." 'rtags-find-symbol-at-point
+    "r," 'rtags-find-references-at-point
+    "rv" 'rtags-find-virtuals-at-point
+    "rV" 'rtags-print-enum-value-at-point
+    "r/" 'rtags-find-all-references-at-point
+    "rY" 'rtags-cycle-overlays-on-screen
+    "r>" 'rtags-find-symbol
+    "r<" 'rtags-find-references
+    "r[" 'rtags-location-stack-back
+    "r]" 'rtags-location-stack-forward
+    "rD" 'rtags-diagnostics
+    "rG" 'rtags-guess-function-at-point
+    "rp" 'rtags-set-current-project
+    "rP" 'rtags-print-dependencies
+    "re" 'rtags-reparse-file
+    "rE" 'rtags-preprocess-file
+    "rR" 'rtags-rename-symbol
+    "rM" 'rtags-symbol-info
+    "rS" 'rtags-display-summary
+    "rO" 'rtags-goto-offset
+    "r;" 'rtags-find-file
+    "rF" 'rtags-fixit
+    "rL" 'rtags-copy-and-print-current-location
+    "rX" 'rtags-fix-fixit-at-point
+    "rB" 'rtags-show-rtags-buffer
+    "rI" 'rtags-imenu
+    "rT" 'rtags-taglist
+    "rh" 'rtags-print-class-hierarchy
+    "ra" 'rtags-print-source-arguments
+    )
+  )
+
+(defun progconfig/init-rtags ()
+  (use-package rtags
+  :init
+  ;; make sure you have company-mode installed
+  :ensure company
+  :config
+  (progn
+    (require 'company-rtags)
+    (add-to-list 'company-backends 'company-rtags)
+    (setq company-rtags-begin-after-member-access t)
+    (setq rtags-completions-enabled t)
+    (rtags-evil-standard-keybindings 'c-mode)
+    (rtags-evil-standard-keybindings 'c++-mode))
+  ))
 
 (defun progconfig/init-evil-multiedit ()
   "Initialize evil-multiedit"

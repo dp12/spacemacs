@@ -380,7 +380,7 @@ you should place your code here."
   (global-set-key (kbd "M-Y") 'company-ycmd)
   (define-key yas-minor-mode-map [backtab] 'hippie-expand)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
-  (setq projectile-indexing-method 'native)
+  ;; (setq projectile-indexing-method 'native)
   (add-to-list 'auto-mode-alist '("\\.bin\\'" . hexl-mode))
 
   ;; Spacemacs
