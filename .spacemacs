@@ -62,7 +62,7 @@ values."
      ;;        shell-default-position 'bottom)
      progconfig
      python
-     (ranger :variables ranger-show-preview t)
+     ;; (ranger :variables ranger-show-preview t)
      search
      search-engine
      semantic
