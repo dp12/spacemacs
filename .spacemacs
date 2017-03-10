@@ -442,7 +442,14 @@ lines downward first."
 
   ;; Ycmd
   (eval-after-load "ycmd"
-    '(diminish 'ycmd-mode "Ⓨ"))
+    (progn
+      (setq ycmd-server-command (list "python" (file-truename "~/ycmd/ycmd")))
+      (add-hook 'c-mode-hook 'ycmd-mode)
+      (add-hook 'c++-mode-hook 'ycmd-mode)
+      (setq ycmd-force-semantic-completion t)
+      ))
+  (diminish 'ycmd-mode "Ⓨ")
+
   (setq request-message-level -1) ;; make ycmd less annoying
 
   ;; Ediff
