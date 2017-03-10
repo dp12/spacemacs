@@ -476,6 +476,17 @@ lines downward first."
               (kill-buffer buffer)))
           (buffer-list)))
 
+  (defun copy-file-basename-to-clipboard ()
+    "Copy the current buffer file name to the clipboard."
+    (interactive)
+    (let ((filename (if (equal major-mode 'dired-mode)
+                        default-directory
+                      (buffer-name))))
+      (when filename
+        (kill-new filename)
+        (message "Copied buffer file name '%s' to the clipboard." filename))))
+
+
   ;; Helm
   (setq helm-M-x-fuzzy-match t)
   (setq helm-semantic-fuzzy-match t)
@@ -544,6 +555,7 @@ lines downward first."
     "fp" 'fiplr-find-file
     "fi" 'find-file-in-project
     "fd" 'find-file-in-current-directory
+    "fn" 'copy-file-basename-to-clipboard
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
