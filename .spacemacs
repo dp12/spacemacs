@@ -540,23 +540,23 @@ lines downward first."
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
   (global-set-key (kbd "C-c g") 'counsel-git)
-  (global-set-key (kbd "C-c j") 'counsel-git-grep)
   (global-set-key (kbd "C-c k") 'counsel-ag)
 
-
   ;; Leader keys
-  ;; (evil-leader/set-key
   (spacemacs/set-leader-keys
     "ak" 'avy-kill-whole-line
     "ay" 'avy-copy-line
     "bx" 'ace-swap-window
     "bk" (kbd "C-x k")
+    "bl" 'list-bookmarks
     "ed" 'ediff-buffers
     "dk" 'kill-dired-buffers
     "dj" 'dired-jump
     "do" 'dired-jump-other-window
     "d." 'dired-omit-mode
     "dg" 'dumb-jump-go
+    "dG" 'dumb-jump-go-other-window
+    "dl" 'dumb-jump-quick-look
     "db" 'dumb-jump-back
     "ew" 'eww
     "fp" 'fiplr-find-file
@@ -576,6 +576,7 @@ lines downward first."
     "rf" 'rtags-find-references-at-point
     "rt" 'rtags-taglist
     "rg" 'projectile-ripgrep
+    "ir" 'counsel-rg
     "ry" 'helm-show-kill-ring
     "bj" 'counsel-bookmark
     "ib" 'counsel-bookmark
