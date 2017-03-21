@@ -412,8 +412,8 @@ you should place your code here."
   (setq evil-snipe-scope 'buffer)
   (setq evil-snipe-repeat-scope 'buffer)
 
-  (define-key evil-normal-state-map (kbd "+") 'spacemacs/evil-numbers-increase)
-  (define-key evil-normal-state-map (kbd "-") 'spacemacs/evil-numbers-decrease)
+  (define-key evil-normal-state-map (kbd "+") 'spacemacs/evil-numbers-transient-state/evil-numbers/inc-at-pt)
+  (define-key evil-normal-state-map (kbd "-") 'spacemacs/evil-numbers-transient-state/evil-numbers/dec-at-pt)
   (define-key evil-normal-state-map (kbd "[s") (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
   (define-key evil-normal-state-map (kbd "]s") (lambda (n) (interactive "p")
                                                  (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
@@ -600,7 +600,7 @@ lines downward first."
     "wx" 'eyebrowse-close-window-config
     "wn" 'eyebrowse-rename-window-config
     "w TAB" 'eyebrowse-last-window-config
-    "L"  'spacemacs/workspaces-micro-state
+    "L"  'spacemacs/layouts-transient-state/body
     )
 
   ;; Org-mode
