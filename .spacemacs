@@ -82,7 +82,7 @@ values."
                                       visual-regexp-steroids zop-to-char
                                       dumb-jump rtags color-theme-solarized
                                       zerodark-theme helm-ag helm-gtags
-                                      helm-swoop projectile-ripgrep)
+                                      helm-swoop projectile-ripgrep evil-lion)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -412,6 +412,7 @@ you should place your code here."
   (setq evil-snipe-scope 'buffer)
   (setq evil-snipe-repeat-scope 'buffer)
 
+  ;; Evil config
   (define-key evil-normal-state-map (kbd "+") 'spacemacs/evil-numbers-transient-state/evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map (kbd "-") 'spacemacs/evil-numbers-transient-state/evil-numbers/dec-at-pt)
   (define-key evil-normal-state-map (kbd "[s") (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
@@ -420,8 +421,8 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "[w") 'eyebrowse-next-window-config)
   (define-key evil-normal-state-map (kbd "]w") 'eyebrowse-prev-window-config)
   (define-key evil-normal-state-map (kbd "M-w") 'evil-delete-backward-word)
+  (evil-lion-mode)
   (setq evil-want-C-i-jump t)
-
 
   ;; Make v$ exclude the carriage return
   (evil-define-motion evil-last-non-blank (count)
@@ -434,7 +435,11 @@ lines downward first."
     (setq evil-this-type (if (eolp) 'exclusive 'inclusive)))
   (define-key evil-visual-state-map "$" 'evil-last-non-blank)
 
+  (setq evil-want-Y-yank-to-eol nil)
+
   ;; Evil multiple-cursors/Iedit
+  (add-hook 'prog-mode-hook 'turn-on-evil-mc-mode)
+  (add-hook 'text-mode-hook 'turn-on-evil-mc-mode)
   (define-key evil-normal-state-map (kbd "[m") 'evil-mc-mode)
   (define-key evil-normal-state-map (kbd "[i") 'evil-iedit-state/iedit-mode)
   (defvar evil-mc-mode-line-prefix "ⓜ"
@@ -601,7 +606,9 @@ lines downward first."
     "wx" 'eyebrowse-close-window-config
     "wn" 'eyebrowse-rename-window-config
     "w TAB" 'eyebrowse-last-window-config
-    "L"  'spacemacs/layouts-transient-state/body
+    "L"  'spacemacs/workspaces-transient-state/body
+    "W"  'spacemacs/workspaces-transient-state/body
+    "xx" 'align-regexp
     )
 
   ;; Org-mode
