@@ -347,7 +347,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; (global-visual-line-mode t) ;; Don't do this with swiper - too slow
   (diminish 'visual-line-mode)
-  (spacemacs/toggle-truncate-lines-on)
+  (spacemacs/toggle-truncate-lines-off)
   (setq uniquify-buffer-name-style 'reverse)
   (setq uniquify-separator " ⇐ ")
   (setq uniquify-after-kill-buffer-p t)
