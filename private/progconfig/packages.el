@@ -63,7 +63,7 @@ which require an initialization must be listed explicitly in the list.")
                                        (corral-at-point 'corral-double-quotes-forward)))
       (global-set-key (kbd "C-M-'") (lambda () (interactive)
                                        (corral-at-point 'corral-single-quotes-forward)))
-      (electric-pair-mode 1))
+      )
     ))
 
 (defun progconfig/init-dtrt-indent ()
