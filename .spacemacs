@@ -624,22 +624,36 @@ lines downward first."
   ;; Org-mode
   (require 'org-drill)
   (require 'org-mouse)
-  (setq org-bullets-bullet-list '("◉" "◎" "○" "►" "◇" "■"))
-  ;; (setq org-bullets-bullet-list '("⌘" "▶" "▲" "⇨"))
+  (setq org-bullets-bullet-list '("◎" "◉" "○" "✎" "†" "■"))
+  ;;✇✉✂▯✎⇘➜▲ ∇☰⚠☢
+  ;; (setq org-bullets-bullet-list '("⌘" "▶" "▲" "⇨")) ► ∗
   ;; (setq org-bullets-bullet-list '("♠" "♣" "♥" "♦"))
   (setq org-todo-keywords
         (quote ((sequence "☛ TODO(t)" "↻ PENDING(p)" "|" "✔ DONE(d!)")
                 (sequence "⚑ WAITING(w@/!)" "⚁ MAYBE(m)" "PROJECT(P@)" "|" "✘ CANCELLED(c@/!)"))))
+  (setq org-fontify-whole-heading-line t)
   (setq org-todo-keyword-faces
         '(
-          ("☛ TODO"  . (:foreground "red" :weight bold))
-          ("⚑ WAITING"  . (:foreground "purple" :weight bold))
-          ("⚁ MAYBE"  . (:foreground "chocolate" :weight bold))
-          ("↻ PENDING"  . (:foreground "orange" :weight bold))
-          ("PROJECT"  . (:foreground "steelblue" :weight bold))
-          ("✔ DONE"  . (:foreground "green2" :weight bold))
+          ("☛ TODO"  . (:inherit org-todo :foreground "red"))
+          ("⚑ WAITING"  . (:inherit org-todo :foreground "purple"))
+          ("⚁ MAYBE"  . (:inherit org-todo :foreground "chocolate"))
+          ("↻ PENDING"  . (:inherit org-todo :foreground "orange"))
+          ("PROJECT"  . (:inherit org-todo :foreground "steelblue"))
+          ("✔ DONE"  . (:inherit org-todo :foreground "green2"))
           ("✘ CANCELED"  . shadow)
           ))
+
+  (defun leuven-set-font-to-office ()
+    (interactive)
+    (if (equal custom-enabled-themes '(leuven))
+      (progn
+        ;; (load-theme 'doom-one)
+        (set-face-attribute 'default nil :font "Calibri"  :foreground "#FFFFF"))
+      (progn
+        ;; (load-theme 'leuven)
+        ;; (set-face-attribute 'default nil :font "Consolas" :height 120))))
+        (set-face-attribute 'default nil :font "Consolas" :height 120))))
+  ;; (add-hook 'org-mode-hook 'set-font-to-office)
 
   ;; LaTeX
   (cond
