@@ -62,13 +62,14 @@ values."
      ;;        shell-default-position 'bottom)
      progconfig
      python
+     rust
      ;; (ranger :variables ranger-show-preview t)
      search
      search-engine
      semantic
      sicp
      ;; spell-checking
-     syntax-checking
+     ;; syntax-checking
      themes-megapack
      version-control
      vinegar
@@ -506,7 +507,7 @@ lines downward first."
                       (buffer-name))))
       (when filename
         (kill-new filename)
-        (message "Copied buffer file name '%s' to the clipboard." filename))))
+        (message "%s" filename))))
 
 
   ;; Helm
