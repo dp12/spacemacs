@@ -422,6 +422,7 @@ you should place your code here."
   (set-face-attribute 'evil-snipe-matches-face nil :inherit nil :foreground "red" :box '(:color "lawn green" :style released-button))
   (setq evil-snipe-scope 'buffer)
   (setq evil-snipe-repeat-scope 'buffer)
+  (define-key evil-normal-state-map (kbd "go") 'avy-goto-word-1)
 
   ;; Evil config
   (define-key evil-normal-state-map (kbd "+") 'spacemacs/evil-numbers-transient-state/evil-numbers/inc-at-pt)
@@ -592,7 +593,8 @@ lines downward first."
     "rf" 'rtags-find-references-at-point
     "rt" 'rtags-taglist
     "rg" 'projectile-ripgrep
-    "ir" 'counsel-rg
+    "rc" 'counsel-rg
+    "ir" 'ivy-resume
     "ry" 'helm-show-kill-ring
     "bj" 'counsel-bookmark
     "ib" 'counsel-bookmark
@@ -605,6 +607,9 @@ lines downward first."
     "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
+    "sl" 'sort-lines
+    "tu" 'untabify
+    "tt" 'tabify
     "w1" 'eyebrowse-switch-to-window-config-1
     "w2" 'eyebrowse-switch-to-window-config-2
     "w3" 'eyebrowse-switch-to-window-config-3
