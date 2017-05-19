@@ -207,6 +207,8 @@ which require an initialization must be listed explicitly in the list.")
 ;; C-like languages (e.g. C, C++, Java, Python)
 (add-hook 'c-mode-common-hook
           (lambda()
+            ;; ggtags breaks iedit unless the below is nil
+            (setq ggtags-highlight-tag nil)
             (ggtags-mode t)
             (diminish 'ggtags-mode)
             (define-key ggtags-navigation-map (kbd "M-<up>") 'ggtags-navigation-previous-file)
