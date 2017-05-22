@@ -83,7 +83,8 @@ values."
                                       visual-regexp-steroids zop-to-char
                                       dumb-jump rtags color-theme-solarized
                                       zerodark-theme helm-ag helm-gtags
-                                      helm-swoop projectile-ripgrep evil-lion)
+                                      helm-swoop projectile-ripgrep evil-lion
+                                      doom-themes)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
