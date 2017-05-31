@@ -54,7 +54,9 @@ values."
      imenu-list
      ivy
      markdown
-     mu4e
+     (mu4e :variables
+           mu4e-account-alist t
+           mu4e-enable-notifications t)
      keymap
      (latex :variables latex-enable-auto-fill nil)
      org
@@ -668,8 +670,8 @@ lines downward first."
   (setq mu4e-maildir "~/Maildir"
         mu4e-trash-folder "/Trash"
         mu4e-refile-folder "/Archive"
-        mu4e-get-mail-command "mbsync -c ~/.mbsyncrc Work"
-        mu4e-update-interval nil
+        mu4e-get-mail-command "mbsync -a"
+        mu4e-update-interval 120
         mu4e-compose-signature-auto-include nil
         mu4e-view-show-images t
         mu4e-view-show-addresses t)
