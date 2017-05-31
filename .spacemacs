@@ -54,6 +54,7 @@ values."
      imenu-list
      ivy
      markdown
+     mu4e
      keymap
      (latex :variables latex-enable-auto-fill nil)
      org
@@ -661,6 +662,22 @@ lines downward first."
         ;; (set-face-attribute 'default nil :font "Consolas" :height 120))))
         (set-face-attribute 'default nil :font "Consolas" :height 120))))
   ;; (add-hook 'org-mode-hook 'set-font-to-office)
+
+  ;; mu4e
+  (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
+  (setq mu4e-maildir "~/Maildir"
+        mu4e-trash-folder "/Trash"
+        mu4e-refile-folder "/Archive"
+        mu4e-get-mail-command "mbsync -c ~/.mbsyncrc Work"
+        mu4e-update-interval nil
+        mu4e-compose-signature-auto-include nil
+        mu4e-view-show-images t
+        mu4e-view-show-addresses t)
+
+  ;; Mail directory shortcuts
+  (setq mu4e-maildir-shortcuts
+        '(("/MailDir/Work/INBOX" . ?w)
+          ))
 
   ;; LaTeX
   (cond
