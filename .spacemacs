@@ -653,7 +653,9 @@ lines downward first."
           ))
   (with-eval-after-load 'evil-org
     (evil-define-key 'normal evil-org-mode-map (kbd "C-n") 'org-forward-heading-same-level)
-    (evil-define-key 'normal evil-org-mode-map (kbd "C-p") 'org-backward-heading-same-level))
+    (evil-define-key 'normal evil-org-mode-map (kbd "C-p") 'org-backward-heading-same-level)
+    (evil-define-key 'normal evil-org-mode-map (kbd "j") 'evil-next-visual-line)
+    (evil-define-key 'normal evil-org-mode-map (kbd "k") 'evil-previous-visual-line))
 
   (defun leuven-set-font-to-office ()
     (interactive)
