@@ -56,7 +56,8 @@ values."
      markdown
      (mu4e :variables
            mu4e-account-alist t
-           mu4e-enable-notifications t)
+           mu4e-enable-notifications t
+           mu4e-enable-mode-line t)
      keymap
      (latex :variables latex-enable-auto-fill nil)
      org
@@ -678,12 +679,17 @@ lines downward first."
         mu4e-update-interval 120
         mu4e-compose-signature-auto-include nil
         mu4e-view-show-images t
-        mu4e-view-show-addresses t)
+        mu4e-view-show-addresses t
+        message-kill-buffer-on-exit t
+        mu4e-change-filenames-when-moving t
+        mu4e-context-policy 'pick-first
+        mu4e-confirm-quit nil)
+  (add-hook 'message-mode-hook 'turn-on-orgtbl)
+  (add-hook 'message-mode-hook 'turn-on-orgstruct++)
 
-  ;; Mail directory shortcuts
-  (setq mu4e-maildir-shortcuts
-        '(("/MailDir/Work/INBOX" . ?w)
-          ))
+  (setq message-send-mail-function 'message-send-mail-with-sendmail
+        sendmail-program "/usr/bin/msmtp")
+
 
   ;; LaTeX
   (cond
