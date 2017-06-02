@@ -554,9 +554,10 @@ lines downward first."
   (setq ivy-re-builders-alist
         '((counsel-imenu . ivy--regex-fuzzy)
           (counsel-bookmark . ivy--regex-fuzzy)
-          (counsel-git . ivy--regex-fuzzy)
           (ivy-switch-buffer . ivy--regex-fuzzy)
           (t . ivy--regex-plus)))
+  ;; automatically start looking for functions in counsel imenu
+  (setq ivy-initial-inputs-alist '((counsel-imenu . "Functions: ")))
 
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
   (global-set-key (kbd "M-x") 'counsel-M-x)
