@@ -631,6 +631,7 @@ lines downward first."
     "L"  'spacemacs/workspaces-transient-state/body
     "W"  'spacemacs/workspaces-transient-state/body
     "xx" 'align-regexp
+    "."  'evilnc-copy-and-comment-lines
     )
 
   ;; Org-mode
