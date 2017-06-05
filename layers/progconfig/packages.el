@@ -230,7 +230,7 @@ which require an initialization must be listed explicitly in the list.")
             ))
 
 ;; Forth
-(add-to-list 'load-path "~/spacemacs/private/progconfig/")
+(add-to-list 'load-path "~/.spacemacs.d/layers/progconfig/")
 (require 'gforth)
 (add-to-list 'auto-mode-alist '("\\.eForth\\'" . forth-mode))
 

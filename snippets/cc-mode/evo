@@ -1,0 +1,12 @@
+#name : #ifndef XXX; #define XXX; EVO_BEG EVO_END #endif
+# key: evo
+# --
+#ifndef ${1:__`(replace-regexp-in-string "-" "_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))))`_H__}
+#define $1
+EVOLUTION_BEGIN_DECLS
+
+$0
+
+EVOLUTION_END_DECLS
+
+#endif /* $1 */
