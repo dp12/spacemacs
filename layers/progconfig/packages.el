@@ -228,6 +228,8 @@ which require an initialization must be listed explicitly in the list.")
             (setq c-default-style "linux"
                   c-basic-offset 4)
             ))
+(add-hook 'spacemacs-jump-handlers-c-mode 'dumb-jump-go)
+(add-hook 'spacemacs-jump-handlers-c-mode 'ggtags-find-tag-dwim)
 
 ;; Forth
 (add-to-list 'load-path "~/.spacemacs.d/layers/progconfig/")

@@ -400,10 +400,8 @@ you should place your code here."
   (define-key yas-minor-mode-map [backtab] 'hippie-expand)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
   ;; Better version of move-text
-  (define-key evil-visual-state-map "J"
-    (concat ":m '>+1" (kbd "RET") "gv=gv"))
-  (define-key evil-visual-state-map "K"
-    (concat ":m '<-2" (kbd "RET") "gv=gv"))
+  (define-key evil-visual-state-map "J" (concat ":m '>+1" (kbd "RET") "gv=gv"))
+  (define-key evil-visual-state-map "K" (concat ":m '<-2" (kbd "RET") "gv=gv"))
   ;; (setq projectile-indexing-method 'native)
   (add-to-list 'auto-mode-alist '("\\.bin\\'" . hexl-mode))
 
