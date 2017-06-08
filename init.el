@@ -740,21 +740,6 @@ lines downward first."
    ((spacemacs/system-is-linux) (setq TeX-view-program-selection '((output-pdf "Zathura")))))
   )
 
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-modules
-   (quote
-    (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m org-drill org-velocity)))
- '(zerodark-use-high-contrast-in-mode-line nil))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-snipe-first-match-face ((t (:inherit nil :foreground "red" :underline "red")))))
+;; Save off custom settings to custom.el
+(setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
+(load custom-file 'no-error 'no-message)
