@@ -683,11 +683,9 @@ lines downward first."
   ;; mu4e
   (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
   (setq mu4e-maildir "~/Maildir"
-        mu4e-trash-folder "/Trash"
-        mu4e-refile-folder "/Archive"
         mu4e-get-mail-command "mbsync -a"
         mu4e-update-interval 120
-        mu4e-compose-signature-auto-include nil
+        mu4e-compose-signature-auto-include t
         mu4e-view-show-images t
         mu4e-view-show-addresses t
         message-kill-buffer-on-exit t
@@ -696,6 +694,28 @@ lines downward first."
         mu4e-confirm-quit nil)
   (add-hook 'message-mode-hook 'turn-on-orgtbl)
   (add-hook 'message-mode-hook 'turn-on-orgstruct++)
+
+  (add-to-list 'mu4e-headers-actions
+               '("browser" . mu4e-action-view-in-browser) t)
+  (add-to-list 'mu4e-view-actions
+               '("browser" . mu4e-action-view-in-browser) t)
+                                        ;
+  ;; Attach files with dired "C-c RET C-a"
+  (require 'gnus-dired)
+  ;; make the `gnus-dired-mail-buffers' function also work on
+  ;; message-mode derived modes, such as mu4e-compose-mode
+  (defun gnus-dired-mail-buffers ()
+    "Return a list of active message buffers."
+    (let (buffers)
+      (save-current-buffer
+        (dolist (buffer (buffer-list t))
+          (set-buffer buffer)
+          (when (and (derived-mode-p 'message-mode)
+                     (null message-sent-message-via))
+            (push (buffer-name buffer) buffers))))
+      (nreverse buffers)))
+  (setq gnus-dired-mail-mode 'mu4e-user-agent)
+  (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
 
   (setq message-send-mail-function 'message-send-mail-with-sendmail
         sendmail-program "/usr/bin/msmtp")
