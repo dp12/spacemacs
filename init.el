@@ -397,6 +397,7 @@ you should place your code here."
   (global-set-key (kbd "M-I") 'company-rtags)
   ;; (global-set-key (kbd "M-I") 'company-irony)
   (global-set-key (kbd "M-Y") 'company-ycmd)
+  (global-set-key (kbd "M-G") 'git-complete)
   (define-key yas-minor-mode-map [backtab] 'hippie-expand)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
   ;; Better version of move-text
