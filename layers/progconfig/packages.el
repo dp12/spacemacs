@@ -253,6 +253,9 @@ which require an initialization must be listed explicitly in the list.")
 (global-set-key (kbd "M-P") 'rotate-text-backward)
 (global-set-key (kbd "M-p") 'rotate-text)
 
+(require 'git-complete)
+(global-set-key (kbd "M-G") 'git-complete)
+
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
