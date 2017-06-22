@@ -522,6 +522,12 @@ lines downward first."
         (kill-new filename)
         (message "%s" filename))))
 
+  (defun projectile-ripgrep-filename ()
+    "Search for the current filename"
+    (interactive)
+    ;; (let ((filename (buffer-name)))
+    (let ((filename (uniquify-buffer-base-name)))
+      (projectile-ripgrep filename)))
 
   ;; Helm
   (setq helm-M-x-fuzzy-match t)
@@ -594,6 +600,7 @@ lines downward first."
     "fi" 'find-file-in-project
     "fd" 'find-file-in-current-directory
     "fn" 'copy-file-basename-to-clipboard
+    "pf" 'projectile-ripgrep-filename
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
