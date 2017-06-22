@@ -517,7 +517,7 @@ lines downward first."
     (interactive)
     (let ((filename (if (equal major-mode 'dired-mode)
                         default-directory
-                      (buffer-name))))
+                      (uniquify-buffer-base-name))))
       (when filename
         (kill-new filename)
         (message "%s" filename))))
