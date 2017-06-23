@@ -1,0 +1,7 @@
+# name: doxygen block with brief, return
+# key: dbr
+# --
+/**
+ * @brief ${1:brief}
+ * @return ${2:retval}
+ */$0

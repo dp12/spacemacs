@@ -1,0 +1,6 @@
+# name: doxygen block with brief, return
+# key: db
+# --
+/**
+ * @brief ${1:brief}
+ */$0

@@ -1,0 +1,7 @@
+# name: doxygen block with brief, return
+# key: dbp
+# --
+/**
+ * @brief ${1:brief}
+ * @param[in] ${2:name}  ${3:description}
+ */$0
