@@ -77,8 +77,13 @@ which require an initialization must be listed explicitly in the list.")
   (defhydra hydra-hippie-line (global-map "C-x")
     "Expand Line"
     ("l" my-expand-lines "hippie line")
-    ("q" evil-escape "quit")
-    ("RET" evil-escape "quit"))
+    ("q" evil-escape "quit" :exit t)
+    ("RET" evil-escape "quit" :exit t))
+  (defhydra hydra-rotate ()
+    "Rotate text"
+    ("r" rotate-word-at-point "rotate")
+    ("q" nil "quit")
+    ("RET" nil "quit"))
   (defhydra hydra-kill-buffer (global-map "C-x")
     "Kill Buffer"
     ("k" (lambda () (interactive) (kill-buffer nil)) "assassinate buffer" :color red)

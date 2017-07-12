@@ -456,6 +456,7 @@ lines downward first."
     :type inclusive
     (evil-end-of-line count)
     (re-search-backward "^\\|[^[:space:]]")
+  (define-key evil-normal-state-map (kbd "[r") 'hydra-rotate/rotate-word-at-point)
     (setq evil-this-type (if (eolp) 'exclusive 'inclusive)))
   (define-key evil-visual-state-map "$" 'evil-last-non-blank)
 
