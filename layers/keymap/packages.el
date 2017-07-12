@@ -53,7 +53,6 @@ which require an initialization must be listed explicitly in the list.")
 
       ; Special
       (key-chord-define-global "TP" 'org-toggle-pretty-entities)
-      (key-chord-define-global "WM" 'whitespace-mode)
       (key-chord-define evil-insert-state-map "kj" 'evil-normal-state)
       )
     ))
