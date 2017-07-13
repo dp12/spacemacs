@@ -340,6 +340,13 @@ Example:
         (rotate-region beg end)
         (goto-char (if (> opoint end) end opoint))))))
 
+(defun gdb-get-breakpoint-str ()
+  (interactive)
+  (kill-new
+   (concat "b "
+           (uniquify-buffer-base-name) ":"
+           (number-to-string (line-number-at-pos)))))
+
 (with-eval-after-load 'popup
   (require 'git-complete))
 
