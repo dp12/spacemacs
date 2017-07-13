@@ -430,7 +430,7 @@ you should place your code here."
   (spaceline-compile)
 
   ;; Avy and evil-snipe
-  (define-key evil-normal-state-map (kbd "n") 'avy-goto-word-1)
+  (define-key evil-normal-state-map (kbd "n") 'avy-goto-char-timer)
   (setq avy-keys (number-sequence ?a ?z))
   (set-face-attribute 'evil-snipe-matches-face nil :inherit nil :foreground "red" :box '(:color "lawn green" :style released-button))
   (setq evil-snipe-scope 'buffer)
@@ -445,7 +445,10 @@ you should place your code here."
                                                  (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
   (define-key evil-normal-state-map (kbd "[w") 'eyebrowse-next-window-config)
   (define-key evil-normal-state-map (kbd "]w") 'eyebrowse-prev-window-config)
+  (define-key evil-normal-state-map (kbd "[r") 'hydra-rotate/rotate-word-at-point)
+  (define-key evil-normal-state-map (kbd "]r") 'rotate-word-at-point)
   (define-key evil-normal-state-map (kbd "M-w") 'evil-delete-backward-word)
+
   (evil-lion-mode)
   (setq evil-want-C-i-jump t)
 
@@ -457,7 +460,6 @@ lines downward first."
     :type inclusive
     (evil-end-of-line count)
     (re-search-backward "^\\|[^[:space:]]")
-  (define-key evil-normal-state-map (kbd "[r") 'hydra-rotate/rotate-word-at-point)
     (setq evil-this-type (if (eolp) 'exclusive 'inclusive)))
   (define-key evil-visual-state-map "$" 'evil-last-non-blank)
 
@@ -602,7 +604,7 @@ lines downward first."
     "fi" 'find-file-in-project
     "fd" 'find-file-in-current-directory
     "fn" 'copy-file-basename-to-clipboard
-    "pf" 'projectile-ripgrep-filename
+    "fN" 'projectile-ripgrep-filename
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference
@@ -624,6 +626,7 @@ lines downward first."
     "ix" 'ido-clear-virtual-buffers
     "mc" 'evil-mc-mode
     "mi" 'evil-matchit-mode
+    "ml" 'imenu-list-smart-toggle
     "ms" 'evilmi-select-items
     "oi" 'helm-semantic-or-imenu
     "ou" 'org-previous-visible-heading
