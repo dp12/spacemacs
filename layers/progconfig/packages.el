@@ -260,6 +260,8 @@ which require an initialization must be listed explicitly in the list.")
     ("if" "else" "else if")
     ("high" "low")
     ("HIGH" "LOW")
+    ("on" "off")
+    ("ON" "OFF")
     ("yes" "no")))
 
 (defun rotate-region (beg end)
