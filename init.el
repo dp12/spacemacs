@@ -707,8 +707,24 @@ lines downward first."
   (add-hook 'message-mode-hook 'turn-on-orgtbl)
   (add-hook 'message-mode-hook 'turn-on-orgstruct++)
 
-  (add-to-list 'mu4e-headers-actions
-               '("browser" . mu4e-action-view-in-browser) t)
+
+  (defun my-mu4e-action-view-with-xwidget (msg)
+    "View the body of the message inside xwidget-webkit."
+    (unless (fboundp 'xwidget-webkit-browse-url)
+      (mu4e-error "No xwidget support available"))
+    (let* ((html (mu4e-message-field msg :body-html))
+           (txt (mu4e-message-field msg :body-txt))
+           (tmpfile (format "%s%x.html" temporary-file-directory (random t))))
+      (unless (or html txt)
+        (mu4e-error "No body part for this message"))
+      (with-temp-buffer
+        ;; simplistic -- but note that it's only an example...
+        (insert (or html (concat "<pre>" txt "</pre>")))
+        (write-file tmpfile)
+        (xwidget-webkit-browse-url (concat "file://" tmpfile) t))))
+
+  (add-to-list 'mu4e-view-actions
+               '("webkit" . my-mu4e-action-view-with-xwidget) t)
   (add-to-list 'mu4e-view-actions
                '("browser" . mu4e-action-view-in-browser) t)
                                         ;
@@ -732,6 +748,39 @@ lines downward first."
   (setq message-send-mail-function 'message-send-mail-with-sendmail
         sendmail-program "/usr/bin/msmtp")
 
+  ;; xwidget web browsing
+  ;; make these keys behave like normal browser
+  (with-eval-after-load 'xwidget
+    (define-key xwidget-webkit-mode-map [mouse-4] 'xwidget-webkit-scroll-down)
+    (define-key xwidget-webkit-mode-map [mouse-5] 'xwidget-webkit-scroll-up)
+    (define-key xwidget-webkit-mode-map (kbd "<up>") 'xwidget-webkit-scroll-down)
+    (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
+    (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
+    (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill))
+
+  ;; adapt webkit according to window configuration chagne automatically
+  ;; without this hook, every time you change your window configuration,
+  ;; you must press 'a' to adapt webkit content to new window size
+  (add-hook 'window-configuration-change-hook (lambda ()
+                                                (when (equal major-mode 'xwidget-webkit-mode)
+                                                  (xwidget-webkit-adjust-size-dispatch))))
+
+  ;; by default, xwidget reuses previous xwidget window,
+  ;; thus overriding your current website, unless a prefix argument
+  ;; is supplied
+  ;;
+  ;; This function always opens a new website in a new window
+  (defun xwidget-browse-url-no-reuse (url &optional session)
+    (interactive (progn
+                   (require 'browse-url)
+                   (browse-url-interactive-arg "xwidget-webkit URL: "
+                                               )))
+    (xwidget-webkit-browse-url url t))
+
+  ;; make xwidget default browser
+  ;; (setq browse-url-browser-function (lambda (url session)
+  ;;                                     (other-window 1)
+  ;;                                     (xwidget-browse-url-no-reuse url)))
 
   ;; LaTeX
   (cond
