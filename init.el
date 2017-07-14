@@ -529,9 +529,7 @@ lines downward first."
   (defun projectile-ripgrep-filename ()
     "Search for the current filename"
     (interactive)
-    ;; (let ((filename (buffer-name)))
-    (let ((filename (uniquify-buffer-base-name)))
-      (projectile-ripgrep filename)))
+    (projectile-ripgrep (uniquify-buffer-base-name)))
 
   ;; Helm
   (setq helm-M-x-fuzzy-match t)
@@ -570,9 +568,10 @@ lines downward first."
   (define-key ivy-minibuffer-map (kbd "C-u") 'ivy-kill-line)
 
   (setq ivy-re-builders-alist
-        '((counsel-imenu . ivy--regex-fuzzy)
-          (counsel-bookmark . ivy--regex-fuzzy)
-          (ivy-switch-buffer . ivy--regex-fuzzy)
+        '(
+          ;; (counsel-imenu . ivy--regex-fuzzy)
+          ;; (counsel-bookmark . ivy--regex-fuzzy)
+          ;; (ivy-switch-buffer . ivy--regex-fuzzy)
           (t . ivy--regex-plus)))
   ;; automatically start looking for functions in counsel imenu
   (setq ivy-initial-inputs-alist '((counsel-imenu . "Functions: ")))
