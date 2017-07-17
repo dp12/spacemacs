@@ -604,7 +604,7 @@ lines downward first."
     "fd" 'find-file-in-current-directory
     "fn" 'copy-file-basename-to-clipboard
     "fN" 'projectile-ripgrep-filename
-    "gd" 'gdb-get-breakpoint-str
+    "gd" 'gdb-set-fast-breakpoint
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
     "gr" 'ggtags-find-reference

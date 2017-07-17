@@ -343,11 +343,17 @@ Example:
         (goto-char (if (> opoint end) end opoint))))))
 
 (defun gdb-get-breakpoint-str ()
+  "Return string of the form 'b foo.c:108'"
+  (concat "b "
+          (uniquify-buffer-base-name) ":"
+          (number-to-string (line-number-at-pos))))
+
+(defun gdb-set-fast-breakpoint ()
+  "Insert breakpoint in ~/.gdbinit before line with the 'end #FBB' marker"
   (interactive)
-  (kill-new
-   (concat "b "
-           (uniquify-buffer-base-name) ":"
-           (number-to-string (line-number-at-pos)))))
+  (let ((insert-br-cmd  "awk '/end #FBB/ { print \"  %s\"; print; next }1' ~/.gdbinit > ~/.gdbinit.tmp && cp ~/.gdbinit.tmp ~/.gdbinit"))
+    (shell-command
+     (format insert-br-cmd (gdb-get-breakpoint-str)))))
 
 (with-eval-after-load 'popup
   (require 'git-complete))
