@@ -1,5 +1,5 @@
-# name: doxygen block with brief, return
-# key: dbp
+# name: doxygen block with brief, param in, and return
+# key: dbpi
 # --
 /**
  * @brief ${1:brief}
