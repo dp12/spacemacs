@@ -632,6 +632,7 @@ lines downward first."
     "mi" 'evil-matchit-mode
     "ml" 'imenu-list-smart-toggle
     "ms" 'evilmi-select-items
+    "mu" 'mu4e-alert-view-unread-mails
     "oi" 'helm-semantic-or-imenu
     "ou" 'org-previous-visible-heading
     "ga" 'projectile-find-other-file-other-window
