@@ -762,12 +762,10 @@ lines downward first."
     (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
     (define-key xwidget-webkit-mode-map (kbd "k") 'xwidget-webkit-scroll-down)
     (define-key xwidget-webkit-mode-map (kbd "j") 'xwidget-webkit-scroll-up)
+    (define-key xwidget-webkit-mode-map (kbd "q") 'spacemacs/delete-window)
     (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
-    (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill))
-  (add-hook 'xwidget-webkit-mode-hook
-            (lambda ()
-              (define-key evil-motion-state-map "k" 'xwidget-webkit-scroll-down)
-              (define-key evil-motion-state-map "j" 'xwidget-webkit-scroll-up)))
+    (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)
+    (evil-set-initial-state 'xwidget-webkit-mode 'emacs))
 
   ;; adapt webkit according to window configuration chagne automatically
   ;; without this hook, every time you change your window configuration,
