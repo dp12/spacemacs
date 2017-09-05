@@ -186,7 +186,7 @@ which require an initialization must be listed explicitly in the list.")
 (global-set-key (kbd "C-M-;") 'comment-dwim)
 
 ; Insert void stub function
-(defun grab_carg ()
+(defun grab-carg ()
   (interactive)
   (backward-char)
   (setq p2 (point))
@@ -194,7 +194,7 @@ which require an initialization must be listed explicitly in the list.")
   (setq p1 (point))
   (buffer-substring-no-properties p1 p2))
 
-(defun void_stub ()
+(defun void-stub ()
   (interactive)
   (setq args '())
   (save-excursion

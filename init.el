@@ -613,7 +613,6 @@ lines downward first."
     "db" 'dumb-jump-back
     "ew" 'eww
     "fp" 'fiplr-find-file
-    "fi" 'find-file-in-project
     "fd" 'find-file-in-current-directory
     "fn" 'copy-file-basename-to-clipboard
     "fN" 'projectile-ripgrep-filename
@@ -650,6 +649,7 @@ lines downward first."
     "sl" 'sort-lines
     "tu" 'untabify
     "tt" 'tabify
+    "iv" 'void-stub
     "w1" 'eyebrowse-switch-to-window-config-1
     "w2" 'eyebrowse-switch-to-window-config-2
     "w3" 'eyebrowse-switch-to-window-config-3
