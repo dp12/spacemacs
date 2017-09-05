@@ -449,6 +449,15 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "]r") 'rotate-word-at-point)
   (define-key evil-normal-state-map (kbd "M-w") 'evil-delete-backward-word)
 
+  ;; evil-args
+  (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
+  (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
+  (define-key evil-normal-state-map "L" 'evil-forward-arg)
+  (define-key evil-normal-state-map "H" 'evil-backward-arg)
+  (define-key evil-motion-state-map "L" 'evil-forward-arg)
+  (define-key evil-motion-state-map "H" 'evil-backward-arg)
+  (define-key evil-normal-state-map "K" 'evil-jump-out-args)
+
   (evil-lion-mode)
   (setq evil-want-C-i-jump t)
 
