@@ -188,30 +188,33 @@ which require an initialization must be listed explicitly in the list.")
 ; Insert void stub function
 (defun grab-carg ()
   (interactive)
-  (backward-char)
-  (setq p2 (point))
-  (backward-word)
-  (setq p1 (point))
-  (buffer-substring-no-properties p1 p2))
+  (let (p1 p2)
+    (backward-char)
+    (setq p2 (point))
+    (backward-word)
+    (setq p1 (point))
+    (buffer-substring-no-properties p1 p2)))
 
-(defun void-stub ()
+(defun insert-void-stub ()
   (interactive)
-  (setq args '())
-  (save-excursion
-    (search-forward "{")
-    (setq cdecl-end-position (point)))
-  (while (search-forward "," cdecl-end-position t)
+  (let (args)
+    (back-to-indentation)
     (save-excursion
-      (add-to-list 'args (grab_carg)))) ;; collect all args except last
-  (search-forward ")" cdecl-end-position t)
-  (add-to-list 'args (grab_carg)) ;; collect last arg
-  (setq args (concat "{\n" (apply #'concatenate 'string
-                                  (reverse
-                                   (mapcar (lambda (c) (concat "    (void)" c ";\n")) args)))
-                     "}"))
-  (forward-line)
-  (insert args)
-  (message args))
+      (search-forward "{")
+      (setq cdecl-end-position (point)))
+    (while (search-forward "," cdecl-end-position t)
+      (save-excursion
+        (add-to-list 'args (grab-carg)))) ;; collect all args except last
+    (search-forward ")" cdecl-end-position t)
+    (add-to-list 'args (grab-carg)) ;; collect last arg
+    (setq args (concat "{\n"
+                       (apply #'concatenate 'string
+                              (reverse
+                               (mapcar (lambda (c) (concat "    (void)" c ";\n")) args)))
+                       "}"))
+    (forward-line)
+    (insert args)
+    (message args)))
 
 ;; Company
 (eval-after-load 'company

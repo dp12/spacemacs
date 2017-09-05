@@ -649,7 +649,7 @@ lines downward first."
     "sl" 'sort-lines
     "tu" 'untabify
     "tt" 'tabify
-    "iv" 'void-stub
+    "iv" 'insert-void-stub
     "w1" 'eyebrowse-switch-to-window-config-1
     "w2" 'eyebrowse-switch-to-window-config-2
     "w3" 'eyebrowse-switch-to-window-config-3
