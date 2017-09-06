@@ -187,7 +187,6 @@ which require an initialization must be listed explicitly in the list.")
 
 ; Insert void stub function
 (defun grab-carg ()
-  (interactive)
   (let (p1 p2)
     (backward-char)
     (setq p2 (point))
@@ -195,22 +194,41 @@ which require an initialization must be listed explicitly in the list.")
     (setq p1 (point))
     (buffer-substring-no-properties p1 p2)))
 
-(defun insert-void-stub ()
-  (interactive)
-  (let (args)
+(defun grab-cargs ()
+  (let (args cdecl-end-position)
     (back-to-indentation)
     (save-excursion
-      (search-forward "{")
+      (search-forward ")")
       (setq cdecl-end-position (point)))
     (while (search-forward "," cdecl-end-position t)
       (save-excursion
         (add-to-list 'args (grab-carg)))) ;; collect all args except last
     (search-forward ")" cdecl-end-position t)
     (add-to-list 'args (grab-carg)) ;; collect last arg
+    (reverse args)))
+
+(defun insert-doxygen-stub ()
+  (interactive)
+  (let ((doxygen (save-excursion
+                   (concat "/**\n"
+                           " * @brief\n"
+                           (apply #'concatenate 'string
+                                  (mapcar (lambda (c) (concat " * @param[in] " c "\n"))
+                                          (grab-cargs)))
+                           " */"))))
+  (back-to-indentation)
+  (insert "\n")
+  (forward-line -1)
+  (insert doxygen)
+  (message doxygen)))
+
+(defun insert-void-stub ()
+  (interactive)
+  (let (args)
     (setq args (concat "{\n"
                        (apply #'concatenate 'string
-                              (reverse
-                               (mapcar (lambda (c) (concat "    (void)" c ";\n")) args)))
+                              (mapcar (lambda (c) (concat "    (void)" c ";\n"))
+                                      (grab-cargs)))
                        "}"))
     (forward-line)
     (insert args)

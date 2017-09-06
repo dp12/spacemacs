@@ -650,6 +650,7 @@ lines downward first."
     "tu" 'untabify
     "tt" 'tabify
     "iv" 'insert-void-stub
+    "id" 'insert-doxygen-stub
     "w1" 'eyebrowse-switch-to-window-config-1
     "w2" 'eyebrowse-switch-to-window-config-2
     "w3" 'eyebrowse-switch-to-window-config-3
