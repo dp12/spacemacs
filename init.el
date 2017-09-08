@@ -572,7 +572,7 @@ lines downward first."
 
 
   ;; Ivy
-  (global-set-key "\C-s" 'swiper)
+  (global-set-key "\C-s" 'counsel-grep-or-swiper)
   (global-set-key (kbd "C-S-s") 'isearch-forward)
   (define-key ivy-minibuffer-map (kbd "C-w") 'ivy-next-history-element)
   (define-key ivy-minibuffer-map (kbd "C-s") 'ivy-next-history-element)
@@ -594,6 +594,19 @@ lines downward first."
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
   (global-set-key (kbd "C-c g") 'counsel-git)
   (global-set-key (kbd "C-c k") 'counsel-ag)
+
+  ;; Eyebrowse
+  (defun eyebrowse-auto-rename ()
+    (interactive)
+    (eyebrowse-rename-window-config
+     (eyebrowse--get 'current-slot) (uniquify-buffer-base-name)))
+
+  (defun persp-layout-sort (&rest dummy)
+    (setq persp-names-cache
+          (cons "Default" (sort (delete "Default" persp-names-cache)
+                                'string-collate-lessp))))
+  (add-hook 'persp-created-functions 'persp-layout-sort)
+  (add-hook 'persp-renamed-functions 'persp-layout-sort)
 
   ;; Leader keys
   (spacemacs/set-leader-keys
