@@ -612,10 +612,14 @@ lines downward first."
   (spacemacs/set-leader-keys
     "ak" 'avy-kill-whole-line
     "ay" 'avy-copy-line
+    "dm" 'delete-matching-lines
     "bx" 'ace-swap-window
     "bk" (kbd "C-x k")
     "bl" 'list-bookmarks
+    "ci" 'copy-full-include
     "ed" 'ediff-buffers
+    "er" 'evil-show-registers
+    "em" 'evil-show-marks
     "dk" 'kill-dired-buffers
     "dj" 'dired-jump
     "do" 'dired-jump-other-window
@@ -659,7 +663,9 @@ lines downward first."
     "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
+    "su" 'string-inflection-underscore
     "sl" 'sort-lines
+    "te" 'treemacs-toggle
     "tu" 'untabify
     "tt" 'tabify
     "iv" 'insert-void-stub
