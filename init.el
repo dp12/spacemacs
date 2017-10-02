@@ -599,7 +599,8 @@ lines downward first."
   (defun eyebrowse-auto-rename ()
     (interactive)
     (eyebrowse-rename-window-config
-     (eyebrowse--get 'current-slot) (uniquify-buffer-base-name)))
+     (eyebrowse--get 'last-slot) (uniquify-buffer-base-name)))
+  (add-hook 'eyebrowse-post-window-switch-hook 'eyebrowse-auto-rename)
 
   (defun persp-layout-sort (&rest dummy)
     (setq persp-names-cache
