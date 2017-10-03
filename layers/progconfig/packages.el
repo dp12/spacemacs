@@ -185,7 +185,6 @@ which require an initialization must be listed explicitly in the list.")
 (global-set-key (kbd "M-;") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "C-M-;") 'comment-dwim)
 
-; Insert void stub function
 (defun grab-carg ()
   (let (p1 p2)
     (backward-char)
@@ -205,23 +204,43 @@ which require an initialization must be listed explicitly in the list.")
         (add-to-list 'args (grab-carg)))) ;; collect all args except last
     (search-forward ")" cdecl-end-position t)
     (add-to-list 'args (grab-carg)) ;; collect last arg
-    (reverse args)))
+    (reverse args)
+    (if (string-match "void" (car (reverse args)))
+        nil ;; return nil if no arguments, i.e. void
+      (reverse args))))
 
+(defun returns-void ()
+  (let (start-position end-position)
+    (back-to-indentation)
+    (setq start-position (point))
+    (save-excursion
+      (search-forward "(")
+      (setq end-position (point)))
+    (string-match "void" (buffer-substring-no-properties start-position end-position))))
+
+; Autogenerates doxygen template for function
 (defun insert-doxygen-stub ()
   (interactive)
   (let ((doxygen (save-excursion
                    (concat "/**\n"
                            " * @brief\n"
-                           (apply #'concatenate 'string
-                                  (mapcar (lambda (c) (concat " * @param[in] " c "\n"))
-                                          (grab-cargs)))
+                           (when (grab-cargs)
+                             (apply #'concatenate 'string
+                                    (mapcar (lambda (c) (concat " * @param[in] " c "\n"))
+                                            (grab-cargs))))
+                           (when (not (returns-void))
+                           " * @return\n")
                            " */"))))
-  (back-to-indentation)
-  (insert "\n")
-  (forward-line -1)
-  (insert doxygen)
-  (message doxygen)))
+    (back-to-indentation)
+    (insert "\n")
+    (forward-line -1)
+    (save-excursion
+      (insert doxygen))
+    (forward-line)
+    (end-of-line)
+    (message doxygen)))
 
+; Autogenerates void stub for function
 (defun insert-void-stub ()
   (interactive)
   (let (args)
@@ -230,6 +249,11 @@ which require an initialization must be listed explicitly in the list.")
                               (mapcar (lambda (c) (concat "    (void)" c ";\n"))
                                       (grab-cargs)))
                        "}"))
+    (save-excursion
+      (end-of-line)
+      (backward-char)
+      (when (= (char-after) 59)
+        (delete-char 1)))
     (forward-line)
     (insert args)
     (message args)))
