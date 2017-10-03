@@ -253,7 +253,7 @@ which require an initialization must be listed explicitly in the list.")
       (end-of-line)
       (backward-char)
       (when (= (char-after) 59)
-        (delete-char 1)))
+        (delete-char 1))) ;; delete trailing semicolon if it's there
     (forward-line)
     (insert args)
     (message args)))
