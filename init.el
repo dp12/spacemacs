@@ -85,12 +85,13 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(ag project-explorer mode-icons pt
-                                      visual-regexp-steroids zop-to-char
+   dotspacemacs-additional-packages '(mode-icons visual-regexp-steroids
                                       dumb-jump rtags color-theme-solarized
-                                      zerodark-theme helm-ag helm-gtags
-                                      helm-swoop projectile-ripgrep evil-lion
-                                      doom-themes evil-replace-with-register)
+                                      zerodark-theme nimbus-theme
+                                      atom-one-dark-theme projectile-ripgrep ag
+                                      helm-ag helm-gtags helm-swoop evil-lion
+                                      cedit evil-replace-with-register
+                                      project-explorer)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -167,6 +168,7 @@ values."
                          glowfish-contrast
                          monokai
                          zerodark
+                         nimbus
                          sanityinc-solarized-light
                          spacemacs-dark
                          leuven
