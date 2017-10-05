@@ -671,8 +671,9 @@ lines downward first."
     "te" 'treemacs-toggle
     "tu" 'untabify
     "tt" 'tabify
-    "iv" 'insert-void-stub
     "id" 'insert-doxygen-stub
+    "ih" 'insert-header-guards
+    "iv" 'insert-void-stub
     "w1" 'eyebrowse-switch-to-window-config-1
     "w2" 'eyebrowse-switch-to-window-config-2
     "w3" 'eyebrowse-switch-to-window-config-3
@@ -683,7 +684,6 @@ lines downward first."
     "w8" 'eyebrowse-switch-to-window-config-8
     "w9" 'eyebrowse-switch-to-window-config-9
     "wx" 'eyebrowse-close-window-config
-    "wn" 'eyebrowse-rename-window-config
     "w TAB" 'eyebrowse-last-window-config
     "L"  'spacemacs/workspaces-transient-state/body
     "W"  'spacemacs/workspaces-transient-state/body

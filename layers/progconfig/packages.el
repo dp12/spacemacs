@@ -258,6 +258,16 @@ which require an initialization must be listed explicitly in the list.")
     (insert args)
     (message args)))
 
+;; Insert header guards at point
+(defun insert-header-guards ()
+  (interactive)
+  (let ((header-name (replace-regexp-in-string "-" "_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))))))
+    (save-excursion
+      (beginning-of-line)
+      (insert "#ifndef " header-name "\n#define " header-name)
+      (end-of-buffer)
+      (insert "#endif /* " header-name " */"))))
+
 ;; Company
 (eval-after-load 'company
   '(progn
