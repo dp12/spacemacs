@@ -583,6 +583,10 @@ lines downward first."
   (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line-or-history)
   (define-key ivy-minibuffer-map (kbd "C-u") 'ivy-kill-line)
 
+  (ivy-set-actions
+   'counsel-M-x
+   '(("y" kill-new "copy name")))
+
   (setq ivy-re-builders-alist
         '(
           ;; (counsel-imenu . ivy--regex-fuzzy)
@@ -689,6 +693,7 @@ lines downward first."
     "L"  'spacemacs/workspaces-transient-state/body
     "W"  'spacemacs/workspaces-transient-state/body
     "xx" 'align-regexp
+    "xy" 'link-hint-copy-link
     "."  'evilnc-copy-and-comment-lines
     )
 
