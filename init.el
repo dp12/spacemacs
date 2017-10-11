@@ -485,8 +485,20 @@ lines downward first."
     "Override of the default mode line string for `evil-mc-mode'.")
   (global-set-key (kbd "C-S-<mouse-1>") 'evil-mc-toggle-cursor-on-click)
 
+  ;; Magit
+  (with-eval-after-load 'magit
+    ;; Use shift-return to open file from magit in another window.
+    (define-key magit-file-section-map (kbd "S-<return>") (lambda ()
+                                                    (interactive)
+                                                    (let ((current-prefix-arg '(4)))
+                                                      (call-interactively 'magit-diff-visit-file))))
+    (define-key magit-hunk-section-map (kbd "S-<return>") (lambda ()
+                                                       (interactive)
+                                                       (let ((current-prefix-arg '(4)))
+                                                         (call-interactively 'magit-diff-visit-file)))))
+
   ;; Ycmd
-  (eval-after-load "ycmd"
+  (with-eval-after-load 'ycmd
     (progn
       (setq ycmd-server-command (list "python" (file-truename "~/ycmd/ycmd")))
       (add-hook 'c-mode-hook 'ycmd-mode)
@@ -509,7 +521,7 @@ lines downward first."
   (add-hook 'ediff-keymap-setup-hook 'add-d-to-ediff-mode-map)
 
   ;; Dired
-  (eval-after-load 'dired
+  (with-eval-after-load 'dired
     '(progn
        (define-key dired-mode-map "a" 'ripgrep-regexp)
        (define-key dired-mode-map "A" 'helm-ag)
