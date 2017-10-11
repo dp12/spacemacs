@@ -576,16 +576,6 @@ lines downward first."
     (push '(c-mode . semantic-format-tag-summarize) helm-semantic-display-style)
     (push '(c++-mode . semantic-format-tag-summarize) helm-semantic-display-style))
 
-  ;; Ido
-  (add-hook 'ido-setup-hook
-            (lambda () (define-key ido-completion-map (kbd "C-w") 'ido-kill-buffer-at-head)))
-  ;; (setq ido-use-virtual-buffers t)
-  (defun ido-clear-virtual-buffers ()
-    (interactive)
-    (setq buffer-name-history '()))
-  (setq ido-enable-flex-matching t)
-
-
   ;; Ivy
   (global-set-key "\C-s" 'counsel-grep-or-swiper)
   (global-set-key (kbd "C-S-s") 'isearch-forward)
