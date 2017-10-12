@@ -393,7 +393,9 @@ you should place your code here."
   (global-set-key (kbd "C-M-S-k") 'sp-kill-hybrid-sexp)
   (define-key evil-normal-state-map (kbd "M-.") 'ggtags-find-tag-dwim)
   (define-key evil-normal-state-map (kbd "C-M-.") 'helm-gtags-find-tag-other-window)
-  (evil-define-key 'normal ripgrep-search-mode (kbd "q") 'quit-window)
+  (add-hook 'ripgrep-search-mode-hook
+            (lambda ()
+              (define-key evil-normal-state-local-map (kbd "q") 'quit-window)))
   (global-set-key (kbd "M-U") 'downcase-word)
   (global-set-key (kbd "C-x f") 'recentf-open-files)
   (global-set-key (kbd "M-?") 'company-complete)
