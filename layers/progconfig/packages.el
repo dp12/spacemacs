@@ -428,18 +428,19 @@ Example:
         (rotate-region beg end)
         (goto-char (if (> opoint end) end opoint))))))
 
-(defun gdb-get-breakpoint-str ()
+(defun gdb-get-breakpoint-str (breakpoint-type)
   "Return string of the form 'b foo.c:108'"
-  (concat "b "
+  (concat breakpoint-type " "
           (uniquify-buffer-base-name) ":"
           (number-to-string (line-number-at-pos))))
 
 (defun gdb-set-fast-breakpoint ()
   "Insert breakpoint in ~/.gdbinit before line with the 'end #FBB' marker"
   (interactive)
-  (let ((insert-br-cmd  "awk '/end #FBB/ { print \"  %s\"; print; next }1' ~/.gdbinit > ~/.gdbinit.tmp && cp ~/.gdbinit.tmp ~/.gdbinit"))
+  (let ((insert-br-cmd  "awk '/end #FBB/ { print \"  %s\"; print; next }1' ~/.gdbinit > ~/.gdbinit.tmp && cp ~/.gdbinit.tmp ~/.gdbinit")
+        (breakpoint-type (if current-prefix-arg "tb" "b")))
     (shell-command
-     (format insert-br-cmd (gdb-get-breakpoint-str)))))
+     (format insert-br-cmd (gdb-get-breakpoint-str breakpoint-type)))))
 
 (with-eval-after-load 'popup
   (require 'git-complete))
