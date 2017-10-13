@@ -532,8 +532,7 @@ lines downward first."
        (setq dired-dwim-target t)
        (setq diff-hl-dired-mode t)
        (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode t)))
-       (setq dired-listing-switches "--group-directories-first -alh")
-       ))
+       (setq dired-listing-switches "--group-directories-first -alh")))
 
   ;; Start wdired in evil normal mode
   (add-hook 'wdired-mode-hook
@@ -775,7 +774,7 @@ lines downward first."
                '("webkit" . my-mu4e-action-view-with-xwidget) t)
   (add-to-list 'mu4e-view-actions
                '("browser" . mu4e-action-view-in-browser) t)
-                                        ;
+
   ;; Attach files with dired "C-c RET C-a"
   (require 'gnus-dired)
   ;; make the `gnus-dired-mail-buffers' function also work on
@@ -851,7 +850,7 @@ lines downward first."
   (cond
    ((spacemacs/system-is-mac) (setq TeX-view-program-selection '((output-pdf "Skim"))))
    ((spacemacs/system-is-linux) (setq TeX-view-program-selection '((output-pdf "Zathura")))))
-  )
+)
 
 ;; Save off custom settings to custom.el
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
