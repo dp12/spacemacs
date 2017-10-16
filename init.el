@@ -501,12 +501,10 @@ lines downward first."
 
   ;; Ycmd
   (with-eval-after-load 'ycmd
-    (progn
-      (setq ycmd-server-command (list "python" (file-truename "~/ycmd/ycmd")))
-      (add-hook 'c-mode-hook 'ycmd-mode)
-      (add-hook 'c++-mode-hook 'ycmd-mode)
-      (setq ycmd-force-semantic-completion t)
-      ))
+    (setq ycmd-server-command (list "python" (file-truename "~/ycmd/ycmd")))
+    (add-hook 'c-mode-hook 'ycmd-mode)
+    (add-hook 'c++-mode-hook 'ycmd-mode)
+    (setq ycmd-force-semantic-completion t))
   (spacemacs|diminish ycmd-mode "Ⓨ")
 
   (setq request-message-level -1) ;; make ycmd less annoying
@@ -524,15 +522,14 @@ lines downward first."
 
   ;; Dired
   (with-eval-after-load 'dired
-    '(progn
-       (define-key dired-mode-map "a" 'ripgrep-regexp)
-       (define-key dired-mode-map "A" 'helm-ag)
-       (define-key dired-mode-map "W" 'wdired-change-to-wdired-mode)
-       (define-key dired-mode-map (kbd "M-n") 'dired-narrow)
-       (setq dired-dwim-target t)
-       (setq diff-hl-dired-mode t)
-       (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode t)))
-       (setq dired-listing-switches "--group-directories-first -alh")))
+    (define-key dired-mode-map "a" 'ripgrep-regexp)
+    (define-key dired-mode-map "A" 'helm-ag)
+    (define-key dired-mode-map "W" 'wdired-change-to-wdired-mode)
+    (define-key dired-mode-map (kbd "M-n") 'dired-narrow)
+    (setq dired-dwim-target t)
+    (setq diff-hl-dired-mode t)
+    (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode t)))
+    (setq dired-listing-switches "--group-directories-first -alh"))
 
   ;; Start wdired in evil normal mode
   (add-hook 'wdired-mode-hook
