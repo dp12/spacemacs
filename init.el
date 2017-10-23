@@ -442,8 +442,8 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "go") 'avy-goto-word-1)
 
   ;; Evil config
-  (define-key evil-normal-state-map (kbd "+") 'spacemacs/evil-numbers-transient-state/evil-numbers/inc-at-pt)
-  (define-key evil-normal-state-map (kbd "-") 'spacemacs/evil-numbers-transient-state/evil-numbers/dec-at-pt)
+  (define-key evil-normal-state-map (kbd "+") 'evil-numbers/inc-at-pt)
+  (define-key evil-normal-state-map (kbd "-") 'evil-numbers/dec-at-pt)
   (define-key evil-normal-state-map (kbd "[s") (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
   (define-key evil-normal-state-map (kbd "]s") (lambda (n) (interactive "p")
                                                  (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
