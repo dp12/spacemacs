@@ -646,6 +646,7 @@ lines downward first."
     "hf" 'helm-for-files
     "hm" 'helm-man-woman
     "hx" 'hexl-mode
+    "ar" 'avy-copy-region
     "h." 'highlight-symbol-at-point
     "hr" 'unhighlight-regexp
     "if" 'counsel-recentf
@@ -668,6 +669,7 @@ lines downward first."
     "ou" 'org-previous-visible-heading
     "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
+    "gB" 'git-timemachine-blame
     "gB" 'magit-blame-quit
     "su" 'string-inflection-underscore
     "sl" 'sort-lines
