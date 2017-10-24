@@ -434,7 +434,7 @@ you should place your code here."
   (spaceline-compile)
 
   ;; Avy and evil-snipe
-  (define-key evil-normal-state-map (kbd "n") 'avy-goto-char-timer)
+  (define-key evil-normal-state-map (kbd "n") 'avy-goto-char-2)
   (setq avy-keys (number-sequence ?a ?z))
   (set-face-attribute 'evil-snipe-matches-face nil :inherit nil :foreground "red" :box '(:color "lawn green" :style released-button))
   (setq evil-snipe-scope 'buffer)
@@ -637,8 +637,6 @@ lines downward first."
     "dl" 'dumb-jump-quick-look
     "db" 'dumb-jump-back
     "ew" 'eww
-    "fp" 'fiplr-find-file
-    "fd" 'find-file-in-current-directory
     "fn" 'copy-file-basename-to-clipboard
     "fN" 'projectile-ripgrep-filename
     "gd" 'gdb-set-fast-breakpoint

@@ -15,8 +15,6 @@
     ;; package searchs go here
     dired-narrow
     dired-subtree
-    fiplr
-    find-file-in-project
     treemacs
     )
   "List of all packages to install and/or initialize. Built-in packages
@@ -38,14 +36,6 @@ which require an initialization must be listed explicitly in the list.")
     :config
     (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
     (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map)))
-
-(defun search/init-fiplr ()
-  "Initialize fiplr"
-  (use-package fiplr))
-
-(defun search/init-find-file-in-project ()
-  "Initialize find-file-in-project"
-  (use-package find-file-in-project))
 
 (defun search/init-treemacs ()
   "Initialize treemacs"
