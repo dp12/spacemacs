@@ -619,6 +619,7 @@ lines downward first."
   ;; Leader keys
   (spacemacs/set-leader-keys
     "ak" 'avy-kill-whole-line
+    "ar" 'avy-copy-region
     "ay" 'avy-copy-line
     "dm" 'delete-matching-lines
     "bx" 'ace-swap-window
@@ -642,11 +643,12 @@ lines downward first."
     "gd" 'gdb-set-fast-breakpoint
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
+    "gB" 'git-timemachine-blame
     "gr" 'ggtags-find-reference
+    "gh" 'ggtags-find-declaration
     "hf" 'helm-for-files
     "hm" 'helm-man-woman
     "hx" 'hexl-mode
-    "ar" 'avy-copy-region
     "h." 'highlight-symbol-at-point
     "hr" 'unhighlight-regexp
     "if" 'counsel-recentf
@@ -669,7 +671,6 @@ lines downward first."
     "ou" 'org-previous-visible-heading
     "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
-    "gB" 'git-timemachine-blame
     "gB" 'magit-blame-quit
     "su" 'string-inflection-underscore
     "sl" 'sort-lines
