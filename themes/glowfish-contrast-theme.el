@@ -85,7 +85,7 @@
 
 (defvar conditionals-regexp (rx bow (or "if" "else" "elif" "switch" "case" "then" "for" "while" "do") eow))
 (defvar more-constants-regexp (rx bow (or "TRUE" "FALSE") eow))
-(defvar doxygen-regexp (rx bow (or "\param" "\body" "\return" "@param" "@body" "@return") eow))
+(defvar doxygen-regexp (rx bow (or "\param" "\body" "\return" "@param" "@body" "@return" "@param[in]" "@param[out]" "@param[inout]") eow))
 
 (add-hook 'c-mode-common-hook (lambda ()
                                 (progn
