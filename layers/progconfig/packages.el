@@ -261,7 +261,7 @@ which require an initialization must be listed explicitly in the list.")
 ;; Insert header guards at point
 (defun insert-header-guards ()
   (interactive)
-  (let ((header-name (replace-regexp-in-string "-" "_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))))))
+  (let ((header-name (concat (replace-regexp-in-string "-" "_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))) "_H")))
     (save-excursion
       (beginning-of-line)
       (insert "#ifndef " header-name "\n#define " header-name)
@@ -277,6 +277,11 @@ which require an initialization must be listed explicitly in the list.")
 ;; Gtags
 (with-eval-after-load 'helm-gtags
   (diminish 'helm-gtags-mode))
+
+(defun ggtags-find-declaration (name)
+  (interactive (list (ggtags-read-tag 'reference current-prefix-arg)))
+  (ggtags-setup-libpath-search 'reference name)
+  (ggtags-find-tag 'reference "--" (concat (shell-quote-argument name) " | grep '\\.h\\|hpp:'")))
 
 ;; Python
 (add-hook 'python-mode-hook
