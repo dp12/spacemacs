@@ -447,6 +447,8 @@ you should place your code here."
   ;; Evil config
   (define-key evil-normal-state-map (kbd "+") 'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map (kbd "-") 'evil-numbers/dec-at-pt)
+  (define-key evil-insert-state-map "\C-x\C-n" 'evil-complete-next-line)
+  (define-key evil-insert-state-map "\C-x\C-p" 'evil-complete-previous-line)
   (define-key evil-normal-state-map (kbd "[s") (lambda (n) (interactive "p") (dotimes (c n nil) (insert " "))))
   (define-key evil-normal-state-map (kbd "]s") (lambda (n) (interactive "p")
                                                  (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
