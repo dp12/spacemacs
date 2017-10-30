@@ -428,6 +428,9 @@ you should place your code here."
   ;; Spacemacs
   (setq spacemacs-mode-line-minor-modesp nil)
   (setq spaceline-version-control-p nil)
+  (setq spaceline-buffer-encoding-p nil)
+  (setq spaceline-buffer-encoding-abbrev-p nil)
+  (setq spaceline-projectile-root-p nil)
 
   ;; Spacemacs theme
   (setq powerline-default-separator 'alternate)
