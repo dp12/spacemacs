@@ -283,6 +283,29 @@ which require an initialization must be listed explicitly in the list.")
   (ggtags-setup-libpath-search 'reference name)
   (ggtags-find-tag 'reference "--" (concat (shell-quote-argument name) " | grep '\\.h\\|hpp:'")))
 
+;; Use tab to do yasnippet expansion, company-complete, or tab indent
+(defun check-expansion ()
+  (save-excursion
+    (if (looking-at "\\_>") t
+      (backward-char 1)
+      (if (looking-at "\\.") t
+        (backward-char 1)
+        (if (looking-at "->") t nil)))))
+
+(defun do-yas-expand ()
+  (let ((yas/fallback-behavior 'return-nil))
+    (yas/expand)))
+
+(defun tab-indent-or-complete ()
+  (interactive)
+  (if (minibufferp)
+      (minibuffer-complete)
+    (if (or (not yas/minor-mode)
+            (null (do-yas-expand)))
+        (if (check-expansion)
+            (company-complete-common)
+          (indent-for-tab-command)))))
+
 ;; Python
 (add-hook 'python-mode-hook
           (lambda ()
@@ -314,6 +337,7 @@ which require an initialization must be listed explicitly in the list.")
             (setq visual-line-mode nil)
             (setq c-default-style "linux"
                   c-basic-offset 4)
+            (local-set-key [tab] 'tab-indent-or-complete)
             ))
 (add-hook 'spacemacs-jump-handlers-c-mode 'dumb-jump-go)
 (add-hook 'spacemacs-jump-handlers-c-mode 'ggtags-find-tag-dwim)

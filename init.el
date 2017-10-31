@@ -411,29 +411,34 @@ you should place your code here."
   ;; (setq projectile-indexing-method 'native)
   (add-to-list 'auto-mode-alist '("\\.bin\\'" . hexl-mode))
 
-  (defun check-expansion ()
-    (save-excursion
-      (if (looking-at "\\_>") t
-        (backward-char 1)
-        (if (looking-at "\\.") t
-          (backward-char 1)
-          (if (looking-at "->") t nil)))))
-
-  ;; (define-key company-mode-map [tab]
-  ;;   '(menu-item "maybe-company-expand" nil
-  ;;               :filter (lambda (&optional _)
-  ;;                         (when (check-expansion)
-  ;;                           #'company-complete-common))))
-
   ;; Spacemacs
   (setq spacemacs-mode-line-minor-modesp nil)
+
+  ;; Spaceline theme
+  ;; (use-package spaceline-all-the-icons
+  ;;   :after spaceline
+  ;;   :config (spaceline-all-the-icons-theme))
+  ;; (spaceline-all-the-icons--setup-anzu)            ;; Enable anzu searching
+  ;; (spaceline-all-the-icons--setup-git-ahead)       ;; Enable # of commits ahead of upstream in git
+  ;; (spaceline-all-the-icons--setup-package-updates) ;; Enable package update indicator
+  ;; (spaceline-all-the-icons--setup-neotree)         ;; Enable Neotree mode line
+  ;; (spaceline-toggle-all-the-icons-vc-icon-on)
+  ;; (spaceline-toggle-all-the-icons-fullscreen-on)
+  ;; (spaceline-toggle-all-the-icons-flycheck-status-on)
+  ;; (spaceline-toggle-all-the-icons-git-status-on)
+  ;; (spaceline-toggle-all-the-icons-vc-icon-on)
+  ;; (spaceline-toggle-all-the-icons-mode-icon-on)
+  ;; (spaceline-toggle-all-the-icons-package-updates-on)
+  ;; (spaceline-toggle-all-the-icons-text-scale-on)
+  ;; (spaceline-toggle-all-the-icons-region-info-on)
+  ;; (spaceline-toggle-all-the-icons-multiple-cursors)
+  ;; (setq-default spaceline-all-the-icons-separator-type 'arrow)
+
+  (setq powerline-default-separator 'alternate)
   (setq spaceline-version-control-p nil)
   (setq spaceline-buffer-encoding-p nil)
   (setq spaceline-buffer-encoding-abbrev-p nil)
   (setq spaceline-projectile-root-p nil)
-
-  ;; Spacemacs theme
-  (setq powerline-default-separator 'alternate)
   (spaceline-compile)
 
   ;; Avy and evil-snipe
