@@ -169,6 +169,8 @@ values."
                          monokai
                          zerodark
                          nimbus
+                         firebelly
+                         niflheim
                          sanityinc-solarized-light
                          spacemacs-dark
                          leuven
