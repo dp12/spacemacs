@@ -268,6 +268,12 @@ which require an initialization must be listed explicitly in the list.")
       (end-of-buffer)
       (insert "#endif /* " header-name " */"))))
 
+(defun insert-c-terminator ()
+  (interactive)
+  (save-excursion
+    (end-of-line)
+    (insert ";")))
+
 ;; Company
 (eval-after-load 'company
   '(progn
@@ -325,6 +331,7 @@ which require an initialization must be listed explicitly in the list.")
             (define-key ggtags-navigation-map (kbd "M-<down>") 'ggtags-navigation-next-file)
             (define-key evil-normal-state-map (kbd "M-<left>") 'ggtags-prev-mark)
             (define-key evil-normal-state-map (kbd "M-<right>") 'ggtags-next-mark)
+            (local-set-key (kbd "C-M-;") 'insert-c-terminator)
             ;; (spacemacs/toggle-fill-column-indicator-on)
             (dtrt-indent-mode t)
             ;; Use 8 to /* wrap */ a word
