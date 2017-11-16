@@ -685,6 +685,7 @@ lines downward first."
     "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
+    "mf" 'magit-find-file
     "su" 'string-inflection-underscore
     "sl" 'sort-lines
     "te" 'treemacs-toggle
