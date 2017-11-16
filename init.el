@@ -809,6 +809,10 @@ lines downward first."
 
   ;; xwidget web browsing
   ;; make these keys behave like normal browser
+  (defun xwidget-webkit-scroll-vertical (scroll)
+    "Scroll webkit a specified amount."
+    (xwidget-set-adjustment (xwidget-webkit-last-session) 'vertical t scroll))
+
   (with-eval-after-load 'xwidget
     (define-key xwidget-webkit-mode-map [mouse-4] 'xwidget-webkit-scroll-down)
     (define-key xwidget-webkit-mode-map [mouse-5] 'xwidget-webkit-scroll-up)
@@ -816,6 +820,10 @@ lines downward first."
     (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
     (define-key xwidget-webkit-mode-map (kbd "k") 'xwidget-webkit-scroll-down)
     (define-key xwidget-webkit-mode-map (kbd "j") 'xwidget-webkit-scroll-up)
+    (define-key xwidget-webkit-mode-map (kbd "C-u") (lambda () (interactive)
+                                                      (xwidget-webkit-scroll-vertical -200)))
+    (define-key xwidget-webkit-mode-map (kbd "C-d") (lambda () (interactive)
+                                                      (xwidget-webkit-scroll-vertical 200)))
     (define-key xwidget-webkit-mode-map (kbd "q") 'spacemacs/delete-window)
     (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
     (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)
