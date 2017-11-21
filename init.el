@@ -74,7 +74,6 @@ values."
      search
      search-engine
      semantic
-     sicp
      spell-checking
      ;; syntax-checking
      themes-megapack
