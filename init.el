@@ -55,6 +55,7 @@ values."
      gtags
      imenu-list
      ivy
+     mail
      markdown
      (mu4e :variables
            mu4e-account-alist t
@@ -752,107 +753,6 @@ lines downward first."
         (set-face-attribute 'default nil :font "Consolas" :height 120))))
   ;; (add-hook 'org-mode-hook 'set-font-to-office)
 
-  ;; mu4e
-  (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
-  (setq mu4e-maildir "~/Maildir"
-        mu4e-get-mail-command "mbsync -a"
-        mu4e-update-interval 60
-        mu4e-compose-signature-auto-include nil
-        mu4e-view-show-images t
-        mu4e-view-show-addresses t
-        message-kill-buffer-on-exit t
-        mu4e-change-filenames-when-moving t
-        mu4e-context-policy 'pick-first
-        mu4e-confirm-quit nil)
-  (add-hook 'message-mode-hook 'turn-on-orgtbl)
-  (add-hook 'message-mode-hook 'turn-on-orgstruct++)
-
-
-  (defun my-mu4e-action-view-with-xwidget (msg)
-    "View the body of the message inside xwidget-webkit."
-    (unless (fboundp 'xwidget-webkit-browse-url)
-      (mu4e-error "No xwidget support available"))
-    (let* ((html (mu4e-message-field msg :body-html))
-           (txt (mu4e-message-field msg :body-txt))
-           (tmpfile (format "%s%x.html" temporary-file-directory (random t))))
-      (unless (or html txt)
-        (mu4e-error "No body part for this message"))
-      (with-temp-buffer
-        ;; simplistic -- but note that it's only an example...
-        (insert (or html (concat "<pre>" txt "</pre>")))
-        (write-file tmpfile)
-        (xwidget-webkit-browse-url (concat "file://" tmpfile) t))))
-
-  (add-to-list 'mu4e-view-actions
-               '("webkit" . my-mu4e-action-view-with-xwidget) t)
-  (add-to-list 'mu4e-view-actions
-               '("browser" . mu4e-action-view-in-browser) t)
-
-  ;; Attach files with dired "C-c RET C-a"
-  (require 'gnus-dired)
-  ;; make the `gnus-dired-mail-buffers' function also work on
-  ;; message-mode derived modes, such as mu4e-compose-mode
-  (defun gnus-dired-mail-buffers ()
-    "Return a list of active message buffers."
-    (let (buffers)
-      (save-current-buffer
-        (dolist (buffer (buffer-list t))
-          (set-buffer buffer)
-          (when (and (derived-mode-p 'message-mode)
-                     (null message-sent-message-via))
-            (push (buffer-name buffer) buffers))))
-      (nreverse buffers)))
-  (setq gnus-dired-mail-mode 'mu4e-user-agent)
-  (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
-
-  (setq message-send-mail-function 'message-send-mail-with-sendmail
-        sendmail-program "/usr/bin/msmtp")
-
-  ;; xwidget web browsing
-  ;; make these keys behave like normal browser
-  (defun xwidget-webkit-scroll-vertical (scroll)
-    "Scroll webkit a specified amount."
-    (xwidget-set-adjustment (xwidget-webkit-last-session) 'vertical t scroll))
-
-  (with-eval-after-load 'xwidget
-    (define-key xwidget-webkit-mode-map [mouse-4] 'xwidget-webkit-scroll-down)
-    (define-key xwidget-webkit-mode-map [mouse-5] 'xwidget-webkit-scroll-up)
-    (define-key xwidget-webkit-mode-map (kbd "<up>") 'xwidget-webkit-scroll-down)
-    (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
-    (define-key xwidget-webkit-mode-map (kbd "k") 'xwidget-webkit-scroll-down)
-    (define-key xwidget-webkit-mode-map (kbd "j") 'xwidget-webkit-scroll-up)
-    (define-key xwidget-webkit-mode-map (kbd "C-u") (lambda () (interactive)
-                                                      (xwidget-webkit-scroll-vertical -200)))
-    (define-key xwidget-webkit-mode-map (kbd "C-d") (lambda () (interactive)
-                                                      (xwidget-webkit-scroll-vertical 200)))
-    (define-key xwidget-webkit-mode-map (kbd "q") 'spacemacs/delete-window)
-    (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
-    (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)
-    (evil-set-initial-state 'xwidget-webkit-mode 'emacs))
-
-  ;; adapt webkit according to window configuration chagne automatically
-  ;; without this hook, every time you change your window configuration,
-  ;; you must press 'a' to adapt webkit content to new window size
-  (add-hook 'window-configuration-change-hook (lambda ()
-                                                (when (equal major-mode 'xwidget-webkit-mode)
-                                                  (xwidget-webkit-adjust-size-dispatch))))
-
-  ;; by default, xwidget reuses previous xwidget window,
-  ;; thus overriding your current website, unless a prefix argument
-  ;; is supplied
-  ;;
-  ;; This function always opens a new website in a new window
-  (defun xwidget-browse-url-no-reuse (url &optional session)
-    (interactive (progn
-                   (require 'browse-url)
-                   (browse-url-interactive-arg "xwidget-webkit URL: "
-                                               )))
-    (xwidget-webkit-browse-url url t))
-
-  ;; make xwidget default browser
-  ;; (setq browse-url-browser-function (lambda (url session)
-  ;;                                     (other-window 1)
-  ;;                                     (xwidget-browse-url-no-reuse url)))
 
   ;; LaTeX
   (cond
