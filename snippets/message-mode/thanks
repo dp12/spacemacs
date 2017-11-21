@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: thanks
+# key: thx
+# --
+Thanks,
+`mu4e-user-name`
