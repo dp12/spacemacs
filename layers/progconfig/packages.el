@@ -163,27 +163,24 @@ which require an initialization must be listed explicitly in the list.")
          '(try-expand-line)))
     (call-interactively 'hippie-expand)))
 
-(defun get-hippie-expand-lines ()
-  (interactive)
-  (let (completions-list candidate)
-    (setq candidate (my-try-expand-line nil))
-    (if candidate
-        (while (progn
-                 (setq candidate (my-try-expand-line t))
-                 (if candidate
-                     (push candidate completions-list)
-                   nil)
-                 ))
-      nil)
-    (message completions-list)
-    ))
+;; Done, now we just use it as a clause in our make-hippie-expand-function (as above)
+(setq hippie-expand-try-functions-list
+      '(try-complete-file-name-partially
+        try-complete-file-name
+        try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill
+        try-expand-tag))
 
+(require 'cl-lib)
+(require 'company)
+;; Stolen from hippie-exp.el v1.6 by Anders Holst
+;; Modified to return the completion instead of calling he-substitute-string
 (defun my-try-expand-line (old)
   "Try to complete the current line to an entire line in the buffer.
 The argument OLD has to be nil the first call of this function, and t
 for subsequent calls (for further possible completions of the same
 string).  It returns t if a new completion is found, nil otherwise."
-  (interactive)
   (let ((expansion ())
 	(strip-prompt (and (get-buffer-process (current-buffer))
 			   comint-use-prompt-regexp
@@ -223,20 +220,38 @@ string).  It returns t if a new completion is found, nil otherwise."
 	  (if old (he-reset-string))
 	  ())
 	(progn
-    ;; (message expansion)
     expansion
-	  ;; (he-substitute-string expansion t)
-	  ;; t
     ))))
 
-;; Done, now we just use it as a clause in our make-hippie-expand-function (as above)
-(setq hippie-expand-try-functions-list
-      '(try-complete-file-name-partially
-        try-complete-file-name
-        try-expand-dabbrev
-        try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill
-        try-expand-tag))
+(defun get-hippie-expand-lines ()
+  (let (completions-list candidate)
+    (setq candidate (my-try-expand-line nil))
+    (if candidate
+        (progn
+          (push candidate completions-list)
+          (while (progn
+                   (setq candidate (my-try-expand-line t))
+                   (if candidate
+                       (push candidate completions-list)
+                     nil))))
+      nil)
+    completions-list))
+
+(defun company-hippie-line-backend (command &optional arg &rest ignored)
+  (interactive (list 'interactive))
+
+  (cl-case command
+    (interactive (company-begin-backend 'company-hippie-line-backend))
+    (prefix (let (p1 p2)
+              (setq p2 (point))
+              (save-excursion
+                (back-to-indentation)
+                (setq p1 (point)))
+              (buffer-substring-no-properties p1 p2)))
+    (candidates (get-hippie-expand-lines))))
+
+(add-to-list 'company-backends 'company-hippie-line-backend)
+(global-set-key (kbd "C-x l") 'company-hippie-line-backend)
 
 ; Comment toggle
 (defun comment-or-uncomment-region-or-line ()
