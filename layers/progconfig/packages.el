@@ -244,12 +244,14 @@ string).  It returns t if a new completion is found, nil otherwise."
 
     (cl-case command
       (interactive (company-begin-backend 'company-hippie-line))
-      (prefix (let (p1 p2)
-                (setq p2 (point))
-                (save-excursion
-                  (back-to-indentation)
-                  (setq p1 (point)))
-                (buffer-substring-no-properties p1 p2)))
+      (prefix (and (company-grab-symbol)
+                   (let (p1 p2)
+                    (save-excursion
+                      (end-of-line)
+                      (setq p2 (point))
+                      (back-to-indentation)
+                      (setq p1 (point)))
+                    (buffer-substring-no-properties p1 p2))))
       (candidates (get-hippie-expand-lines))))
   (add-to-list 'company-backends 'company-hippie-line))
 (global-set-key (kbd "C-x l") 'company-hippie-line)
