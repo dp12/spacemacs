@@ -245,6 +245,7 @@ string).  It returns t if a new completion is found, nil otherwise."
     (cl-case command
       (interactive (company-begin-backend 'company-hippie-line))
       (prefix (and (company-grab-symbol)
+                   (not (looking-at "[:word:]"))
                    (let (p1 p2)
                     (save-excursion
                       (end-of-line)
