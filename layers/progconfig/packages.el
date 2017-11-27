@@ -176,8 +176,8 @@ which require an initialization must be listed explicitly in the list.")
   (require 'hippie-exp)
   (require 'cl-lib)
 
-  ;; Stolen from hippie-exp.el v1.6 by Anders Holst
-  ;; Modified to return the completion instead of calling he-substitute-string
+  ;; Modified version of try-expand-line from hippie-exp.el v1.6 by Anders Holst
+  ;; Changed to return the completion instead of calling he-substitute-string
   (defun my-try-expand-line (old)
     "Try to complete the current line to an entire line in the buffer.
 The argument OLD has to be nil the first call of this function, and t
