@@ -157,6 +157,10 @@ Each entry is either:
                  )))
     email-name))
 
+(defun mu4e-alert-update-mail-count-interactive ()
+  (interactive)
+  (mu4e-alert-update-mail-count-modeline))
+
 ;; xwidget web browsing
 ;; make these keys behave like normal browser
 (defun xwidget-webkit-scroll-vertical (scroll)

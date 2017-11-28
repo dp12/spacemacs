@@ -685,6 +685,7 @@ lines downward first."
     "mi" 'evil-matchit-mode
     "ml" 'imenu-list-smart-toggle
     "ms" 'evilmi-select-items
+    "ma" 'mu4e-alert-update-mail-count-interactive
     "mu" 'mu4e-alert-view-unread-mails
     "oi" 'helm-semantic-or-imenu
     "ou" 'org-previous-visible-heading
