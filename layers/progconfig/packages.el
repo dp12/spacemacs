@@ -254,7 +254,9 @@ string).  It returns t if a new completion is found, nil otherwise."
                       (setq p1 (point)))
                     (buffer-substring-no-properties p1 p2))))
       (candidates (get-hippie-expand-lines))))
-  (add-to-list 'company-backends 'company-hippie-line))
+  ;; Uncomment for company to suggest line completion wherever possible
+  ;; (add-to-list 'company-backends 'company-hippie-line)
+  )
 (global-set-key (kbd "C-x l") 'company-hippie-line)
 
 ; Comment toggle
