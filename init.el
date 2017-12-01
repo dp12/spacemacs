@@ -689,6 +689,7 @@ lines downward first."
     "mu" 'mu4e-alert-view-unread-mails
     "oi" 'helm-semantic-or-imenu
     "ou" 'org-previous-visible-heading
+    "og" 'counsel-org-goto
     "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
