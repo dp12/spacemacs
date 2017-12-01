@@ -672,6 +672,7 @@ lines downward first."
     "h." 'highlight-symbol-at-point
     "hr" 'unhighlight-regexp
     "if" 'counsel-recentf
+    "ca" 'counsel-linux-app
     "rd" 'rtags-find-symbol-at-point
     "rf" 'rtags-find-references-at-point
     "rt" 'rtags-taglist
