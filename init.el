@@ -659,6 +659,7 @@ lines downward first."
     "ew" 'eww
     "fn" 'copy-file-basename-to-clipboard
     "fN" 'projectile-ripgrep-filename
+    "fz" 'counsel-fzf
     "gd" 'gdb-set-fast-breakpoint
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
