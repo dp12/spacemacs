@@ -420,6 +420,8 @@ you should place your code here."
   (define-key evil-visual-state-map "K" (concat ":m '<-2" (kbd "RET") "gv=gv"))
   ;; (setq projectile-indexing-method 'native)
   (add-to-list 'auto-mode-alist '("\\.bin\\'" . hexl-mode))
+  ;; Hide the async shell command buffer by default
+  (add-to-list 'display-buffer-alist (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
 
   ;; Spacemacs
   (setq spacemacs-mode-line-minor-modesp nil)
