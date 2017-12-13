@@ -508,6 +508,7 @@ lines downward first."
   (defvar evil-mc-mode-line-prefix "ⓜ"
     "Override of the default mode line string for `evil-mc-mode'.")
   (global-set-key (kbd "C-S-<mouse-1>") 'evil-mc-toggle-cursor-on-click)
+  (setq evil-mc-undo-cursors-on-keyboard-quit t)
 
   ;; Magit
   (with-eval-after-load 'magit
