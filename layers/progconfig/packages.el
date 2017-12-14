@@ -20,6 +20,9 @@
     rtags
     evil-multiedit
     string-inflection
+    lsp-mode
+    company-lsp
+    ;; evil-briefcase-mode
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -153,6 +156,33 @@ which require an initialization must be listed explicitly in the list.")
     :config
     (evil-multiedit-default-keybinds)
     ))
+
+(defun progconfig/init-lsp-mode ()
+  "Initialize lsp-mode"
+  (use-package cquery
+    :config
+    (setq cquery_root (expand-file-name "~/brewst"))
+    (setq cquery-executable (expand-file-name "~/cquery/build/release/bin/cquery")))
+
+  (use-package lsp-mode
+    :config
+    (add-hook 'c++-mode-hook 'lsp-cquery-enable)
+    ;; (with-eval-after-load 'lsp-mode
+      ;; (require 'lsp-flycheck))
+    ))
+
+(defun progconfig/init-company-lsp ()
+  (use-package company-lsp
+    :config
+    (setq company-lsp-async t)
+    (push 'company-lsp company-backends)
+    ))
+
+(defun my-inhibit-evil-briefcase-mode ()
+  "Counter-act evil-briefcase."
+  (add-hook 'after-change-major-mode-hook
+            (lambda () (evil-briefcase-mode 0))
+            :append :local))
 
 (defun progconfig/init-string-inflection ()
   (use-package string-inflection))
