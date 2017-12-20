@@ -600,6 +600,7 @@ lines downward first."
   ;; Ivy
   (global-set-key "\C-s" 'counsel-grep-or-swiper)
   (global-set-key (kbd "C-S-s") 'isearch-forward)
+  (global-set-key (kbd "C-S-r") 'isearch-backward)
   (define-key ivy-minibuffer-map (kbd "C-w") 'ivy-next-history-element)
   (define-key ivy-minibuffer-map (kbd "C-s") 'ivy-next-history-element)
   (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line-or-history)
