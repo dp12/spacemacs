@@ -161,12 +161,12 @@ which require an initialization must be listed explicitly in the list.")
   "Initialize lsp-mode"
   (use-package cquery
     :config
-    (setq cquery_root (expand-file-name "~/brewst"))
     (setq cquery-executable (expand-file-name "~/cquery/build/release/bin/cquery")))
 
   (use-package lsp-mode
     :config
     (add-hook 'c++-mode-hook 'lsp-cquery-enable)
+    (spacemacs|diminish lsp-mode "Ⓛ")
     ;; (with-eval-after-load 'lsp-mode
       ;; (require 'lsp-flycheck))
     ))
