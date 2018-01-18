@@ -260,11 +260,13 @@ string).  It returns t if a new completion is found, nil otherwise."
       (setq candidate (my-try-expand-line nil))
       (if candidate
           (progn
-            (push candidate completions-list)
+            (when (not (member candidate completions-list))
+                (push candidate completions-list))
             (while (progn
                      (setq candidate (my-try-expand-line t))
                      (if candidate
-                         (push candidate completions-list)
+                         (when (not (member candidate completions-list))
+                           (push candidate completions-list))
                        nil))))
         nil)
       completions-list))
