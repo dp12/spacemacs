@@ -161,6 +161,11 @@ Each entry is either:
   (interactive)
   (mu4e-alert-update-mail-count-modeline))
 
+(defun mu4e-jump-to-unread ()
+  (interactive)
+  (persp-switch "mail")
+  (mu4e-alert-view-unread-mails))
+
 ;; xwidget web browsing
 ;; make these keys behave like normal browser
 (defun xwidget-webkit-scroll-vertical (scroll)

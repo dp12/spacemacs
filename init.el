@@ -695,6 +695,7 @@ lines downward first."
     "ms" 'evilmi-select-items
     "ma" 'mu4e-alert-update-mail-count-interactive
     "mu" 'mu4e-alert-view-unread-mails
+    "mj" 'mu4e-jump-to-unread
     "oi" 'helm-semantic-or-imenu
     "ou" 'org-previous-visible-heading
     "og" 'counsel-org-goto
