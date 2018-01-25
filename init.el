@@ -504,6 +504,10 @@ lines downward first."
   (setq evil-want-Y-yank-to-eol nil)
   (setq evil-replace-with-register-key (kbd "gR"))
 
+  (with-eval-after-load 'evilnc
+    (define-key evil-inner-text-objects-map evilnc-comment-text-object 'evilnc-inner-comment)
+    (define-key evil-outer-text-objects-map evilnc-comment-text-object 'evilnc-outer-comment))
+
   ;; Evil multiple-cursors/Iedit
   (add-hook 'prog-mode-hook 'turn-on-evil-mc-mode)
   (define-key evil-normal-state-map (kbd "[m") 'evil-mc-mode)
