@@ -710,6 +710,7 @@ lines downward first."
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
     "mf" 'magit-find-file
+    "rh" 'vc-region-history
     "su" 'string-inflection-underscore
     "sl" 'sort-lines
     "te" 'treemacs-toggle
