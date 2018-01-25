@@ -390,14 +390,16 @@ string).  It returns t if a new completion is found, nil otherwise."
   (interactive)
   (save-excursion
     (end-of-line)
-    (insert ";")
-    (evil-escape)))
+    (when (/= (char-before) 59) (insert ";"))
+      (evil-escape)))
 
 (defun insert-function-call ()
   (interactive)
   (end-of-line)
-  (insert "();")
-  (backward-char 2))
+  (when (/= (char-before) 59)
+    (insert "();")
+    (backward-char)
+    (evil-escape)))
 
 ;; Company
 (eval-after-load 'company
