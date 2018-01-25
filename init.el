@@ -173,6 +173,8 @@ values."
                          glowfish-contrast
                          monokai
                          zerodark
+                         exotica
+                         rebecca
                          nimbus
                          firebelly
                          niflheim
