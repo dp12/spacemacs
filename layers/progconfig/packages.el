@@ -288,7 +288,25 @@ string).  It returns t if a new completion is found, nil otherwise."
   ;; Uncomment for company to suggest line completion wherever possible
   ;; (add-to-list 'company-backends 'company-hippie-line)
   )
-(global-set-key (kbd "C-x l") 'company-hippie-line)
+
+(defun +company/whole-lines (command &optional arg &rest ignored)
+  "`company-mode' completion backend that completes whole-lines, akin to vim's
+C-x C-l."
+  (interactive (list 'interactive))
+  (require 'company)
+  (pcase command
+    ('interactive (company-begin-backend '+company/whole-lines))
+    ('prefix      (company-grab-line "^[\t\s]*\\(.+\\)" 1))
+    ('candidates
+     (all-completions
+      arg
+      (split-string
+       (replace-regexp-in-string
+        "^[\t\s]+" ""
+        (concat (buffer-substring-no-properties (point-min) (line-beginning-position))
+                (buffer-substring-no-properties (line-end-position) (point-max))))
+       "\\(\r\n\\|[\n\r]\\)" t)))))
+(global-set-key (kbd "C-x l") '+company/whole-lines)
 
 ; Comment toggle
 (defun comment-or-uncomment-region-or-line ()
