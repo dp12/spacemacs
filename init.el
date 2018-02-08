@@ -728,6 +728,7 @@ lines downward first."
     "w7" 'eyebrowse-switch-to-window-config-7
     "w8" 'eyebrowse-switch-to-window-config-8
     "w9" 'eyebrowse-switch-to-window-config-9
+    "w|" 'split-window-right
     "wx" 'eyebrowse-close-window-config
     "w TAB" 'eyebrowse-last-window-config
     "L"  'spacemacs/workspaces-transient-state/body
