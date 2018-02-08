@@ -289,6 +289,8 @@ string).  It returns t if a new completion is found, nil otherwise."
   ;; (add-to-list 'company-backends 'company-hippie-line)
   )
 
+;; Copied from https://github.com/hlissner/doom-emacs/
+;; doom-emacs/modules/completion/company/autoload.el
 (defun +company/whole-lines (command &optional arg &rest ignored)
   "`company-mode' completion backend that completes whole-lines, akin to vim's
 C-x C-l."
