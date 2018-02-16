@@ -449,11 +449,11 @@ you should place your code here."
   ;; (spaceline-toggle-all-the-icons-multiple-cursors)
   ;; (setq-default spaceline-all-the-icons-separator-type 'arrow)
 
-  (setq powerline-default-separator 'alternate)
   (setq spaceline-version-control-p nil)
   (setq spaceline-buffer-encoding-p nil)
   (setq spaceline-buffer-encoding-abbrev-p nil)
   (setq spaceline-projectile-root-p nil)
+  (setq powerline-default-separator 'nil)
   (spaceline-compile)
 
   ;; Avy and evil-snipe
