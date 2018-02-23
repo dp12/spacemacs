@@ -64,6 +64,7 @@ Each entry is either:
       mu4e-get-mail-command "mbsync -a"
       mu4e-update-interval 60
       mu4e-compose-signature-auto-include nil
+      mu4e-compose-dont-reply-to-self t
       mu4e-view-show-images t
       mu4e-view-show-addresses t
       message-kill-buffer-on-exit t
