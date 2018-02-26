@@ -760,6 +760,7 @@ lines downward first."
           ("✔ DONE"  . (:inherit org-todo :foreground "green2"))
           ("✘ CANCELED"  . shadow)
           ))
+  (add-to-list 'warning-suppress-types '(yasnippet backquote-change))
 
   (defun leuven-set-font-to-office ()
     (interactive)
