@@ -583,7 +583,8 @@ before packages are loaded."
   (setq spaceline-buffer-encoding-p nil)
   (setq spaceline-buffer-encoding-abbrev-p nil)
   (setq spaceline-projectile-root-p nil)
-  (setq powerline-default-separator 'nil)
+  (setq spaceline-purpose-p nil)
+  ;; (setq powerline-default-separator 'nil) ;; straight bar
   (spaceline-compile)
 
   ;; Avy and evil-snipe
