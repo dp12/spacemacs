@@ -19,7 +19,7 @@
     company-irony
     rtags
     evil-multiedit
-    string-inflection
+    (cquery :location local)
     lsp-mode
     company-lsp
     ;; evil-briefcase-mode
@@ -157,24 +157,33 @@ which require an initialization must be listed explicitly in the list.")
     (evil-multiedit-default-keybinds)
     ))
 
-(defun progconfig/init-lsp-mode ()
-  "Initialize lsp-mode"
+(defun progconfig/init-cquery ()
+  "Initialize cquery"
   (use-package cquery
     :config
-    (setq cquery-executable (expand-file-name "~/cquery/build/release/bin/cquery")))
+    (setq cquery-executable (expand-file-name "~/cquery/build/release/bin/cquery"))
+    (setq cquery-sem-highlight-method 'overlay)
+    (cquery-use-default-rainbow-sem-highlight)
+    (evil-set-initial-state 'cquery-tree-mode 'emacs)
+    )
+  )
 
+(defun progconfig/init-lsp-mode ()
+  "Initialize lsp-mode"
   (use-package lsp-mode
     :config
     (add-hook 'c++-mode-hook 'lsp-cquery-enable)
     (spacemacs|diminish lsp-mode "Ⓛ")
     ;; (with-eval-after-load 'lsp-mode
-      ;; (require 'lsp-flycheck))
+    ;;   (require 'lsp-flycheck))
     ))
 
 (defun progconfig/init-company-lsp ()
   (use-package company-lsp
     :config
     (setq company-lsp-async t)
+    ;; (setq company-lsp-cache-candidates nil)
+    ;; (setq company-transformers nil)
     (push 'company-lsp company-backends)
     ))
 
@@ -501,7 +510,7 @@ C-x C-l."
 
 ;; Forth
 (add-to-list 'load-path "~/.spacemacs.d/layers/progconfig/")
-(require 'gforth)
+;; (require 'gforth)
 (add-to-list 'auto-mode-alist '("\\.eForth\\'" . forth-mode))
 
 ;; Intel Hex mode
