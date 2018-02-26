@@ -739,7 +739,8 @@ lines downward first."
     )
 
   ;; Org-mode
-  (require 'org-drill)
+
+  ;; (require 'org-drill)
   (require 'org-mouse)
   (setq org-bullets-bullet-list '("◎" "◉" "○" "✎" "†" "■"))
   ;;✇✉✂▯✎⇘➜▲ ∇☰⚠☢
@@ -747,7 +748,7 @@ lines downward first."
   ;; (setq org-bullets-bullet-list '("♠" "♣" "♥" "♦"))
   (setq org-todo-keywords
         (quote ((sequence "☛ TODO(t)" "↻ PENDING(p)" "|" "✔ DONE(d!)")
-                (sequence "⚑ WAITING(w@/!)" "⚁ MAYBE(m)" "PROJECT(P@)" "|" "✘ CANCELLED(c@/!)"))))
+                (sequence "⚑ WAITING(w@/)" "⚁ MAYBE(m)" "PROJECT(P@)" "|" "✘ CANCELLED(c@/!)"))))
   (setq org-fontify-whole-heading-line t)
   (setq org-todo-keyword-faces
         '(
