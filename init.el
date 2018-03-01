@@ -810,6 +810,9 @@ lines downward first."
     "dG" 'dumb-jump-go-other-window
     "dl" 'dumb-jump-quick-look
     "db" 'dumb-jump-back
+    "ps" 'lsp-ui-sideline-mode
+    "pd" 'lsp-ui-peek-find-definitions
+    "pr" 'lsp-ui-peek-find-references
     "ew" 'eww
     "fn" 'copy-file-basename-to-clipboard
     "fN" 'projectile-ripgrep-filename
