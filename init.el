@@ -658,7 +658,17 @@ lines downward first."
     (define-key magit-hunk-section-map (kbd "S-<return>") (lambda ()
                                                        (interactive)
                                                        (let ((current-prefix-arg '(4)))
-                                                         (call-interactively 'magit-diff-visit-file)))))
+                                                         (call-interactively 'magit-diff-visit-file))))
+    (setq magit-stage-all-confirm nil)
+    (setq magit-unstage-all-confirm nil))
+  (defun magit-yank ()
+    (interactive)
+    (evil-yank)
+    (kill-new (replace-regexp-in-string "^\+ " "" (substring-no-properties (car kill-ring)))))
+  ;; (defun wrapper (&rest args)
+  ;;   (interactive (advice-eval-interactive-spec
+  ;;                 (cadr (interactive-form #'wrappee))))
+  ;;   (apply #'wrappee args))
 
   ;; Ycmd
   (with-eval-after-load 'ycmd
