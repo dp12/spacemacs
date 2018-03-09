@@ -489,7 +489,7 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
-  (push '(use-package . "melpa-stable") package-pinned-packages)
+  ;; (push '(use-package . "melpa-stable") package-pinned-packages)
   (setq-default evil-shift-round nil)
   (when (string-equal system-type "windows-nt")
     (set-fontset-font t '(#x2680 . #x26FF) (font-spec :family "DejaVu Sans Mono" :size 20))
