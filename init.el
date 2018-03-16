@@ -850,6 +850,7 @@ lines downward first."
     "oi" 'helm-semantic-or-imenu
     "ou" 'org-previous-visible-heading
     "og" 'counsel-org-goto
+    "ot" 'org-todo
     "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
