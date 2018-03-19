@@ -850,7 +850,9 @@ lines downward first."
     "oi" 'helm-semantic-or-imenu
     "ou" 'org-previous-visible-heading
     "og" 'counsel-org-goto
-    "ot" 'org-todo
+    "od" 'org-todo-done
+    "ot" 'org-todo-todo
+    "oo" 'org-todo
     "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
@@ -904,6 +906,10 @@ lines downward first."
           ("✔ DONE"  . (:inherit org-todo :foreground "green2"))
           ("✘ CANCELED"  . shadow)
           ))
+
+  ;; org todo helper functions
+  (defun org-todo-done () (interactive) (org-todo 'done))
+  (defun org-todo-todo () (interactive) (org-todo 'todo))
 
   (defun leuven-set-font-to-office ()
     (interactive)
