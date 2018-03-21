@@ -70,7 +70,7 @@ Each entry is either:
       message-kill-buffer-on-exit t
       mu4e-change-filenames-when-moving t
       mu4e-context-policy 'pick-first
-      mu4e-enable-async-operations t
+      mu4e-enable-async-operations nil ;; currently not reliable
       mu4e-confirm-quit nil)
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
 (add-hook 'message-mode-hook 'turn-on-orgstruct++)
