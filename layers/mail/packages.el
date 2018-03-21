@@ -62,7 +62,7 @@ Each entry is either:
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
 (setq mu4e-maildir "~/Maildir"
       mu4e-get-mail-command "mbsync -a"
-      mu4e-update-interval 60
+      mu4e-update-interval 30
       mu4e-compose-signature-auto-include nil
       mu4e-compose-dont-reply-to-self t
       mu4e-view-show-images t
@@ -70,6 +70,7 @@ Each entry is either:
       message-kill-buffer-on-exit t
       mu4e-change-filenames-when-moving t
       mu4e-context-policy 'pick-first
+      mu4e-enable-async-operations t
       mu4e-confirm-quit nil)
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
 (add-hook 'message-mode-hook 'turn-on-orgstruct++)
