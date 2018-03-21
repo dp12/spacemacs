@@ -548,13 +548,13 @@ before packages are loaded."
   (global-set-key (kbd "M-G") 'git-complete)
   (define-key yas-minor-mode-map [backtab] 'hippie-expand)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
-  ;; Better version of move-text
-  (define-key evil-visual-state-map "J" (concat ":m '>+1" (kbd "RET") "gv=gv"))
-  (define-key evil-visual-state-map "K" (concat ":m '<-2" (kbd "RET") "gv=gv"))
   ;; (setq projectile-indexing-method 'native)
   (add-to-list 'auto-mode-alist '("\\.bin\\'" . hexl-mode))
+  (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
   ;; Hide the async shell command buffer by default
-  (add-to-list 'display-buffer-alist (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
+  ;; (add-to-list 'display-buffer-alist (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
+  (defadvice async-shell-command (around hide-async-windows activate) (save-window-excursion ad-do-it))
+  (add-to-list 'warning-suppress-types '(yasnippet backquote-change))
 
   ;; Spacemacs
   (setq spacemacs-mode-line-minor-modesp nil)
