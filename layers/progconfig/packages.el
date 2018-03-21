@@ -17,11 +17,13 @@
     dtrt-indent
     irony
     company-irony
-    rtags
+    ;; rtags
     evil-multiedit
     (cquery :location local)
     lsp-mode
     company-lsp
+    lsp-ui
+    gxref
     ;; evil-briefcase-mode
     )
   "List of all packages to install and/or initialize. Built-in packages
@@ -178,6 +180,13 @@ which require an initialization must be listed explicitly in the list.")
     ;;   (require 'lsp-flycheck))
     ))
 
+(defun progconfig/init-lsp-ui ()
+  "Initialize lsp-ui"
+  (use-package lsp-ui
+    :config
+    (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+    ))
+
 (defun progconfig/init-company-lsp ()
   (use-package company-lsp
     :config
@@ -187,14 +196,18 @@ which require an initialization must be listed explicitly in the list.")
     (push 'company-lsp company-backends)
     ))
 
+(defun progconfig/init-gxref ()
+  "Initialize gxref"
+  (use-package gxref
+    :config
+    (add-to-list 'xref-backend-functions 'gxref-xref-backend)
+    ))
+
 (defun my-inhibit-evil-briefcase-mode ()
   "Counter-act evil-briefcase."
   (add-hook 'after-change-major-mode-hook
             (lambda () (evil-briefcase-mode 0))
             :append :local))
-
-(defun progconfig/init-string-inflection ()
-  (use-package string-inflection))
 
 (defun my-expand-lines ()
   (interactive)
