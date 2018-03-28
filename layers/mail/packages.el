@@ -163,10 +163,15 @@ Each entry is either:
   (interactive)
   (mu4e-alert-update-mail-count-modeline))
 
-(defun mu4e-jump-to-unread ()
+(defun mu4e-jump-to-mail ()
   (interactive)
-  (persp-switch "mail")
-  (mu4e-alert-view-unread-mails))
+  (if (member "mail" persp-names-cache)
+      (progn
+        (persp-switch "mail")
+        (mu4e-alert-view-unread-mails))
+    (persp-switch "mail")
+    (mu4e)
+    (spacemacs/toggle-maximize-buffer)))
 
 ;; xwidget web browsing
 ;; make these keys behave like normal browser
