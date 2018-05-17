@@ -512,6 +512,7 @@ C-x C-l."
             (c-set-offset 'case-label '+)
             ;; Visual-line-mode slows down swiper
             (setq visual-line-mode nil)
+            (setq c-auto-newline nil)
             (setq c-default-style "linux"
                   c-basic-offset 4)
             (local-set-key [tab] 'tab-indent-or-complete)
