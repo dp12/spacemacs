@@ -866,6 +866,7 @@ lines downward first."
     "id" 'insert-doxygen-stub
     "ih" 'insert-header-guards
     "iv" 'insert-void-stub
+    "ie" 'insert-endif
     "w1" 'eyebrowse-switch-to-window-config-1
     "w2" 'eyebrowse-switch-to-window-config-2
     "w3" 'eyebrowse-switch-to-window-config-3

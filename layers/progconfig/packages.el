@@ -443,6 +443,13 @@ C-x C-l."
     (backward-char)
     (evil-escape)))
 
+(defun insert-endif ()
+  (interactive)
+  (next-line)
+  (beginning-of-line)
+  (insert "#endif\n")
+  (previous-line))
+
 ;; Company
 (eval-after-load 'company
   '(progn
