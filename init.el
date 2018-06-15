@@ -555,6 +555,7 @@ before packages are loaded."
   ;; (add-to-list 'display-buffer-alist (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
   (defadvice async-shell-command (around hide-async-windows activate) (save-window-excursion ad-do-it))
   (add-to-list 'warning-suppress-types '(yasnippet backquote-change))
+  (set-face-attribute hl-line-face nil :underline "goldenrod")
 
   ;; Spacemacs
   (setq spacemacs-mode-line-minor-modesp nil)
