@@ -91,11 +91,11 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages '(mode-icons spaceline-all-the-icons
                                       visual-regexp-steroids dumb-jump rtags
                                       color-theme-solarized zerodark-theme
-                                      nimbus-theme atom-one-dark-theme
-                                      projectile-ripgrep ag helm-ag helm-gtags
-                                      helm-swoop evil-lion cedit
+                                      atom-one-dark-theme projectile-ripgrep ag
+                                      helm-ag helm-gtags evil-lion cedit
                                       evil-replace-with-register
-                                      project-explorer quickrun evil-string-inflection
+                                      project-explorer quickrun
+                                      evil-string-inflection deadgrep
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -835,7 +835,8 @@ lines downward first."
     "rd" 'rtags-find-symbol-at-point
     "rf" 'rtags-find-references-at-point
     "rt" 'rtags-taglist
-    "rg" 'projectile-ripgrep
+    "rg" 'deadgrep
+    "ro" 'projectile-ripgrep
     "rc" 'counsel-rg
     "ir" 'ivy-resume
     "ry" 'counsel-yank-pop
