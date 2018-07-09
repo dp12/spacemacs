@@ -835,8 +835,8 @@ lines downward first."
     "rd" 'rtags-find-symbol-at-point
     "rf" 'rtags-find-references-at-point
     "rt" 'rtags-taglist
-    "rg" 'deadgrep
-    "ro" 'projectile-ripgrep
+    "rg" 'projectile-ripgrep
+    "ro" 'deadgrep
     "rc" 'counsel-rg
     "ir" 'ivy-resume
     "ry" 'counsel-yank-pop
