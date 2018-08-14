@@ -96,6 +96,7 @@ This function should only modify configuration layer settings."
                                       evil-replace-with-register
                                       project-explorer quickrun
                                       evil-string-inflection deadgrep
+                                      evil-fringe-mark
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -649,6 +650,12 @@ lines downward first."
     "Override of the default mode line string for `evil-mc-mode'.")
   (global-set-key (kbd "C-S-<mouse-1>") 'evil-mc-toggle-cursor-on-click)
   (setq evil-mc-undo-cursors-on-keyboard-quit t)
+
+  ;; Evil fringe mark
+  (global-evil-fringe-mark-mode)
+  (setq-default left-fringe-width 16)
+  (setq-default evil-fringe-mark-side 'left-fringe)
+  (spacemacs|diminish global-evil-fringe-mark-mode)
 
   ;; Magit
   (with-eval-after-load 'magit
