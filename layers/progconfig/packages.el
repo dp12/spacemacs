@@ -511,6 +511,7 @@ C-x C-l."
             (local-set-key (kbd "C-M-:") 'insert-function-call)
             ;; (spacemacs/toggle-fill-column-indicator-on)
             (dtrt-indent-mode t)
+            (spacemacs|diminish dtrt-indent-mode "ⓓ")
             ;; Use 8 to /* wrap */ a word
             (push '(?8 . ("/* " . " */")) evil-surround-pairs-alist)
             ;; Treat _ as PART_OF_A_WORD
