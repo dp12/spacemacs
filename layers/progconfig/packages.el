@@ -470,10 +470,10 @@ C-x C-l."
         (setq currently-using-underscores-p
               (progn
                 (goto-char start)
-                (re-search-forward "_" end t))))
+                (re-search-forward "_" end t)))
       (if currently-using-underscores-p
             (replace-string "_" "-" nil start end)
-        (replace-string "-" "_" nil start end))))
+        (replace-string "-" "_" nil start end)))))
 
 ;; Gtags
 (with-eval-after-load 'helm-gtags
