@@ -465,12 +465,16 @@ C-x C-l."
       (save-excursion
         ;; Alternate regex:
         ;; (re-search-forward "[\]\[[:space:](){}<>]")
-        (re-search-forward "[^A-Za-z0-9-_]" (line-end-position))
-        (setq end (point))
-        (backward-char)
-        (re-search-backward "[^A-Za-z0-9-_]" (line-beginning-position))
-        (forward-char)
-        (setq start (point))
+        (if (re-search-forward "[^A-Za-z0-9-_]" (line-end-position) t)
+            (progn
+              (backward-char)
+              (setq end (point)))
+          (setq end (line-end-position)))
+        (if (re-search-backward "[^A-Za-z0-9-_]" (line-beginning-position) t)
+            (progn
+              (forward-char)
+              (setq start (point)))
+          (setq start (line-beginning-position)))
         (setq currently-using-underscores-p
               (progn
                 (goto-char start)
