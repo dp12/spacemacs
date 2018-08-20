@@ -456,15 +456,19 @@ C-x C-l."
      (setq company-show-numbers t)
 ))
 
+;; Test case:
+;; flip-123dash-underscore[hi-there]
 (defun flip-dash-underscore ()
   "Toggle between dash and underscore for the symbol at point."
   (interactive)
     (let* (start end currently-using-underscores-p)
       (save-excursion
-        (re-search-forward "[[:space:]()]" (line-end-position))
+        ;; Alternate regex:
+        ;; (re-search-forward "[\]\[[:space:](){}<>]")
+        (re-search-forward "[^A-Za-z0-9-_]" (line-end-position))
         (setq end (point))
         (backward-char)
-        (re-search-backward "[[:space:]()]")
+        (re-search-backward "[^A-Za-z0-9-_]" (line-beginning-position))
         (forward-char)
         (setq start (point))
         (setq currently-using-underscores-p
