@@ -893,6 +893,7 @@ lines downward first."
     "W"  'spacemacs/workspaces-transient-state/body
     "xx" 'align-regexp
     "xy" 'link-hint-copy-link
+    "-^" 'flip-dash-underscore
     "."  'evilnc-copy-and-comment-lines
     )
 
