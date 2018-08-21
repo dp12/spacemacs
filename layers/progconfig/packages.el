@@ -458,10 +458,10 @@ C-x C-l."
 
 ;; Test case:
 ;; flip-123dash-underscore[hi-there]
-(defun flip-dash-underscore ()
-  "Toggle between dash and underscore for the symbol at point."
+(defun flip-snake-kebab ()
+  "Toggle between underscore and dash for the symbol at point."
   (interactive)
-    (let* (start end currently-using-underscores-p)
+    (let (start end currently-using-snakecase-p)
       (save-excursion
         ;; Alternate regex:
         ;; (re-search-forward "[\]\[[:space:](){}<>]")
@@ -475,11 +475,11 @@ C-x C-l."
               (forward-char)
               (setq start (point)))
           (setq start (line-beginning-position)))
-        (setq currently-using-underscores-p
+        (setq currently-using-snakecase-p
               (progn
                 (goto-char start)
                 (re-search-forward "_" end t)))
-      (if currently-using-underscores-p
+      (if currently-using-snakecase-p
             (replace-string "_" "-" nil start end)
         (replace-string "-" "_" nil start end)))))
 
