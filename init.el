@@ -863,6 +863,7 @@ lines downward first."
     "od" 'org-todo-done
     "ot" 'org-todo-todo
     "oo" 'org-todo
+    "oh" 'org-toggle-heading
     "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
@@ -934,6 +935,9 @@ lines downward first."
         ;; (set-face-attribute 'default nil :font "Consolas" :height 120))))
         (set-face-attribute 'default nil :font "Consolas" :height 120))))
   ;; (add-hook 'org-mode-hook 'set-font-to-office)
+  (add-hook 'evil-org-mode-hook 
+            (lambda ()
+              (evil-org-set-key-theme '(textobjects navigation additional todo heading))))
 
 
   ;; LaTeX
