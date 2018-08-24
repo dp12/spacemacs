@@ -96,7 +96,7 @@ This function should only modify configuration layer settings."
                                       evil-replace-with-register
                                       project-explorer quickrun
                                       evil-string-inflection deadgrep
-                                      evil-fringe-mark
+                                      evil-fringe-mark minimap company-try-hard
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -546,6 +546,7 @@ before packages are loaded."
   ;; (global-set-key (kbd "M-I") 'company-irony)
   (global-set-key (kbd "M-Y") 'company-ycmd)
   (global-set-key (kbd "M-Q") 'company-lsp)
+  (global-set-key (kbd "M-H") 'company-try-hard)
   (global-set-key (kbd "M-G") 'git-complete)
   (define-key yas-minor-mode-map [backtab] 'hippie-expand)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
@@ -856,6 +857,7 @@ lines downward first."
     "ix" 'ido-clear-virtual-buffers
     "mc" 'evil-mc-mode
     "mi" 'evil-matchit-mode
+    "mm" 'minimap-mode
     "ml" 'imenu-list-smart-toggle
     "ms" 'evilmi-select-items
     "ma" 'mu4e-alert-update-mail-count-interactive
