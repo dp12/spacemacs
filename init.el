@@ -767,7 +767,7 @@ lines downward first."
   (ivy-set-actions
    'counsel-M-x
    '(("y" kill-new "copy name")
-     ("h" describe-function "help")))
+     ("h" (lambda (x) (describe-function (intern x))) "help")))
 
   (setq ivy-re-builders-alist
         '(
