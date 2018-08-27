@@ -904,6 +904,7 @@ lines downward first."
   ;; Org-mode
   (require 'org-drill)
   (require 'org-mouse)
+  (setq org-startup-indented t)
   (setq org-bullets-bullet-list '("◎" "◉" "○" "✎" "†" "■"))
   ;;✇✉✂▯✎⇘➜▲ ∇☰⚠☢
   ;; (setq org-bullets-bullet-list '("⌘" "▶" "▲" "⇨")) ► ∗
