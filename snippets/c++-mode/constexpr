@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: constexpr
+# key: cex
+# --
+constexpr $0
