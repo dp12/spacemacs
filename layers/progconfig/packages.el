@@ -456,8 +456,37 @@ C-x C-l."
      (setq company-show-numbers t)
 ))
 
+;;(act-on-symbol-at-point 'flip-snake-kebab-region)
+(defun act-on-symbol-at-point (func &rest r)
+  (let (start end currently-using-snakecase-p)
+    (save-excursion
+      ;; Alternate regex:
+      ;; (re-search-forward "[\]\[[:space:](){}<>]")
+      (if (re-search-forward "[^A-Za-z0-9-_]" (line-end-position) t)
+          (progn
+            (backward-char)
+            (setq end (point)))
+        (setq end (line-end-position)))
+      (if (re-search-backward "[^A-Za-z0-9-_]" (line-beginning-position) t)
+          (progn
+            (forward-char)
+            (setq start (point)))
+        (setq start (line-beginning-position))))
+    (apply func start end r)
+  ))
 ;; Test case:
 ;; flip-123dash-underscore[hi-there]
+(defun flip-snake-kebab-region (start end)
+  (save-excursion
+    (let (currently-using-snakecase-p)
+      (setq currently-using-snakecase-p
+            (progn
+              (goto-char start)
+              (re-search-forward "_" end t)))
+    (if currently-using-snakecase-p
+        (replace-string "_" "-" nil start end)
+      (replace-string "-" "_" nil start end)))))
+
 (defun flip-snake-kebab ()
   "Toggle between underscore and dash for the symbol at point."
   (interactive)
