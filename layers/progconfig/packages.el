@@ -174,7 +174,9 @@ which require an initialization must be listed explicitly in the list.")
   "Initialize lsp-mode"
   (use-package lsp-mode
     :config
+    (add-hook 'c-mode-hook 'lsp-cquery-enable)
     (add-hook 'c++-mode-hook 'lsp-cquery-enable)
+    (add-hook 'python-mode-hook 'lsp-python-enable)
     (spacemacs|diminish lsp-mode "Ⓛ")
     ;; (with-eval-after-load 'lsp-mode
     ;;   (require 'lsp-flycheck))
