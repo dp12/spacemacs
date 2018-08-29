@@ -97,6 +97,7 @@ This function should only modify configuration layer settings."
                                       project-explorer quickrun
                                       evil-string-inflection deadgrep
                                       evil-fringe-mark minimap company-try-hard
+                                      (evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase"))
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -661,6 +662,9 @@ lines downward first."
   (setq-default left-fringe-width 16)
   (setq-default evil-fringe-mark-side 'left-fringe)
   (spacemacs|diminish global-evil-fringe-mark-mode)
+
+  ;; Evil briefcase
+  (evil-briefcase-mode 1)
 
   ;; Magit
   (with-eval-after-load 'magit
