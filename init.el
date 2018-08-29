@@ -875,6 +875,7 @@ lines downward first."
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
     "mf" 'magit-find-file
+    "mp" 'magit-file-popup
     "rh" 'vc-region-history
     "su" 'string-inflection-underscore
     "sl" 'sort-lines
