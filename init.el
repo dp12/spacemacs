@@ -812,11 +812,11 @@ lines downward first."
     "ak" 'avy-kill-whole-line
     "ar" 'avy-copy-region
     "ay" 'avy-copy-line
+    "qa" 'anzu-query-replace-regexp
     "dm" 'delete-matching-lines
     "bx" 'ace-swap-window
     "bk" (kbd "C-x k")
     "bl" 'list-bookmarks
-    "ci" 'copy-full-include
     "ed" 'ediff-buffers
     "er" 'evil-show-registers
     "em" 'evil-show-marks
