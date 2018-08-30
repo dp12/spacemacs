@@ -74,6 +74,7 @@ Each entry is either:
       mu4e-confirm-quit nil)
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
 (add-hook 'message-mode-hook 'turn-on-orgstruct++)
+(add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
 
 
 (defun my-mu4e-action-view-with-xwidget (msg)
