@@ -429,17 +429,25 @@ C-x C-l."
       (end-of-buffer)
       (insert "#endif /* " header-name " */"))))
 
+(defun insert-period ()
+  (interactive)
+  (save-excursion
+    (end-of-line)
+    (when (/= (char-before) ?.) (insert "."))
+    (evil-escape)))
+
 (defun insert-c-terminator ()
   (interactive)
   (save-excursion
     (end-of-line)
-    (when (/= (char-before) 59) (insert ";"))
+    (when (/= (char-before) ?\;) (insert ";"))
       (evil-escape)))
+
 
 (defun insert-function-call ()
   (interactive)
   (end-of-line)
-  (when (/= (char-before) 59)
+  (when (/= (char-before) ?\;)
     (insert "();")
     (backward-char)
     (evil-escape)))
@@ -450,6 +458,14 @@ C-x C-l."
   (beginning-of-line)
   (insert "#endif\n")
   (previous-line))
+
+(defun insert-arrow-or-replace-period ()
+  (interactive)
+  (if (= (char-after) ?.)
+      (delete-char 1)
+    (when (not (string= evil-state "insert"))
+      (forward-char 1)))
+  (insert "->"))
 
 ;; Company
 (eval-after-load 'company
@@ -564,6 +580,7 @@ C-x C-l."
             (define-key ggtags-navigation-map (kbd "M-<down>") 'ggtags-navigation-next-file)
             (define-key evil-normal-state-map (kbd "M-<left>") 'ggtags-prev-mark)
             (define-key evil-normal-state-map (kbd "M-<right>") 'ggtags-next-mark)
+            (local-set-key (kbd "C-M->") 'insert-period)
             (local-set-key (kbd "C-M-;") 'insert-c-terminator)
             (local-set-key (kbd "C-M-:") 'insert-function-call)
             ;; (spacemacs/toggle-fill-column-indicator-on)
@@ -581,6 +598,7 @@ C-x C-l."
             (setq c-default-style "linux"
                   c-basic-offset 4)
             (local-set-key [tab] 'tab-indent-or-complete)
+            (setq dumb-jump-force-searcher 'rg)
             ))
 (add-hook 'spacemacs-jump-handlers-c-mode 'dumb-jump-go)
 (add-hook 'spacemacs-jump-handlers-c-mode 'ggtags-find-tag-dwim)
