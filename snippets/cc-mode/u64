@@ -1,4 +1,4 @@
 # name: uint64_t
 # key: u64
 # --
-uint64_t$0
+uint64_t $0

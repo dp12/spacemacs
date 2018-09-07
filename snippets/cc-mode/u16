@@ -1,4 +1,4 @@
 # name: uint16_t
 # key: u16
 # --
-uint16_t$0
+uint16_t $0
