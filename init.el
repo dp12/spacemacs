@@ -101,6 +101,7 @@ This function should only modify configuration layer settings."
                                       evil-string-inflection deadgrep
                                       evil-fringe-mark minimap company-try-hard
                                       (evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase"))
+                                      poet-theme
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
