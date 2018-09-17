@@ -713,7 +713,9 @@ lines downward first."
                                                        (let ((current-prefix-arg '(4)))
                                                          (call-interactively 'magit-diff-visit-file))))
     (setq magit-stage-all-confirm nil)
-    (setq magit-unstage-all-confirm nil))
+    (setq magit-unstage-all-confirm nil)
+    (add-hook 'magit-mode-hook (lambda () (evil-briefcase-mode 0))))
+
   (defun magit-yank ()
     (interactive)
     (evil-yank)
