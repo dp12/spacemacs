@@ -822,7 +822,8 @@ lines downward first."
           (ivy-switch-buffer . ivy--regex-fuzzy)
           (t . ivy--regex-plus)))
   ;; automatically start looking for functions in counsel imenu
-  (setq ivy-initial-inputs-alist '((counsel-imenu . "Functions: ")))
+  (setq ivy-initial-inputs-alist '((counsel-imenu . "Function ")))
+  (add-hook 'imenu-after-jump-hook #'recenter-top-bottom)
 
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
   (global-set-key (kbd "M-x") 'counsel-M-x)
