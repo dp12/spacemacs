@@ -906,6 +906,7 @@ lines downward first."
     "ou" 'org-previous-visible-heading
     "og" 'counsel-org-goto
     "oh" 'org-toggle-heading
+    "oc" 'insert-org-checkbox
     "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit
@@ -980,6 +981,10 @@ lines downward first."
             (lambda ()
               (evil-org-set-key-theme '(textobjects navigation additional todo heading))))
 
+  (defun insert-org-checkbox ()
+    (interactive)
+    (back-to-indentation)
+    (insert "- [ ] "))
 
   ;; LaTeX
   (cond
