@@ -538,6 +538,17 @@ C-x C-l."
   (ggtags-setup-libpath-search 'reference name)
   (ggtags-find-tag 'reference "--" (concat (shell-quote-argument name) " | grep '\\.h\\|hpp:'")))
 
+(defun destructive-narrow-to-regexp ()
+  (interactive)
+  (read-only-mode -1)
+  (let ((regexp (read-regexp "Narrow regex: ")))
+    (save-excursion
+      (beginning-of-buffer)
+      (delete-non-matching-lines regexp)))
+  (read-only-mode 1))
+(define-key ripgrep-search-mode-map (kbd "x") (lambda () (interactive) (destructive-narrow-to-regexp)))
+(define-key ggtags-global-mode-map (kbd "x") (lambda () (interactive) (destructive-narrow-to-regexp)))
+
 ;; Use tab to do yasnippet expansion, company-complete, or tab indent
 (defun check-expansion ()
   (save-excursion
