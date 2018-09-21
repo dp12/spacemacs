@@ -13,17 +13,19 @@
 (defvar progconfig-packages
   '(
     ;; package progconfigs go here
+    (cquery :location local)
+    (parrot :location local)
+    company-irony
+    company-lsp
     corral
     dtrt-indent
-    irony
-    company-irony
-    ;; rtags
     evil-multiedit
-    (cquery :location local)
-    lsp-mode
-    company-lsp
-    lsp-ui
+    forth-mode
     gxref
+    irony
+    lsp-mode
+    lsp-ui
+    ;; rtags
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -618,7 +620,8 @@ C-x C-l."
 
 ;; Forth
 (add-to-list 'load-path "~/.spacemacs.d/layers/progconfig/")
-;; (require 'gforth)
+(defun progconfig/init-forth-mode ()
+  (use-package forth-mode))
 (add-to-list 'auto-mode-alist '("\\.eForth\\'" . forth-mode))
 
 ;; Intel Hex mode
