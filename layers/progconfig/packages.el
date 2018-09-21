@@ -545,11 +545,14 @@ C-x C-l."
   (read-only-mode -1)
   (let ((regexp (read-regexp "Narrow regex: ")))
     (save-excursion
-      (beginning-of-buffer)
+      ;; (beginning-of-buffer)
+      (goto-line 5) ;; don't delete search command
       (delete-non-matching-lines regexp)))
   (read-only-mode 1))
-(define-key ripgrep-search-mode-map (kbd "x") (lambda () (interactive) (destructive-narrow-to-regexp)))
-(define-key ggtags-global-mode-map (kbd "x") (lambda () (interactive) (destructive-narrow-to-regexp)))
+(with-eval-after-load "ripgrep"
+  (define-key ripgrep-search-mode-map (kbd "x") (lambda () (interactive) (destructive-narrow-to-regexp))))
+(with-eval-after-load "ggtags"
+  (define-key ggtags-global-mode-map (kbd "x") (lambda () (interactive) (destructive-narrow-to-regexp))))
 
 ;; Use tab to do yasnippet expansion, company-complete, or tab indent
 (defun check-expansion ()
