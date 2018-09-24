@@ -540,19 +540,26 @@ C-x C-l."
   (ggtags-setup-libpath-search 'reference name)
   (ggtags-find-tag 'reference "--" (concat (shell-quote-argument name) " | grep '\\.h\\|hpp:'")))
 
-(defun destructive-narrow-to-regexp ()
+(defun narrow-search-buffer-to-regexp (&optional regexp)
+  (interactive
+   (list (read-regexp "Narrow regex: ")))
+  (buffer-enable-undo)
+  (read-only-mode -1)
+  (save-excursion
+    (goto-line 5) ;; don't delete search command
+    (delete-non-matching-lines regexp))
+  (read-only-mode 1))
+(defun narrow-search-buffer-undo ()
   (interactive)
   (read-only-mode -1)
-  (let ((regexp (read-regexp "Narrow regex: ")))
-    (save-excursion
-      ;; (beginning-of-buffer)
-      (goto-line 5) ;; don't delete search command
-      (delete-non-matching-lines regexp)))
+  (undo)
   (read-only-mode 1))
 (with-eval-after-load "ripgrep"
-  (define-key ripgrep-search-mode-map (kbd "x") (lambda () (interactive) (destructive-narrow-to-regexp))))
+  (define-key ripgrep-search-mode-map (kbd "x") 'narrow-search-buffer-to-regexp)
+  (define-key ripgrep-search-mode-map (kbd "u") 'narrow-search-buffer-undo))
 (with-eval-after-load "ggtags"
-  (define-key ggtags-global-mode-map (kbd "x") (lambda () (interactive) (destructive-narrow-to-regexp))))
+  (define-key ggtags-global-mode-map (kbd "x") 'narrow-search-buffer-to-regexp)
+  (define-key ggtags-global-mode-map (kbd "u") 'narrow-search-buffer-undo))
 
 ;; Use tab to do yasnippet expansion, company-complete, or tab indent
 (defun check-expansion ()
