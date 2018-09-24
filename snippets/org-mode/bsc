@@ -1,5 +1,5 @@
-# name: C begin src
-# key: cbs
+# name: begin src C
+# key: bsc
 # --
 #+begin_src C
 $0

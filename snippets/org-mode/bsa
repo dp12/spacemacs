@@ -1,0 +1,6 @@
+# name: begin src asm
+# key: bsa
+# --
+#+begin_src asm
+$0
+#+end_src
