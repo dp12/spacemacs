@@ -598,7 +598,7 @@ C-x C-l."
             ;; ggtags breaks iedit unless the below is nil
             (setq ggtags-highlight-tag nil)
             (ggtags-mode t)
-            (diminish 'ggtags-mode)
+            (spacemacs|diminish ggtags-mode ⓖ)
             (define-key ggtags-navigation-map (kbd "M-<up>") 'ggtags-navigation-previous-file)
             (define-key ggtags-navigation-map (kbd "M-<down>") 'ggtags-navigation-next-file)
             (define-key evil-normal-state-map (kbd "M-<left>") 'ggtags-prev-mark)

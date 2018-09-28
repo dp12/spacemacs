@@ -905,7 +905,7 @@ lines downward first."
     "ma" 'mu4e-alert-update-mail-count-interactive
     "mu" 'mu4e-alert-view-unread-mails
     "mj" 'mu4e-jump-to-mail
-    "nx" 'destructive-narrow-to-regexp
+    "nx" 'narrow-search-buffer-to-regexp
     "oi" 'helm-semantic-or-imenu
     "ou" 'org-previous-visible-heading
     "og" 'counsel-org-goto
