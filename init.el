@@ -566,6 +566,8 @@ before packages are loaded."
   (define-key evil-normal-state-map (kbd "C-c <right>") 'windmove-right)
   (define-key evil-normal-state-map (kbd "C-c <down>") 'windmove-down)
   (define-key evil-normal-state-map (kbd "C-c <up>") 'windmove-up)
+  (global-set-key (kbd "M-<down>") 'move-text-down)
+  (global-set-key (kbd "M-<up>") 'move-text-up)
   (global-set-key (kbd "C-M-S-<right>") 'sp-slurp-hybrid-sexp)
   (global-set-key (kbd "C-M-S-<down>") 'sp-push-hybrid-sexp)
   (global-set-key (kbd "C-M-S-<up>") 'sp-transpose-hybrid-sexp)
