@@ -552,13 +552,15 @@ C-x C-l."
 (defun narrow-search-buffer-undo ()
   (interactive)
   (read-only-mode -1)
-  (undo)
+  (if (fboundp 'undo-tree-undo)
+      (undo-tree-undo)
+    (undo))
   (read-only-mode 1))
 
 (defun narrow-search-buffer-redo ()
   (interactive)
   (read-only-mode -1)
-  (if fboundp 'undo-tree-redo
+  (if (fboundp 'undo-tree-redo)
     (undo-tree-redo)
     (redo))
   (read-only-mode 1))
