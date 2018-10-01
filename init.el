@@ -907,7 +907,7 @@ lines downward first."
     "ml" 'imenu-list-smart-toggle
     "ms" 'evilmi-select-items
     "ma" 'mu4e-alert-update-mail-count-interactive
-    "mu" 'mu4e-alert-view-unread-mails
+    "mu" 'mu4e-update-mail-and-index
     "mj" 'mu4e-jump-to-mail
     "nx" 'narrow-search-buffer-to-regexp
     "oi" 'helm-semantic-or-imenu
