@@ -163,6 +163,11 @@ Each entry is either:
 (defun mu4e-alert-update-mail-count-interactive ()
   (interactive)
   (mu4e-alert-update-mail-count-modeline))
+(defun mu4e-update-mail-and-index-wrapper (&optional prefix)
+  (interactive "P")
+  (if prefix
+      (mu4e-update-mail-and-index)
+    (mu4e-update-mail-and-index t)))
 
 (defun mu4e-jump-to-mail ()
   (interactive)
