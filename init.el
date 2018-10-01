@@ -101,7 +101,7 @@ This function should only modify configuration layer settings."
                                       evil-string-inflection deadgrep
                                       evil-fringe-mark minimap company-try-hard
                                       (evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase"))
-                                      poet-theme
+                                      poet-theme package-lint all-the-icons-dired
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -757,7 +757,9 @@ lines downward first."
     (setq dired-dwim-target t)
     (setq diff-hl-dired-mode t)
     (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode t)))
-    (setq dired-listing-switches "--group-directories-first -alh"))
+    (setq dired-listing-switches "--group-directories-first -alh")
+    (spacemacs|diminish all-the-icons-dired-mode)
+    (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
   ;; Start wdired in evil normal mode
   (add-hook 'wdired-mode-hook
