@@ -79,6 +79,7 @@ This function should only modify configuration layer settings."
      semantic
      (spell-checking :variables spell-checking-enable-by-default nil)
      ;; syntax-checking
+     text-editing
      themes-megapack
      version-control
      vinegar

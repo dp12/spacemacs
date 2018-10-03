@@ -51,7 +51,7 @@ Adds special keymappings, using key-chord and hydra.
 
 ### progconfig
 
-Conveniences for everyday programming. Includes corral for paren/bracket wrapping and mode hooks for specific languages.
+Configurations for programming modes and related packages.
 
 ### mail
 
@@ -60,6 +60,10 @@ Setup for using mu4e as a mail client in emacs.
 ### search
 
 Initializes treemacs and dired conveniences.
+
+### text-editing
+
+Useful snippets and packages for text manipulation.
 
 ### custom
 
