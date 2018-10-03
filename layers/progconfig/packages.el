@@ -549,6 +549,17 @@ C-x C-l."
     (goto-line 5) ;; don't delete search command
     (delete-non-matching-lines regexp))
   (read-only-mode 1))
+
+(defun delete-search-buffer-regexp (&optional regexp)
+  (interactive
+   (list (read-regexp "Delete regex: ")))
+  (buffer-enable-undo)
+  (read-only-mode -1)
+  (save-excursion
+    (goto-line 5) ;; don't delete search command
+    (delete-matching-lines regexp))
+  (read-only-mode 1))
+
 (defun narrow-search-buffer-undo ()
   (interactive)
   (read-only-mode -1)
@@ -566,11 +577,13 @@ C-x C-l."
   (read-only-mode 1))
 
 (with-eval-after-load "ripgrep"
-  (define-key ripgrep-search-mode-map (kbd "x") 'narrow-search-buffer-to-regexp)
+  (define-key ripgrep-search-mode-map (kbd "d") 'delete-search-buffer-regexp)
+  (define-key ripgrep-search-mode-map (kbd "X") 'narrow-search-buffer-to-regexp)
   (define-key ripgrep-search-mode-map (kbd "u") 'narrow-search-buffer-undo)
   (define-key ripgrep-search-mode-map (kbd "C-r") 'narrow-search-buffer-redo))
 (with-eval-after-load "ggtags"
-  (define-key ggtags-global-mode-map (kbd "x") 'narrow-search-buffer-to-regexp)
+  (define-key ggtags-global-mode-map (kbd "d") 'delete-search-buffer-regexp)
+  (define-key ggtags-global-mode-map (kbd "X") 'narrow-search-buffer-to-regexp)
   (define-key ggtags-global-mode-map (kbd "u") 'narrow-search-buffer-undo)
   (define-key ggtags-global-mode-map (kbd "C-r") 'narrow-search-buffer-redo))
 
