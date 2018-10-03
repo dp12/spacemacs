@@ -1,21 +1,21 @@
 ## Table of Contents
-* [Overview](spacemacs#-overview)
-* [Installation](spacemacs#-installation)
-* [Custom Keybindings](spacemacs#-custom-keybindings)
-* [Emacs-style Keybindings](spacemacs#-emacs-style-keybindings)
-* [Evil-style Keybindings](spacemacs#-evil-style Keybindings)
-* [Layers](spacemacs#-layers)
+* [Overview](https://github.com/dp12/spacemacs#overview)
+* [Installation](https://github.com/dp12/spacemacs#installation)
+* [Custom Keybindings](https://github.com/dp12/spacemacs#custom-keybindings)
+* [Emacs-style Keybindings](https://github.com/dp12/spacemacs#emacs-style-keybindings)
+* [Evil-style Keybindings](https://github.com/dp12/spacemacs#evil-style-keybindings)
+* [Layers](https://github.com/dp12/spacemacs#layers)
 
-## <a name="Overview"/> Overview
+## Overview
 This is a custom spacemacs configuration, optimized for C/C++ development. Features company-irony for completion and various hydra conveniences.
 
-## <a name="Installation"/> Installation
+## Installation
 To install, git clone the repository:
 
 `git clone https://github.com/dp12/spacemacs.git ~/.spacemacs.d`
 
-## <a name="Custom Keybindings"/> Custom Keybindings
-### <a name="Emacs-style Keybindings"/> Emacs-style Keybindings
+## Custom Keybindings
+### Emacs-style Keybindings
 Keybinding         | Description
 -------------------|------------------------------------------------------------
 <kbd>vv</kbd>      | other-window. Key-chord for switching to the other window; a much faster and ergonomic way of doing `C-x o`.
@@ -32,7 +32,7 @@ Keybinding         | Description
 <kbd>C-c n</kbd>   | hydra-git-gutter+. Go to the next git-gutter+ hunk. Very useful for viewing and staging your unstaged changes in a file. Use `i` to show hunks inline, `s` to stage hunks, and `v` to revert hunks.
 <kbd>M-0</kbd>     | corral-parentheses-forward. Wrap whatever symbol your cursor is on in parentheses. To "wrap-at-point" from your cursor position to the end of the word, use `C-M-0`.
 
-### <a name="Evil-style Keybindings"/> Evil-style Keybindings
+### Evil-style Keybindings
 Keybinding         | Description
 -------------------|------------------------------------------------------------
 <kbd>n</kbd>       | [avy](https://github.com/abo-abo/avy). With avy, press any character that you want your cursor jump to on the screen and then press the corresponding character that shows up. Once activated, lets you jump anywhere on your screen in usually two keystrokes.
@@ -44,7 +44,7 @@ Keybinding         | Description
 <kbd>SPC b k</kbd> | hydra-buffer-kill. Launch a special hydra for killing buffers quickly.
 
 
-## <a name="Layers"/> Layers
+## Layers
 ### keymap
 
 Adds special keymappings, using key-chord and hydra.
