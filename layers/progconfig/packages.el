@@ -210,7 +210,10 @@ which require an initialization must be listed explicitly in the list.")
   (define-key ggtags-global-mode-map (kbd "d") 'delete-search-buffer-regexp)
   (define-key ggtags-global-mode-map (kbd "X") 'narrow-search-buffer-to-regexp)
   (define-key ggtags-global-mode-map (kbd "u") 'narrow-search-buffer-undo)
-  (define-key ggtags-global-mode-map (kbd "C-r") 'narrow-search-buffer-redo))
+  (define-key ggtags-global-mode-map (kbd "C-r") 'narrow-search-buffer-redo)
+  ;; turn off file path abbreviations
+  (add-hook 'ggtags-mode-hook (lambda () (ggtags-navigation-visible-mode nil))))
+
 
 ;; Use tab to do yasnippet expansion, company-complete, or tab indent
 (defun check-expansion ()
