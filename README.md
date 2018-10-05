@@ -18,12 +18,12 @@ To install, git clone the repository:
 
 Name             | Description
 -----------------|------------------------------------------------------------
-**keymap**       | adds special keymappings, using key-chord and hydra.
-**progconfig**   | configurations for programming modes and related packages.
-**mail**         | setup for using mu4e as a mail client in emacs.
-**search**       | initializes packages for search and navigation, e.g. dumb-jump, treemacs, and dired.
-**text-editing** | useful snippets and packages for text manipulation.
-**custom**       | personal packages and configurations. Comment out in dotspacemacs-configuration-layers if unused.
+**keymap**       | Adds special keymappings, using key-chord and hydra.
+**progconfig**   | Configurations for programming modes and related packages.
+**mail**         | Setup for using mu4e as a mail client in emacs.
+**search**       | Initializes packages for search and navigation, e.g. dumb-jump, treemacs, and dired.
+**text-editing** | Useful snippets and packages for text manipulation.
+**custom**       | Personal packages and configurations. Comment out in dotspacemacs-configuration-layers if unused.
 
 ## Custom Keybindings
 This is a non-comprehensive list of some useful keybindings in this spacemacs configuration.
