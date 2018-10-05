@@ -16,7 +16,7 @@ To install, git clone the repository:
 
 ## Layers
 
-Layer            | Description
+Name             | Description
 -----------------|------------------------------------------------------------
 **keymap**       | adds special keymappings, using key-chord and hydra.
 **progconfig**   | configurations for programming modes and related packages.
