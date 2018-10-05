@@ -29,7 +29,7 @@ Setup for using mu4e as a mail client in emacs.
 
 ### search
 
-Initializes treemacs and dired conveniences.
+Initializes packages for search and navigation, e.g. dumb-jump, treemacs, and dired.
 
 ### text-editing
 
