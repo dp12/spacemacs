@@ -212,7 +212,7 @@ which require an initialization must be listed explicitly in the list.")
   (define-key ggtags-global-mode-map (kbd "u") 'narrow-search-buffer-undo)
   (define-key ggtags-global-mode-map (kbd "C-r") 'narrow-search-buffer-redo)
   ;; turn off file path abbreviations
-  (add-hook 'ggtags-mode-hook (lambda () (ggtags-navigation-visible-mode nil))))
+  (add-hook 'ggtags-global-mode-hook (lambda () (ggtags-navigation-visible-mode nil))))
 
 
 ;; Use tab to do yasnippet expansion, company-complete, or tab indent
