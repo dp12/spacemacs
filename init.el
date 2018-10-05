@@ -93,10 +93,10 @@ This function should only modify configuration layer settings."
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(mode-icons spaceline-all-the-icons
-                                      visual-regexp-steroids dumb-jump rtags
+                                      visual-regexp-steroids rtags
                                       color-theme-solarized zerodark-theme
                                       atom-one-dark-theme projectile-ripgrep ag
-                                      helm-ag helm-gtags evil-lion cedit
+                                      helm-ag evil-lion cedit
                                       evil-replace-with-register
                                       project-explorer quickrun
                                       evil-string-inflection deadgrep
