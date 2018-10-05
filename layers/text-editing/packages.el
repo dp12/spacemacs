@@ -66,6 +66,7 @@ Each entry is either:
 (defun text-editing/init-corral ()
   "Initialize corral"
   (use-package corral
+    :defer t
     :init
     (progn
       (defun corral-at-point (corral-command)
@@ -100,13 +101,13 @@ Each entry is either:
     ))
 
 (defun text-editing/init-dtrt-indent ()
-  (use-package dtrt-indent)
-  )
+  (use-package dtrt-indent :defer t))
 
 (defun text-editing/init-evil-multiedit ()
   "Initialize evil-multiedit"
   (use-package evil-multiedit
     :config
+    :defer t
     (evil-multiedit-default-keybinds)
     ))
 
@@ -115,6 +116,7 @@ Each entry is either:
   "Initialize parrot mode"
   (use-package parrot
     :config
+    :defer t
     (setq parrot-rotate-dict
           '(
             (:rot ("begin" "end") :caps t :upcase t)
