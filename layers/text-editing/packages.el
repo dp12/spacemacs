@@ -491,4 +491,10 @@ C-x C-l."
             (replace-string "_" "-" nil start end)
         (replace-string "-" "_" nil start end)))))
 
+;; yasnippet
+(defun yas-recompile-and-reload-all ()
+  (interactive)
+  (yas/recompile-all)
+  (yas/reload-all))
+
 ;;; packages.el ends here
