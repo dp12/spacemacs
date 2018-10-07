@@ -106,8 +106,8 @@ Each entry is either:
 (defun text-editing/init-evil-multiedit ()
   "Initialize evil-multiedit"
   (use-package evil-multiedit
-    :config
     :defer t
+    :config
     (evil-multiedit-default-keybinds)
     ))
 
@@ -115,8 +115,8 @@ Each entry is either:
 (defun text-editing/init-parrot ()
   "Initialize parrot mode"
   (use-package parrot
-    :config
     :defer t
+    :config
     (setq parrot-rotate-dict
           '(
             (:rot ("begin" "end") :caps t :upcase t)
