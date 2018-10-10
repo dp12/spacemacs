@@ -385,6 +385,19 @@ C-x C-l."
 ;;     (when (/= (char-before) ?\;) (insert ";"))
 ;;       (evil-escape)))
 
+(defun toggle-inline-string (string)
+  (unless (delete-inline-string string)
+    (insert-string-without-dup string)))
+
+(defun delete-inline-string (string)
+  (save-excursion
+    (end-of-line)
+    (if (search-backward string (line-beginning-position) t)
+        (progn
+          (delete-region (match-beginning 0) (match-end 0))
+          t)
+      nil)))
+
 (defun insert-string-without-dup (string)
   (interactive)
   (end-of-line)
@@ -404,15 +417,15 @@ C-x C-l."
 
 (defun insert-org-checkbox ()
   (interactive)
-  (insert-string-without-dup "- [ ]"))
+  (toggle-inline-string "- [ ]"))
 
 (defun insert-c-terminator ()
   (interactive)
-  (insert-string-without-dup ";"))
+  (toggle-inline-string ";"))
 
 (defun insert-function-call ()
   (interactive)
-  (insert-string-without-dup "();"))
+  (toggle-inline-string "();"))
 
 (defun insert-endif ()
   (interactive)
