@@ -102,7 +102,8 @@ This function should only modify configuration layer settings."
                                       evil-string-inflection deadgrep
                                       evil-fringe-mark minimap company-try-hard
                                       (evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase"))
-                                      poet-theme package-lint all-the-icons-dired
+                                      poet-theme package-lint flycheck-package all-the-icons-dired
+                                      tabbar tabbar-ruler
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -1012,6 +1013,19 @@ lines downward first."
   (cond
    ((spacemacs/system-is-mac) (setq TeX-view-program-selection '((output-pdf "Skim"))))
    ((spacemacs/system-is-linux) (setq TeX-view-program-selection '((output-pdf "Zathura")))))
+
+  ;; Tabbar
+  (setq tabbar-ruler-global-tabbar t)     ; get tabbar
+  (setq tabbar-ruler-global-ruler nil)    ; get global ruler
+  (setq tabbar-ruler-popup-menu nil)      ; get popup menu
+  (setq tabbar-ruler-popup-toolbar nil)   ; get popup toolbar
+  (setq tabbar-ruler-popup-scrollbar nil) ; show scroll-bar on mouse-move
+  (setq tabbar-ruler-style 'firefox-circle)
+  (require 'tabbar-ruler)
+  (add-hook 'persp-mode-hook (lambda ()
+                               (setq tabbar-buffer-list-function #'tabbar-ruler-tabbar-buffer-list)))
+  (define-key evil-normal-state-map (kbd "g t") 'tabbar-forward-tab)
+  (define-key evil-normal-state-map (kbd "g T") 'tabbar-backward-tab)
 )
 
 ;; Save off custom settings to custom.el
