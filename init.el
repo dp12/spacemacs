@@ -991,11 +991,6 @@ lines downward first."
             (lambda ()
               (evil-org-set-key-theme '(textobjects navigation additional todo heading))))
 
-  (defun insert-org-checkbox ()
-    (interactive)
-    (back-to-indentation)
-    (insert "- [ ] "))
-
   ;; LaTeX
   (cond
    ((string-equal system-type "darwin")
