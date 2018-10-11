@@ -117,6 +117,10 @@ Each entry is either:
   (use-package parrot
     :defer t
     :config
+    (global-set-key (kbd "C-c p") 'parrot-rotate-prev-word-at-point)
+    (global-set-key (kbd "C-c n") 'parrot-rotate-next-word-at-point)
+    (define-key evil-normal-state-map (kbd "[r") 'parrot-rotate-prev-word-at-point)
+    (define-key evil-normal-state-map (kbd "]r") 'parrot-rotate-next-word-at-point)
     (setq parrot-rotate-dict
           '(
             (:rot ("begin" "end") :caps t :upcase t)
