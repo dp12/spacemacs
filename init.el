@@ -994,7 +994,7 @@ lines downward first."
   ;; (add-hook 'org-mode-hook 'set-font-to-office)
   (add-hook 'evil-org-mode-hook
             (lambda ()
-              (evil-org-set-key-theme '(textobjects navigation additional todo heading))))
+              (evil-org-set-key-theme '(textobjects navigation additional todo))))
 
   ;; LaTeX
   (cond
