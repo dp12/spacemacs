@@ -975,6 +975,11 @@ lines downward first."
           ("✔ DONE"  . (:inherit org-todo :foreground "green2"))
           ("✘ CANCELED"  . shadow)
           ))
+  (setq org-src-fontify-natively t)
+  ;; Use middle dot instead of "-" list markers
+  (font-lock-add-keywords 'org-mode
+                          '(("^ *\\([-]\\) "
+                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
   (defun leuven-set-font-to-office ()
     (interactive)
