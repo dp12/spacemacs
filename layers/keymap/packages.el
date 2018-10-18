@@ -87,6 +87,7 @@ which require an initialization must be listed explicitly in the list.")
     "Kill Buffer"
     ("k" (lambda () (interactive) (kill-buffer nil)) "assassinate buffer" :color red)
     ("K" kill-buffer "kill buffer")
+    ("d" kill-dired-buffers "kill dired buffers")
     ("x" (lambda () (interactive) (kill-buffer nil)) "assassinate buffer" :color blue)
     ("q" nil "quit"))
   (defhydra hydra-org (global-map "C-c o" :color red :columns 3)
