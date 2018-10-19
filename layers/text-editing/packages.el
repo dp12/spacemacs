@@ -369,9 +369,9 @@ C-x C-l."
   (let ((header-name (concat (replace-regexp-in-string "-" "_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))) "_H")))
     (save-excursion
       (beginning-of-line)
-      (insert "#ifndef " header-name "\n#define " header-name)
+      (insert "#ifndef " header-name "\n#define " header-name "\n\n")
       (end-of-buffer)
-      (insert "#endif /* " header-name " */"))))
+      (insert "\n\n#endif /* " header-name " */"))))
 
 (defun insert-period ()
   (interactive)
