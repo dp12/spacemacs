@@ -1027,6 +1027,13 @@ lines downward first."
                                (setq tabbar-buffer-list-function #'tabbar-ruler-tabbar-buffer-list)))
   (define-key evil-normal-state-map (kbd "g t") 'tabbar-forward-tab)
   (define-key evil-normal-state-map (kbd "g T") 'tabbar-backward-tab)
+
+  (desktop-save-mode)
+  (setq desktop-restore-eager 2)
+  (setq desktop-restore-frames nil)
+  (add-to-list 'desktop-globals-to-save 'register-alist)
+  (add-to-list 'desktop-locals-to-save 'evil-markers-alist)
+  (desktop-read)
 )
 
 ;; Save off custom settings to custom.el
