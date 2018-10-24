@@ -601,6 +601,8 @@ before packages are loaded."
   (add-to-list 'warning-suppress-types '(yasnippet backquote-change))
   (set-face-attribute hl-line-face nil :underline "goldenrod" :inherit nil)
   (set-face-background 'hl-line nil)
+  ;; Spacemacs workaround for query-replace failing with "Args out of range"
+  (setq frame-title-format nil)
 
   ;; Spacemacs
   (setq spacemacs-mode-line-minor-modesp nil)
