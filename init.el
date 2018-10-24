@@ -657,8 +657,6 @@ before packages are loaded."
                                                   (dotimes (c n nil) (end-of-line) (insert "\n"))))
   (define-key evil-normal-state-map (kbd "[w") 'eyebrowse-next-window-config)
   (define-key evil-normal-state-map (kbd "]w") 'eyebrowse-prev-window-config)
-  (define-key evil-normal-state-map (kbd "[r") 'hydra-rotate/rotate-word-at-point)
-  (define-key evil-normal-state-map (kbd "]r") 'rotate-word-at-point)
   (define-key evil-normal-state-map (kbd "M-w") 'evil-delete-backward-word)
 
   ;; evil-args
@@ -900,6 +898,7 @@ lines downward first."
     "rf" 'rtags-find-references-at-point
     "rt" 'rtags-taglist
     "rg" 'projectile-ripgrep
+    "rr" 'parrot-start-animation
     "ro" 'deadgrep
     "rc" 'counsel-rg
     "ir" 'ivy-resume

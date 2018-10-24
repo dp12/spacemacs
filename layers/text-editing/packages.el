@@ -34,7 +34,7 @@
     corral
     dtrt-indent
     evil-multiedit
-    (parrot :location local)
+    parrot
     )
   "The list of Lisp packages required by the text-editing layer.
 
@@ -111,14 +111,15 @@ Each entry is either:
     (evil-multiedit-default-keybinds)
     ))
 
-(add-to-list 'load-path "~/parrot")
 (defun text-editing/init-parrot ()
   "Initialize parrot mode"
   (use-package parrot
-    :defer t
+    :defer nil
     :config
+    (parrot-mode)
     (define-key evil-normal-state-map (kbd "[r") 'parrot-rotate-prev-word-at-point)
     (define-key evil-normal-state-map (kbd "]r") 'parrot-rotate-next-word-at-point)
+    (add-hook 'mu4e-index-updated-hook #'parrot-start-animation)
     (setq parrot-rotate-dict
           '(
             (:rot ("begin" "end") :caps t :upcase t)
