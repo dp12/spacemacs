@@ -76,7 +76,8 @@ This function should only modify configuration layer settings."
      ;; (ranger :variables ranger-show-preview t)
      search
      search-engine
-     semantic
+     ;; Prevent byte-compiling when in lisp mode
+     (semantic :disabled-for emacs-lisp)
      (spell-checking :variables spell-checking-enable-by-default nil)
      ;; syntax-checking
      text-editing
