@@ -1,0 +1,6 @@
+# name: begin src C++
+# key: bscpp
+# --
+#+begin_src C++
+$0
+#+end_src
