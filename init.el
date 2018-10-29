@@ -954,6 +954,8 @@ lines downward first."
     "xx" 'align-regexp
     "xy" 'link-hint-copy-link
     "-f" 'flip-snake-kebab
+    "-n" 'snakehump-next-at-point
+    "-p" 'snakehump-next-at-point
     "."  'evilnc-copy-and-comment-lines
     )
 
