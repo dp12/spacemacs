@@ -165,6 +165,7 @@ which require an initialization must be listed explicitly in the list.")
 (defun progconfig/init-forth-mode ()
   (use-package forth-mode :defer t))
 (add-to-list 'auto-mode-alist '("\\.eForth\\'" . forth-mode))
+(add-to-list 'auto-mode-alist '("\\.ino\\'" . arduino-mode))
 
 ;; Intel Hex mode
 (require 'intel-hex-mode)
