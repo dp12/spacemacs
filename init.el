@@ -103,9 +103,10 @@ This function should only modify configuration layer settings."
                                       project-explorer quickrun
                                       evil-string-inflection deadgrep
                                       evil-fringe-mark minimap company-try-hard
-                                      (evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase"))
                                       poet-theme package-lint flycheck-package all-the-icons-dired
-                                      tabbar tabbar-ruler
+                                      tabbar tabbar-ruler arduino-mode
+                                      (evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase"))
+                                      (snakehump :location (recipe :fetcher github :repo "aes/snakehump"))
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
