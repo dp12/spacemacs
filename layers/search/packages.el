@@ -74,6 +74,17 @@ which require an initialization must be listed explicitly in the list.")
     (delete-non-matching-lines regexp))
   (read-only-mode 1))
 
+(defun delete-search-buffer-strings (&optional string)
+  (interactive
+   (list (read-string "Delete string(s): ")))
+  (buffer-enable-undo)
+  (read-only-mode -1)
+  (save-excursion
+    (goto-line 5) ;; don't delete search command
+    ;; Allow caller to specific multiple search strings for deletion
+    (delete-matching-lines (regexp-opt (split-string string " "))))
+  (read-only-mode 1))
+
 (defun delete-search-buffer-regexp (&optional regexp)
   (interactive
    (list (read-regexp "Delete regex: ")))
@@ -101,13 +112,13 @@ which require an initialization must be listed explicitly in the list.")
   (read-only-mode 1))
 
 (with-eval-after-load "ripgrep"
-  (define-key ripgrep-search-mode-map (kbd "d") 'delete-search-buffer-regexp)
+  (define-key ripgrep-search-mode-map (kbd "d") 'delete-search-buffer-strings)
   (define-key ripgrep-search-mode-map (kbd "X") 'narrow-search-buffer-to-regexp)
   (define-key ripgrep-search-mode-map (kbd "u") 'narrow-search-buffer-undo)
   (define-key ripgrep-search-mode-map (kbd "C-r") 'narrow-search-buffer-redo))
 (with-eval-after-load "ggtags"
   (define-key ggtags-global-mode-map (kbd "o") 'ggtags-navigation-visible-mode)
-  (define-key ggtags-global-mode-map (kbd "d") 'delete-search-buffer-regexp)
+  (define-key ggtags-global-mode-map (kbd "d") 'delete-search-buffer-strings)
   (define-key ggtags-global-mode-map (kbd "X") 'narrow-search-buffer-to-regexp)
   (define-key ggtags-global-mode-map (kbd "u") 'narrow-search-buffer-undo)
   (define-key ggtags-global-mode-map (kbd "C-r") 'narrow-search-buffer-redo)
