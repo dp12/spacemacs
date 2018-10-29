@@ -560,7 +560,6 @@ before packages are loaded."
   (setq sp-highlight-wrap-overlay nil)
   (setq sp-highlight-wrap-tag-overlay nil)
   (mode-icons-mode)
-  (setq load-prefer-newer t)
   (setq split-height-threshold nil) ;; use vertical splits only
   (global-set-key (kbd "C-x <down>") 'winner-redo)
   (global-set-key (kbd "C-x <up>") 'winner-undo)
