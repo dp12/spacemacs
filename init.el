@@ -1005,7 +1005,9 @@ lines downward first."
   ;; (add-hook 'org-mode-hook 'set-font-to-office)
   (add-hook 'evil-org-mode-hook
             (lambda ()
-              (evil-org-set-key-theme '(textobjects navigation additional todo))))
+              (evil-org-set-key-theme '(textobjects navigation additional todo))
+              (evil-define-key 'normal evil-org-mode-map
+                (kbd "M-o") (evil-org-define-eol-command org-insert-subheading))))
 
   ;; LaTeX
   (cond
