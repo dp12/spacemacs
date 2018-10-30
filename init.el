@@ -103,10 +103,12 @@ This function should only modify configuration layer settings."
                                       project-explorer quickrun
                                       evil-string-inflection deadgrep
                                       evil-fringe-mark minimap company-try-hard
-                                      poet-theme package-lint flycheck-package all-the-icons-dired
-                                      tabbar tabbar-ruler arduino-mode
+                                      poet-theme package-lint flycheck-package
+                                      all-the-icons-dired tabbar tabbar-ruler
+                                      arduino-mode helpful format-all
                                       (evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase"))
                                       (snakehump :location (recipe :fetcher github :repo "aes/snakehump"))
+                                      (source-peek :location (recipe :fetcher github :repo "iqbalansari/emacs-source-peek"))
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -561,6 +563,9 @@ before packages are loaded."
   (setq sp-highlight-wrap-tag-overlay nil)
   (mode-icons-mode)
   (setq split-height-threshold nil) ;; use vertical splits only
+  (global-set-key (kbd "C-h f") #'helpful-callable)
+  (global-set-key (kbd "C-h v") #'helpful-variable)
+  (global-set-key (kbd "C-h k") #'helpful-key)
   (global-set-key (kbd "C-x <down>") 'winner-redo)
   (global-set-key (kbd "C-x <up>") 'winner-undo)
   (global-set-key (kbd "C-c <left>") 'windmove-left)
