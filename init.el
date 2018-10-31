@@ -699,7 +699,7 @@ lines downward first."
   (add-hook 'prog-mode-hook 'turn-on-evil-mc-mode)
   (define-key evil-normal-state-map (kbd "[m") 'evil-mc-mode)
   (define-key evil-normal-state-map (kbd "[i") 'evil-iedit-state/iedit-mode)
-  (defvar evil-mc-mode-line-prefix "ⓜ"
+  (setq evil-mc-mode-line-prefix "ⓜ"
     "Override of the default mode line string for `evil-mc-mode'.")
   (global-set-key (kbd "C-S-<mouse-1>") 'evil-mc-toggle-cursor-on-click)
   (setq evil-mc-undo-cursors-on-keyboard-quit t)
