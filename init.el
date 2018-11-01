@@ -939,6 +939,7 @@ lines downward first."
     "id" 'insert-doxygen-stub
     "ih" 'insert-header-guards
     "iv" 'insert-void-stub
+    "i0" 'insert-if0
     "ie" 'insert-endif
     "--" 'insert-arrow-or-replace-period
     "w1" 'eyebrowse-switch-to-window-config-1

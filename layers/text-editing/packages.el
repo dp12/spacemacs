@@ -404,12 +404,19 @@ C-x C-l."
   (interactive)
   (toggle-inline-string "();"))
 
+(defun insert-if0 ()
+  (interactive)
+  (save-excursion
+    (previous-line)
+    (end-of-line)
+    (insert "\n#if 0")))
+
 (defun insert-endif ()
   (interactive)
-  (next-line)
-  (beginning-of-line)
-  (insert "#endif\n")
-  (previous-line))
+  (save-excursion
+    (next-line)
+    (beginning-of-line)
+    (insert "#endif\n")))
 
 (defun insert-arrow-or-replace-period ()
   (interactive)
