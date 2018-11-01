@@ -54,9 +54,12 @@ which require an initialization must be listed explicitly in the list.")
 
       ; Special
       (key-chord-define-global "TP" 'org-toggle-pretty-entities)
-      (key-chord-define evil-insert-state-map "kj" 'evil-normal-state)
-      )
-    ))
+      (key-chord-define evil-insert-state-map "kj" 'evil-normal-state))
+    :config
+    ;; Org-mode keybindings
+    (with-eval-after-load 'org-mode
+      (key-chord-define org-mode-map "qg" 'flyspell-buffer)
+      (key-chord-define org-mode-map "qc" 'flyspell-correct-wrapper))))
 
 (with-eval-after-load 'hydra
   (defhydra hydra-git-gutter+ (global-map "C-c")
