@@ -481,6 +481,10 @@ C-x C-l."
             (replace-string "_" "-" nil start end)
         (replace-string "-" "_" nil start end)))))
 
+(defun flyspell-visible()
+  (interactive)
+  (flyspell-region (window-start) (window-end)))
+
 ;; yasnippet
 (defun yas-recompile-and-reload-all ()
   (interactive)
