@@ -935,6 +935,7 @@ lines downward first."
     "su" 'string-inflection-underscore
     "sl" 'sort-lines
     "te" 'treemacs-toggle
+    "Sv" 'flyspell-visible
     "tu" 'untabify
     "tt" 'tabify
     "id" 'insert-doxygen-stub
