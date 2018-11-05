@@ -58,6 +58,7 @@ This function should only modify configuration layer settings."
      gtags
      imenu-list
      ivy
+     lsp
      mail
      markdown
      (mu4e :variables
