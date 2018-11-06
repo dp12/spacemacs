@@ -532,12 +532,16 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (when (string-equal system-type "windows-nt")
     (set-fontset-font t '(#x2680 . #x26FF) (font-spec :family "DejaVu Sans Mono" :size 20))
     (set-fontset-font t '(#x26aa . #x26ac) (font-spec :family "DejaVu Sans Mono" :size 20))
-    (setq-default ispell-program-name "C:/bin/Aspell/bin/aspell.exe")
+    (setq-default ispell-program-name "C:/bin/hunspell/bin/hunspell")
+    (setq ispell-local-dictionary "en_US")
+    (setq ispell-local-dictionary-alist
+         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
     (setq flyspell-issue-message-flag nil)
-    )
+    (defun flyspell-buffer-after-pdict-save (&rest _)
+      (flyspell-buffer))
+    (advice-add 'ispell-pdict-save :after #'flyspell-buffer-after-pdict-save)
   (add-to-list 'load-path "~/.spacemacs.d/themes")
-  (add-to-list 'custom-theme-load-path "~/.spacemacs.d/themes")
-  )
+  (add-to-list 'custom-theme-load-path "~/.spacemacs.d/themes"))
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
