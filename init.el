@@ -874,6 +874,7 @@ lines downward first."
     "bx" 'ace-swap-window
     "bk" (kbd "C-x k")
     "bl" 'list-bookmarks
+    "cq" 'lsp-cquery-enable
     "ed" 'ediff-buffers
     "er" 'evil-show-registers
     "em" 'evil-show-marks
