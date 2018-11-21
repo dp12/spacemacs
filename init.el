@@ -64,7 +64,9 @@ This function should only modify configuration layer settings."
      (mu4e :variables
            mu4e-account-alist t
            mu4e-enable-notifications t
-           mu4e-enable-mode-line t)
+           mu4e-enable-mode-line t
+           mu4e-enable-async-operations t
+           mu4e-use-maildirs-extension t)
      (multiple-cursors :variables multiple-cursors-backend 'evil-mc)
      keymap
      (latex :variables latex-enable-auto-fill nil)
