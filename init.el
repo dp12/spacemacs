@@ -944,6 +944,7 @@ lines downward first."
     "rh" 'vc-region-history
     "su" 'string-inflection-underscore
     "sl" 'sort-lines
+    "Sp" 'shell-pop
     "te" 'treemacs-toggle
     "Sv" 'flyspell-visible
     "tu" 'untabify
