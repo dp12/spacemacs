@@ -619,6 +619,7 @@ before packages are loaded."
   (global-set-key (kbd "M-Y") 'company-ycmd)
   (global-set-key (kbd "M-Q") 'company-lsp)
   (global-set-key (kbd "M-H") 'company-try-hard)
+  (company-prescient-mode)
   (global-set-key (kbd "M-G") 'git-complete)
   (define-key yas-minor-mode-map [backtab] 'hippie-expand)
   (define-key evil-normal-state-map (kbd "M-m") 'back-to-indentation)
