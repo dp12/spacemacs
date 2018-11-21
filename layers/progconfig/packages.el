@@ -13,7 +13,8 @@
 (defvar progconfig-packages
   '(
     ;; package progconfigs go here
-    (cquery :location local)
+    ;; (cquery :location local)
+    ;; cquery
     forth-mode
     ;; irony
     ;; company-irony
