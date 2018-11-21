@@ -49,7 +49,9 @@ This function should only modify configuration layer settings."
      (colors :variables
              colors-enable-nyan-cat-progress-bar t
              nyan-bar-length 8)
-     (c-c++ :variables c-c++-enable-clang-support t)
+     (c-c++ :variables
+            c-c++-backend 'lsp-cquery
+            c-c++-lsp-sem-highlight-rainbow t)
      custom
      deft
      evil-snipe
