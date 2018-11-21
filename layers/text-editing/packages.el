@@ -394,12 +394,12 @@ C-x C-l."
           (setq fill-start (+ i 1))
           (return)))
       (forward-char)
-      (setq replace-str (substring checkbox fill-start (length checkbox)))
+      (setq replace-str (substring full-string fill-start (length full-string)))
       (insert replace-str))))
 
 (defun insert-org-checkbox ()
   (interactive)
-  (toggle-inline-string "- [ ]"))
+  (toggle-inline-string "- [ ]" t))
 
 (defun insert-c-terminator ()
   (interactive)
