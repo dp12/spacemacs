@@ -111,6 +111,8 @@ This function should only modify configuration layer settings."
                                       poet-theme package-lint flycheck-package
                                       all-the-icons-dired tabbar tabbar-ruler
                                       arduino-mode helpful format-all
+                                      ivy-prescient company-prescient ztree
+                                      shell-pop elmacro evil-textobj-syntax
                                       (evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase"))
                                       (snakehump :location (recipe :fetcher github :repo "aes/snakehump"))
                                       (source-peek :location (recipe :fetcher github :repo "iqbalansari/emacs-source-peek"))
