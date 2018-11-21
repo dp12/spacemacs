@@ -1055,6 +1055,7 @@ lines downward first."
   (desktop-save-mode)
   (setq desktop-restore-eager 2)
   (setq desktop-restore-frames nil)
+  (setq desktop-load-locked-desktop t)
   (add-to-list 'desktop-globals-to-save 'register-alist)
   (add-to-list 'desktop-locals-to-save 'evil-markers-alist)
   (desktop-read)
