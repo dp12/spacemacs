@@ -361,9 +361,9 @@ C-x C-l."
 ;;     (when (/= (char-before) ?\;) (insert ";"))
 ;;       (evil-escape)))
 
-(defun toggle-inline-string (string)
+(defun toggle-inline-string (string &optional bti)
   (unless (delete-inline-string string)
-    (insert-string-without-dup string)))
+    (insert-string-without-dup string bti)))
 
 (defun delete-inline-string (string)
   (save-excursion
@@ -374,18 +374,23 @@ C-x C-l."
           t)
       nil)))
 
-(defun insert-string-without-dup (string)
+(defun insert-string-without-dup (string &optional bti)
   (interactive)
   (save-excursion
-    (end-of-line)
+    ;; TODO: go backward char like normal; if any characters match full-string
+    ;; characters, do the filling operation; otherwise, insert at the beginning
+    ;; if option is set; otherwise, insert at end
+    (if bti
+        (back-to-indentation)
+      (end-of-line))
     (backward-char)
     (while (looking-at-p "[[:blank:]]")
       (backward-char))
-    (let ((checkbox string)
+    (let ((full-string string)
           (fill-start nil)
           (replace-str ""))
-      (dotimes (i (length checkbox))
-        (when (= (aref checkbox i) (char-after))
+      (dotimes (i (length full-string))
+        (when (= (aref full-string i) (char-after))
           (setq fill-start (+ i 1))
           (return)))
       (forward-char)
