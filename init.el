@@ -99,20 +99,33 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(mode-icons spaceline-all-the-icons
-                                      visual-regexp-steroids rtags
+   dotspacemacs-additional-packages '(;; Appearance
+                                      mode-icons spaceline-all-the-icons
+                                      all-the-icons-dired minimap tabbar
+                                      tabbar-ruler
+                                      ;; Themes
                                       color-theme-solarized zerodark-theme
-                                      atom-one-dark-theme projectile-ripgrep ag
-                                      helm-ag evil-lion cedit
-                                      evil-replace-with-register
-                                      project-explorer quickrun
-                                      evil-string-inflection deadgrep
-                                      evil-fringe-mark minimap company-try-hard
-                                      poet-theme package-lint flycheck-package
-                                      all-the-icons-dired tabbar tabbar-ruler
-                                      arduino-mode helpful format-all
-                                      ivy-prescient company-prescient ztree
-                                      shell-pop elmacro evil-textobj-syntax
+                                      atom-one-dark-theme poet-theme
+                                      ;; Text-editing tools
+                                      visual-regexp-steroids cedit
+                                      ;; Search tools
+                                      rtags projectile-ripgrep ag helm-ag
+                                      deadgrep ztree
+                                      ;; Evil extensions
+                                      evil-lion evil-replace-with-register
+                                      evil-string-inflection evil-fringe-mark
+                                      evil-textobj-syntax
+                                      ;; Company
+                                      company-try-hard company-prescient
+                                      ;; Programming tools
+                                      shell-pop project-explorer quickrun
+                                      format-all ivy-prescient
+                                      ;; Modes
+                                      arduino-mode
+                                      ;; Elisp programming
+                                      elmacro helpful elsa flycheck-elsa
+                                      package-lint flycheck-package
+                                      ;; Non-MELPA
                                       (evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase"))
                                       (snakehump :location (recipe :fetcher github :repo "aes/snakehump"))
                                       (source-peek :location (recipe :fetcher github :repo "iqbalansari/emacs-source-peek"))
