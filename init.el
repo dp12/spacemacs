@@ -1032,6 +1032,15 @@ lines downward first."
         ;; (set-face-attribute 'default nil :font "Consolas" :height 120))))
         (set-face-attribute 'default nil :font "Consolas" :height 120))))
   ;; (add-hook 'org-mode-hook 'set-font-to-office)
+  (add-to-list 'org-structure-template-alist
+               '("el" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC"))
+  (add-to-list 'org-structure-template-alist
+               '("cs" "#+BEGIN_SRC c\n?\n#+END_SRC"))
+  (add-to-list 'org-structure-template-alist
+               '("cpp" "#+BEGIN_SRC c++\n?\n#+END_SRC"))
+  (add-to-list 'org-structure-template-alist
+               '("py" "#+BEGIN_SRC python\n?\n#+END_SRC"))
+
   (add-hook 'evil-org-mode-hook
             (lambda ()
               (evil-org-set-key-theme '(textobjects navigation additional todo))
