@@ -961,7 +961,7 @@ lines downward first."
     "su" 'string-inflection-underscore
     "sl" 'sort-lines
     "Sp" 'shell-pop
-    "te" 'treemacs-toggle
+    "te" 'treemacs
     "Sv" 'flyspell-visible
     "tu" 'untabify
     "tt" 'tabify
