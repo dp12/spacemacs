@@ -107,7 +107,7 @@ This function should only modify configuration layer settings."
                                       color-theme-solarized zerodark-theme
                                       atom-one-dark-theme poet-theme
                                       ;; Text-editing tools
-                                      visual-regexp-steroids cedit
+                                      visual-regexp-steroids cedit ialign
                                       ;; Search tools
                                       rtags projectile-ripgrep ag helm-ag
                                       deadgrep ztree
@@ -984,6 +984,7 @@ lines downward first."
     "w TAB" 'eyebrowse-last-window-config
     "L"  'spacemacs/workspaces-transient-state/body
     "W"  'spacemacs/workspaces-transient-state/body
+    "xai" 'ialign
     "xx" 'align-regexp
     "xy" 'link-hint-copy-link
     "-f" 'flip-snake-kebab
