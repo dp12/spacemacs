@@ -919,8 +919,7 @@ lines downward first."
     "gB" 'git-timemachine-blame
     "gr" 'ggtags-find-reference
     "gh" 'ggtags-find-declaration
-    "hf" 'helm-for-files
-    "hm" 'helm-man-woman
+    "ha" 'helm-ag
     "hx" 'hexl-mode
     "h." 'highlight-symbol-at-point
     "hr" 'unhighlight-regexp
