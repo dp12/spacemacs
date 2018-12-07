@@ -493,6 +493,23 @@ C-x C-l."
             (replace-string "_" "-" nil start end)
         (replace-string "-" "_" nil start end)))))
 
+;; (defun trim-diff (s)
+;;   (if (string-match "^[+-]" s)
+;;       (replace-match "" t t s)
+;;     s))
+
+;; (defun kill-diff (beg end)
+;;   (interactive "r")
+;;   (kill-new (trim-diff (buffer-substring beg end))))
+
+;; From https://emacs.stackexchange.com/questions/36071/magit-copy-text-from-stage-section-without-character
+(defun copy-diff-region ()
+  (interactive)
+  (deactivate-mark)
+  (let ((text (buffer-substring-no-properties
+               (region-beginning) (region-end))))
+    (kill-new (replace-regexp-in-string "^[\\+\\-]" "" text))))
+
 (defun flyspell-visible()
   (interactive)
   (flyspell-region (window-start) (window-end)))
