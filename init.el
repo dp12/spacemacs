@@ -838,6 +838,8 @@ lines downward first."
   (with-eval-after-load 'helm-semantic
     (push '(c-mode . semantic-format-tag-summarize) helm-semantic-display-style)
     (push '(c++-mode . semantic-format-tag-summarize) helm-semantic-display-style))
+  ;; Use rg as helm-ag backend
+  (setq helm-ag-base-command "rg --no-heading")
 
   ;; Ivy
   (global-set-key "\C-s" 'counsel-grep-or-swiper)
