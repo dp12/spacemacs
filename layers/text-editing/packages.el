@@ -512,6 +512,37 @@ C-x C-l."
 (add-hook 'diff-mode-hook (lambda ()
                             (define-key evil-normal-state-map (kbd "y") 'copy-diff-region)))
 
+(with-eval-after-load "avy"
+  (defun avy-copy-diff-region (arg)
+    "Select two lines and copy the text between them to point.
+
+The window scope is determined by `avy-all-windows' or
+`avy-all-windows-alt' when ARG is non-nil."
+    (interactive "P")
+    (let ((initial-window (selected-window)))
+      (avy-with avy-copy-region
+                (let* ((beg (save-selected-window
+                              (avy--line arg)))
+                       (end (avy--line arg))
+                       (str (replace-regexp-in-string "^[\\+\\-]" ""
+                                                      (buffer-substring-no-properties
+                                                       beg
+                                                       (save-excursion
+                                                         (goto-char end)
+                                                         (line-end-position))))))
+                  (select-window initial-window)
+                  (cond ((eq avy-line-insert-style 'above)
+                         (beginning-of-line)
+                         (save-excursion
+                           (insert str "\n")))
+                        ((eq avy-line-insert-style 'below)
+                         (end-of-line)
+                         (newline)
+                         (save-excursion
+                           (insert str)))
+                        (t
+                         (user-error "Unexpected `avy-line-insert-style'"))))))))
+
 (defun flyspell-visible()
   (interactive)
   (flyspell-region (window-start) (window-end)))
