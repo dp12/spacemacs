@@ -509,6 +509,8 @@ C-x C-l."
   (let ((text (buffer-substring-no-properties
                (region-beginning) (region-end))))
     (kill-new (replace-regexp-in-string "^[\\+\\-]" "" text))))
+(add-hook 'diff-mode-hook (lambda ()
+                            (define-key evil-normal-state-map (kbd "y") 'copy-diff-region)))
 
 (defun flyspell-visible()
   (interactive)
