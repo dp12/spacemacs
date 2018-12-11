@@ -664,7 +664,8 @@ before packages are loaded."
   (setq spaceline-projectile-root-p nil)
   (setq spaceline-purpose-p nil)
   ;; (setq powerline-default-separator 'nil) ;; straight bar
-  (spaceline-compile)
+  ;; (spaceline-compile)
+  (spacemacs|create-align-repeat-x "hex" "0x")
 
   ;; Avy and evil-snipe
   (define-key evil-normal-state-map (kbd "n") 'avy-goto-char-2)
@@ -985,6 +986,7 @@ lines downward first."
     "L"  'spacemacs/workspaces-transient-state/body
     "W"  'spacemacs/workspaces-transient-state/body
     "xai" 'ialign
+    "xax" 'spacemacs/align-repeat-hex
     "xx" 'align-regexp
     "xy" 'link-hint-copy-link
     "-f" 'flip-snake-kebab
