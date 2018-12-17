@@ -723,6 +723,7 @@ lines downward first."
 
   ;; Evil multiple-cursors/Iedit
   (add-hook 'prog-mode-hook 'turn-on-evil-mc-mode)
+  (add-hook 'ivy-occur-grep-mode-hook 'turn-on-evil-mc-mode)
   (define-key evil-normal-state-map (kbd "[m") 'evil-mc-mode)
   (define-key evil-normal-state-map (kbd "[i") 'evil-iedit-state/iedit-mode)
   (setq evil-mc-mode-line-prefix "ⓜ")
