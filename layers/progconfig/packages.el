@@ -159,6 +159,7 @@ which require an initialization must be listed explicitly in the list.")
             (setq c-auto-newline nil)
             (setq c-default-style "linux"
                   c-basic-offset 4)
+            (company-mode t)
             (local-set-key [tab] 'tab-indent-or-complete)))
 
 ;; Forth
