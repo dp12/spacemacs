@@ -51,6 +51,10 @@ This function should only modify configuration layer settings."
              nyan-bar-length 8)
      (c-c++ :variables
             c-c++-backend 'lsp-cquery
+            c-c++-lsp-executable "/usr/local/bin/cquery"
+            ;; c-c++-backend 'lsp-ccls
+            ;; c-c++-lsp-executable "/usr/local/bin/ccls"
+            c-c++-lsp-sem-highlight-method 'font-lock
             c-c++-lsp-sem-highlight-rainbow t)
      custom
      deft
@@ -1087,6 +1091,8 @@ lines downward first."
   (setq desktop-restore-eager 2)
   (setq desktop-restore-frames nil)
   (setq desktop-load-locked-desktop t)
+  (setq desktop-files-not-to-save ".*") ;; don't save any buffers
+  (setq desktop-dirname "~/.emacs.d/")
   (add-to-list 'desktop-globals-to-save 'register-alist)
   (add-to-list 'desktop-locals-to-save 'evil-markers-alist)
   (desktop-read)
