@@ -148,8 +148,10 @@ which require an initialization must be listed explicitly in the list.")
             ;; (spacemacs/toggle-fill-column-indicator-on)
             (dtrt-indent-mode t)
             (spacemacs|diminish dtrt-indent-mode "ⓓ")
-            ;; Use 8 to /* wrap */ a word
-            (push '(?8 . ("/* " . " */")) evil-surround-pairs-alist)
+            (with-eval-after-load "evil-surround"
+              ;; Use 8 to /* wrap */ a word
+              (push '(?8 . ("/* " . " */")) evil-surround-pairs-alist))
+
             ;; Treat _ as PART_OF_A_WORD
             (modify-syntax-entry ?_ "w")
             ;; Indent case labels in switch-case statements
@@ -160,6 +162,9 @@ which require an initialization must be listed explicitly in the list.")
             (setq c-default-style "linux"
                   c-basic-offset 4)
             (company-mode t)
+            (lsp)
+            ;; (setq ccls-sem-highlight-method 'font-lock)
+            ;; (ccls-use-default-rainbow-sem-highlight)
             (local-set-key [tab] 'tab-indent-or-complete)))
 
 ;; Forth
