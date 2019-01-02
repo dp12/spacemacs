@@ -160,8 +160,6 @@ which require an initialization must be listed explicitly in the list.")
                   c-basic-offset 4)
             (company-mode t)
             (lsp)
-            ;; (setq ccls-sem-highlight-method 'font-lock)
-            ;; (ccls-use-default-rainbow-sem-highlight)
             (local-set-key [tab] 'tab-indent-or-complete)))
 
 ;; Forth
