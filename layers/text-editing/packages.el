@@ -405,6 +405,10 @@ C-x C-l."
   (interactive)
   (toggle-inline-string ";"))
 
+(defun insert-comma ()
+  (interactive)
+  (toggle-inline-string ","))
+
 (defun insert-function-call ()
   (interactive)
   (toggle-inline-string "();"))
