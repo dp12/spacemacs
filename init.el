@@ -123,7 +123,7 @@ This function should only modify configuration layer settings."
                                       company-try-hard company-prescient
                                       ;; Programming tools
                                       shell-pop project-explorer quickrun
-                                      format-all ivy-prescient
+                                      format-all emr
                                       ;; Modes
                                       arduino-mode
                                       ;; Elisp programming
@@ -934,7 +934,7 @@ lines downward first."
     "if" 'counsel-recentf
     "ca" 'counsel-linux-app
     "rd" 'rtags-find-symbol-at-point
-    "rf" 'rtags-find-references-at-point
+    "rf" 'emr-show-refactor-menu
     "rt" 'rtags-taglist
     "rg" 'projectile-ripgrep
     "rr" 'parrot-start-animation
