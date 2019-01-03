@@ -403,13 +403,11 @@ C-x C-l."
 
 (defun toggle-org-checkbox ()
   (interactive)
-  (let ((cur-string nil)
-        (cursor (point))
-        (start-point nil)
-        (end-point nil))
-    (save-excursion
-      (back-to-indentation)
-      (setq start-point (point))
+  (save-excursion
+    (back-to-indentation)
+    (let ((cur-string nil)
+          (start-point (point))
+          (end-point nil))
       (end-of-line)
       (setq end-point (point))
       (while (looking-at-p "[[:blank:]]")
@@ -420,7 +418,7 @@ C-x C-l."
             ((string-match-p (regexp-quote "- [") cur-string) (insert " ]"))
             ((string-match-p (regexp-quote "-") cur-string) (insert " [ ]"))
             (t (progn
-                 (goto-char cursor)
+                 (goto-char start-point)
                  (insert "- [ ] ")))))))
 
 (defun insert-c-terminator ()
