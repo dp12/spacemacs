@@ -958,7 +958,7 @@ lines downward first."
     "ou" 'org-previous-visible-heading
     "og" 'counsel-org-goto
     "oh" 'org-toggle-heading
-    "oc" 'insert-org-checkbox
+    "oc" 'toggle-org-checkbox
     "ga" 'projectile-find-other-file-other-window
     "pj" 'project-explorer-toggle
     "gB" 'magit-blame-quit

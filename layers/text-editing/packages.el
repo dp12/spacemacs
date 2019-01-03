@@ -397,9 +397,31 @@ C-x C-l."
       (setq replace-str (substring full-string fill-start (length full-string)))
       (insert replace-str))))
 
-(defun insert-org-checkbox ()
+;; (defun insert-org-checkbox ()
+;;   (interactive)
+;;   (toggle-inline-string "- [ ]" t))
+
+(defun toggle-org-checkbox ()
   (interactive)
-  (toggle-inline-string "- [ ]" t))
+  (let ((cur-string nil)
+        (cursor (point))
+        (start-point nil)
+        (end-point nil))
+    (save-excursion
+      (back-to-indentation)
+      (setq start-point (point))
+      (end-of-line)
+      (setq end-point (point))
+      (while (looking-at-p "[[:blank:]]")
+        (blank-char))
+      (delete-trailing-whitespace (line-beginning-position) (line-end-position))
+      (setq cur-string (buffer-substring-no-properties start-point end-point))
+      (cond ((string-match-p (regexp-quote "- [ ]") cur-string) (replace-regexp (regexp-quote "- [ ]") "" nil start-point end-point))
+            ((string-match-p (regexp-quote "- [") cur-string) (insert " ]"))
+            ((string-match-p (regexp-quote "-") cur-string) (insert " [ ]"))
+            (t (progn
+                 (goto-char cursor)
+                 (insert "- [ ] ")))))))
 
 (defun insert-c-terminator ()
   (interactive)
