@@ -567,16 +567,13 @@ The window scope is determined by `avy-all-windows' or
                         (t
                          (user-error "Unexpected `avy-line-insert-style'"))))))))
 
-;; From https://github.com/magnars/.emacs.d/blob/master/defuns/lisp-defuns.el
-(defun eval-and-replace ()
-  "Replace the preceding sexp with its value."
-  (interactive)
-  (backward-kill-sexp)
-  (condition-case nil
-      (prin1 (eval (read (current-kill 0)))
-             (current-buffer))
-    (error (message "Invalid expression")
-           (insert (current-kill 0)))))
+;; Adapted rom http://irreal.org/blog/?p=297
+(defun eval-and-replace (value)
+  "Evaluate the sexp at point and replace it with its value"
+  (interactive (list (eval-last-sexp nil)))
+  (sp-backward-up-sexp)
+  (sp-kill-sexp)
+  (insert (format "%S" value)))
 
 (defun flyspell-visible()
   (interactive)
