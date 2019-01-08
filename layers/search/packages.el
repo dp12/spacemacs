@@ -59,6 +59,17 @@ which require an initialization must be listed explicitly in the list.")
     :config
     (add-to-list 'xref-backend-functions 'gxref-xref-backend)))
 
+(with-eval-after-load "ggtags"
+  (define-key ggtags-navigation-map (kbd "M-<up>") 'ggtags-navigation-previous-file)
+  (define-key ggtags-navigation-map (kbd "M-<down>") 'ggtags-navigation-next-file)
+  (define-key evil-normal-state-map (kbd "M-<left>") 'ggtags-prev-mark)
+  (define-key evil-normal-state-map (kbd "M-<right>") 'ggtags-next-mark))
+
+(with-eval-after-load "ripgrep"
+  (define-key ripgrep-search-mode-map (kbd "M-<up>") 'compilation-previous-error)
+  (define-key ripgrep-search-mode-map (kbd "M-<down>") 'compilation-next-error))
+
+
 (defun ggtags-find-declaration (name)
   (interactive (list (ggtags-read-tag 'reference current-prefix-arg)))
   (ggtags-setup-libpath-search 'reference name)
