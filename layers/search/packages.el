@@ -202,6 +202,18 @@ which require an initialization must be listed explicitly in the list.")
       (rtags-evil-standard-keybindings 'c-mode)
       (rtags-evil-standard-keybindings 'c++-mode))))
 
+(defun minibuffer-insert (string &optional eol)
+  (save-excursion
+    (if eol
+        (end-of-line)
+      (beginning-of-line))
+    (insert string)))
+
+(with-eval-after-load 'ivy
+  (define-key ivy-minibuffer-map (kbd "C-c h") (lambda () (interactive) (minibuffer-insert "\\.h\\(pp\\)*$" t)))
+  (define-key ivy-minibuffer-map (kbd "C-c c") (lambda () (interactive) (minibuffer-insert "\\.c\\(pp\\)*$" t)))
+  (define-key ivy-minibuffer-map (kbd "C-c p") (lambda () (interactive) (minibuffer-insert "\\.py$" t))))
+
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
 ;; https://github.com/jwiegley/use-package
