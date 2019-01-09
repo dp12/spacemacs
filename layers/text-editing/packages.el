@@ -415,8 +415,9 @@ C-x C-l."
       (delete-trailing-whitespace (line-beginning-position) (line-end-position))
       (setq cur-string (buffer-substring-no-properties start-point end-point))
       (cond ((string-match-p (regexp-quote "- [ ]") cur-string) (replace-regexp (regexp-quote "- [ ]") "" nil start-point end-point))
-            ((string-match-p (regexp-quote "- [") cur-string) (insert " ]"))
-            ((string-match-p (regexp-quote "-") cur-string) (insert " [ ]"))
+            ((string-match-p (regexp-quote "- [X]") cur-string) (replace-regexp (regexp-quote "- [X]") "- [ ]" nil start-point end-point))
+            ((string-match-p (regexp-quote "- [") cur-string) (replace-regexp (regexp-quote "- [") "- [ ]" nil start-point end-point))
+            ((string-match-p (regexp-quote "-") cur-string) (replace-regexp (regexp-quote "-") "- [ ]" nil start-point end-point))
             (t (progn
                  (goto-char start-point)
                  (insert "- [ ] ")))))))
