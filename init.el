@@ -638,6 +638,8 @@ before packages are loaded."
   (set-face-background 'hl-line nil)
   ;; Spacemacs workaround for query-replace failing with "Args out of range"
   (setq frame-title-format nil)
+  ;; Get shell commands to recognize aliases
+  (setq shell-command-switch "-ic")
 
   ;; Spacemacs
   (setq spacemacs-mode-line-minor-modesp nil)
