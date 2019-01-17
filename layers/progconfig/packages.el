@@ -181,7 +181,7 @@ which require an initialization must be listed explicitly in the list.")
 (defun gdb-set-fast-breakpoint ()
   "Insert breakpoint in ~/.gdbinit before line with the 'end #FBB' marker"
   (interactive)
-  (let ((insert-br-cmd  "awk '/end #FBB/ { print \"  %s\"; print; next }1' ~/.gdbinit > ~/.gdbinit.tmp && cp ~/.gdbinit.tmp ~/.gdbinit")
+  (let ((insert-br-cmd  "awk '/#BREAKPOINT_INSERT_MARKER/ { print \"  %s\"; print; next }1' ~/.gdbinit > ~/.gdbinit.tmp && cp ~/.gdbinit.tmp ~/.gdbinit")
         (breakpoint-type (if current-prefix-arg "tb" "b")))
     (shell-command
      (format insert-br-cmd (gdb-get-breakpoint-str breakpoint-type)))))
