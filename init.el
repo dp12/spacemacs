@@ -895,8 +895,8 @@ lines downward first."
 
   ;; Leader keys
   (spacemacs/set-leader-keys
-    "ak" 'avy-kill-region
-    "aK" 'avy-kill-whole-line
+    "ak" 'avy-kill-whole-line
+    "aK" 'avy-kill-region
     "ar" 'avy-copy-diff-region
     "ay" 'avy-copy-line
     "qa" 'anzu-query-replace-regexp
