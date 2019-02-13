@@ -341,6 +341,8 @@ C-x C-l."
 (defun insert-header-guards ()
   (interactive)
   (let ((header-name (concat (replace-regexp-in-string "-" "_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))) "_H")))
+    (when (string= (file-name-extension (buffer-file-name)) "hpp")
+      (setq header-name (concat header-name "PP")))
     (save-excursion
       (beginning-of-line)
       (insert "#ifndef " header-name "\n#define " header-name "\n\n")
