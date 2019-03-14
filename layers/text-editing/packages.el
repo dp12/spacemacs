@@ -32,6 +32,7 @@
 (defconst text-editing-packages
   '(
     corral
+    drag-stuff
     dtrt-indent
     evil-multiedit
     parrot
@@ -99,6 +100,12 @@ Each entry is either:
                                        (corral-at-point 'corral-single-quotes-forward)))
       )
     ))
+
+(defun text-editing/init-drag-stuff ()
+  (use-package drag-stuff
+    :config
+    (drag-stuff-global-mode 1)
+    (drag-stuff-define-keys)))
 
 (defun text-editing/init-dtrt-indent ()
   (use-package dtrt-indent :defer t))
