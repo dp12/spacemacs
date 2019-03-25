@@ -326,23 +326,30 @@ C-x C-l."
     (end-of-line)
     (message doxygen)))
 
-; Autogenerates void stub for function
-(defun insert-void-stub ()
+; Autogenerates void stubs for function
+(defun insert-void-stubs ()
   (interactive)
-  (let (args)
-    (setq args (concat "{\n"
-                       (apply #'concatenate 'string
-                              (mapcar (lambda (c) (concat "    (void)" c ";\n"))
-                                      (grab-cargs)))
-                       "}"))
+  (let* ((args (grab-cargs))
+         (stubs (apply #'concatenate 'string
+                      (mapcar (lambda (c) (concat "    (void)" c ";\n"))
+                              args)))
+         (found-brace nil))
     (save-excursion
       (end-of-line)
       (backward-char)
       (when (= (char-after) 59)
-        (delete-char 1))) ;; delete trailing semicolon if it's there
+        (delete-char 1)) ;; delete trailing semicolon if it's there
+      (when (= (char-after) ?{)
+        (setq found-brace t)))
     (forward-line)
-    (insert args)
-    (message args)))
+    (beginning-of-line)
+    (when (= (char-after) ?{)
+      (setq found-brace t))
+    (if found-brace
+        (forward-line)
+      (setq stubs (concat "{\n" stubs "}")))
+    (insert stubs)
+    (message stubs)))
 
 ;; Insert header guards at point
 (defun insert-header-guards ()
