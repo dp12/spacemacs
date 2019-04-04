@@ -216,7 +216,9 @@ which require an initialization must be listed explicitly in the list.")
 (defun minibuffer-insert (string &optional eol)
   (save-excursion
     (if eol
-        (end-of-line)
+        (progn
+          (end-of-line)
+          (delete-horizontal-space))
       (beginning-of-line))
     (insert string)))
 
@@ -229,9 +231,9 @@ which require an initialization must be listed explicitly in the list.")
       (delete-horizontal-space))))
 
 (with-eval-after-load 'ivy
-  (define-key ivy-minibuffer-map (kbd "C-c h") (lambda () (interactive) (minibuffer-insert "\\.h\\(pp\\)*$" t)))
-  (define-key ivy-minibuffer-map (kbd "C-c c") (lambda () (interactive) (minibuffer-insert "\\.c\\(pp\\)*$" t)))
-  (define-key ivy-minibuffer-map (kbd "C-c p") (lambda () (interactive) (minibuffer-insert "\\.py$" t)))
+  (define-key ivy-minibuffer-map (kbd "C-c h") (lambda () (interactive) (minibuffer-insert " \\.h\\(pp\\)*$" t)))
+  (define-key ivy-minibuffer-map (kbd "C-c +") (lambda () (interactive) (minibuffer-insert " \\.c\\(pp\\)*$" t)))
+  (define-key ivy-minibuffer-map (kbd "C-c p") (lambda () (interactive) (minibuffer-insert " \\.py$" t)))
   (define-key ivy-minibuffer-map (kbd "C-c k") (lambda () (interactive) (minibuffer-munch))))
 
 ;; Often the body of an initialize function uses `use-package'
