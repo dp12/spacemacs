@@ -136,7 +136,17 @@ which require an initialization must be listed explicitly in the list.")
   ;; turn off file path abbreviations
   ;; (add-hook 'ggtags-global-mode-hook (lambda () (ggtags-navigation-visible-mode nil)))
   )
+(defun add-minibuffer-ripgrep-keymap ()
+  (define-key minibuffer-local-map (kbd "C-c C-p") (lambda ()
+                                                     (interactive)
+                                                     (minibuffer-insert "PRODUCE_")
+                                                     (end-of-line))))
 
+(defun projectile-ripgrep-custom ()
+  (interactive)
+  (minibuffer-with-setup-hook
+      'add-minibuffer-ripgrep-keymap
+    (call-interactively #'projectile-ripgrep)))
 
 (defun rtags-evil-standard-keybindings (mode)
   (evil-leader/set-key-for-mode mode
