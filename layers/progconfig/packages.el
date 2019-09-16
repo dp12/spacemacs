@@ -146,8 +146,8 @@ which require an initialization must be listed explicitly in the list.")
             (dtrt-indent-mode t)
             (spacemacs|diminish dtrt-indent-mode "ⓓ")
             (with-eval-after-load "evil-surround"
-              ;; Use 8 to /* wrap */ a word
-              (push '(?8 . ("/* " . " */")) evil-surround-pairs-alist))
+              ;; Use 7 to /* wrap */ a word
+              (push '(?7 . ("/* " . " */")) evil-surround-pairs-alist))
 
             ;; Treat _ as PART_OF_A_WORD
             (modify-syntax-entry ?_ "w")
