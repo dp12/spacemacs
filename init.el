@@ -104,9 +104,9 @@ This function should only modify configuration layer settings."
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(;; Appearance
-                                      mode-icons spaceline-all-the-icons
+                                      mode-icons all-the-icons spaceline-all-the-icons
                                       all-the-icons-dired minimap tabbar
-                                      tabbar-ruler
+                                      tabbar-ruler centaur-tabs
                                       ;; Themes
                                       color-theme-solarized zerodark-theme
                                       atom-one-dark-theme poet-theme
@@ -114,25 +114,28 @@ This function should only modify configuration layer settings."
                                       visual-regexp-steroids cedit ialign
                                       ;; Search tools
                                       rtags projectile-ripgrep ag helm-ag
-                                      deadgrep ztree
+                                      deadgrep ztree w3m
                                       ;; Evil extensions
                                       evil-lion evil-replace-with-register
-                                      evil-string-inflection evil-fringe-mark
-                                      evil-textobj-syntax
+                                      evil-fringe-mark evil-textobj-syntax
                                       ;; Company
                                       company-try-hard company-prescient
                                       ;; Programming tools
                                       shell-pop project-explorer quickrun
-                                      format-all emr
+                                      format-all emr eros
+                                      ;; ivy-prescient
                                       ;; Modes
                                       arduino-mode
                                       ;; Elisp programming
                                       elmacro helpful elsa flycheck-elsa
                                       package-lint flycheck-package
+                                      ;; Misc
+                                      emms
                                       ;; Non-MELPA
                                       (evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase"))
                                       (snakehump :location (recipe :fetcher github :repo "aes/snakehump"))
                                       (source-peek :location (recipe :fetcher github :repo "iqbalansari/emacs-source-peek"))
+                                      ;; (awesome-tab :location (recipe :fetcher github :repo "manateelazycat/awesome-tab"))
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
