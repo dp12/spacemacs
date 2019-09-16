@@ -726,6 +726,18 @@ lines downward first."
   (setq evil-want-Y-yank-to-eol nil)
   (setq evil-replace-with-register-key (kbd "gR"))
 
+  ;; Make v do expand-region in visual mode (from: papercatlol)
+  (defun evil-visual-char-or-expand-region ()
+    (interactive)
+    (if (region-active-p)
+        (call-interactively 'er/expand-region)
+      (evil-visual-char)))
+
+  (define-key evil-normal-state-map "v" 'evil-visual-char-or-expand-region)
+  (define-key evil-visual-state-map "v" 'evil-visual-char-or-expand-region)
+  (define-key evil-visual-state-map (kbd "M-v") 'er/contract-region)
+  (define-key evil-visual-state-map [escape] 'evil-visual-char)
+
   (with-eval-after-load 'evilnc
     (define-key evil-inner-text-objects-map evilnc-comment-text-object 'evilnc-inner-comment)
     (define-key evil-outer-text-objects-map evilnc-comment-text-object 'evilnc-outer-comment))
