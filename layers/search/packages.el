@@ -232,19 +232,24 @@ which require an initialization must be listed explicitly in the list.")
       (beginning-of-line))
     (insert string)))
 
-(defun minibuffer-munch (&optional eol)
+(defun minibuffer-munch ()
   (save-excursion
-    (if eol
-        (end-of-line)
-      (beginning-of-line)
-      (delete-region (point) (progn (forward-word-strictly) (point)))
-      (delete-horizontal-space))))
+    (beginning-of-line)
+    (delete-region (point) (progn (forward-word-strictly) (point)))
+    (delete-horizontal-space)))
+
+(defun minibuffer-crunch ()
+  (save-excursion
+    (end-of-line)
+    (delete-region (save-excursion (backward-word-strictly) (point)) (point))
+    (delete-horizontal-space)))
 
 (with-eval-after-load 'ivy
   (define-key ivy-minibuffer-map (kbd "C-c h") (lambda () (interactive) (minibuffer-insert " \\.h\\(pp\\)*$" t)))
   (define-key ivy-minibuffer-map (kbd "C-c +") (lambda () (interactive) (minibuffer-insert " \\.c\\(pp\\)*$" t)))
   (define-key ivy-minibuffer-map (kbd "C-c p") (lambda () (interactive) (minibuffer-insert " \\.py$" t)))
-  (define-key ivy-minibuffer-map (kbd "C-c k") (lambda () (interactive) (minibuffer-munch))))
+  (define-key ivy-minibuffer-map (kbd "C-c k") (lambda () (interactive) (minibuffer-munch)))
+  (define-key ivy-minibuffer-map (kbd "C-c K") (lambda () (interactive) (minibuffer-crunch))))
 
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
