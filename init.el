@@ -883,6 +883,8 @@ lines downward first."
           ;; (counsel-imenu . ivy--regex-fuzzy)
           (counsel-bookmark . ivy--regex-fuzzy)
           (ivy-switch-buffer . ivy--regex-fuzzy)
+          (counsel-git . ivy--regex-fuzzy)
+          (counsel-recentf . ivy--regex-fuzzy)
           (t . ivy--regex-plus)))
   ;; automatically start looking for functions in counsel imenu
   (setq ivy-initial-inputs-alist '((counsel-imenu . "Function ")))
