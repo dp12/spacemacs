@@ -63,7 +63,12 @@ which require an initialization must be listed explicitly in the list.")
   (define-key ggtags-navigation-map (kbd "M-<up>") 'ggtags-navigation-previous-file)
   (define-key ggtags-navigation-map (kbd "M-<down>") 'ggtags-navigation-next-file)
   (define-key evil-normal-state-map (kbd "M-<left>") 'ggtags-prev-mark)
-  (define-key evil-normal-state-map (kbd "M-<right>") 'ggtags-next-mark))
+  (define-key evil-normal-state-map (kbd "M-<right>") 'ggtags-next-mark)
+  (add-hook 'ggtags-global-mode-hook (lambda ()
+                                       (when (and (buffer-live-p ggtags-global-last-buffer)
+                                                  (with-current-buffer ggtags-global-last-buffer
+                                                    (derived-mode-p 'ggtags-global-mode)))
+                                         (ggtags-navigation-visible-mode t)))))
 
 (with-eval-after-load "ripgrep"
   (define-key ripgrep-search-mode-map (kbd "M-<up>") 'compilation-previous-error)
