@@ -1136,6 +1136,9 @@ lines downward first."
   (add-to-list 'desktop-globals-to-save 'register-alist)
   (add-to-list 'desktop-locals-to-save 'evil-markers-alist)
   (desktop-read)
+  (setq parrot-spaces-before 1)
+  (nyan-mode)
+  (parrot-mode)
 )
 
 ;; Save off custom settings to custom.el
