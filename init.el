@@ -1115,6 +1115,19 @@ lines downward first."
           ("g T" . centaur-tabs-backward)))
 
   (desktop-save-mode)
+
+  (setq zone-programs [  zone-pgm-jitter
+                         zone-pgm-putz-with-case
+                         zone-pgm-dissolve
+                         ;; zone-pgm-explode
+                         zone-pgm-whack-chars
+                         zone-pgm-rotate
+                         zone-pgm-drip
+                         zone-pgm-five-oclock-swan-dive
+                         zone-pgm-martini-swan-dive
+                         zone-pgm-paragraph-spaz
+                         zone-pgm-random-life
+                         ])
   (setq desktop-restore-eager 2)
   (setq desktop-restore-frames nil)
   (setq desktop-load-locked-desktop t)
