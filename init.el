@@ -1139,6 +1139,30 @@ lines downward first."
   (setq parrot-spaces-before 1)
   (nyan-mode)
   (parrot-mode)
+  (use-package double-saber
+    :load-path "~/double-saber"
+    :config
+    (with-eval-after-load "ggtags"
+      (add-hook 'ggtags-global-mode-hook
+                (lambda ()
+                  (double-saber-mode)
+                  (setq-local double-saber-start-line 5)
+                  (setq-local double-saber-end-text "Global found")))
+      (define-key ggtags-global-mode-map (kbd "o") 'ggtags-navigation-visible-mode))
+    (with-eval-after-load "ripgrep"
+      (add-hook 'ripgrep-search-mode-hook
+                (lambda ()
+                  (double-saber-mode)
+                  (setq-local double-saber-start-line 5)
+                  (setq-local double-saber-end-text "Ripgrep finished"))))
+    ;; (with-eval-after-load "ivy"
+    ;;   (add-hook 'ivy-occur-grep-mode-hook
+    ;;             (lambda ()
+    ;;               (double-saber-mode)
+    ;;               (setq-local double-saber-start-line 5)))
+      ;; (double-saber-mode-setup ivy-occur-grep-mode-map 'ivy-occur-grep-mode-hook 5 nil))
+    ;; )
+  )
 )
 
 ;; Save off custom settings to custom.el
