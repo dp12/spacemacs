@@ -964,7 +964,7 @@ lines downward first."
     "rd" 'rtags-find-symbol-at-point
     "rf" 'emr-show-refactor-menu
     "rt" 'rtags-taglist
-    "rg" 'projectile-ripgrep
+    "rg" 'projectile-ripgrep-custom
     "rr" 'parrot-start-animation
     "ro" 'deadgrep
     "rc" 'counsel-rg
@@ -1002,7 +1002,7 @@ lines downward first."
     "tt" 'tabify
     "id" 'insert-doxygen-stub
     "ih" 'insert-header-guards
-    "iv" 'insert-void-stub
+    "iv" 'insert-void-stubs
     "i0" 'insert-if0
     "ie" 'insert-endif
     "--" 'insert-arrow-or-replace-period
