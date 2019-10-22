@@ -941,13 +941,14 @@ lines downward first."
     "dG" 'dumb-jump-go-other-window
     "dl" 'dumb-jump-quick-look
     "db" 'dumb-jump-back
+    "fb" 'frog-jump-buffer
     "ps" 'lsp-ui-sideline-mode
     "pd" 'lsp-ui-peek-find-definitions
     "pr" 'lsp-ui-peek-find-references
     "ew" 'eww
     "fn" 'copy-file-basename-to-clipboard
     "fN" 'projectile-ripgrep-filename
-    "fz" 'counsel-fzf
+    "fz" 'fzf-git-files
     "gd" 'gdb-set-fast-breakpoint
     "gn" 'git-timemachine-show-next-revision
     "gp" 'git-timemachine-show-previous-revision
