@@ -56,8 +56,11 @@ This function should only modify configuration layer settings."
             c-c++-lsp-executable "/usr/local/bin/cquery"
             ;; c-c++-backend 'lsp-ccls
             ;; c-c++-lsp-executable "/usr/local/bin/ccls"
-            c-c++-lsp-sem-highlight-method 'font-lock
-            c-c++-lsp-sem-highlight-rainbow t)
+            ;; c-c++-lsp-sem-highlight-method 'font-lock
+
+            ;; Turn these off because the #ifdefs getting greyed out is annoying
+            c-c++-lsp-sem-highlight-method nil
+            c-c++-lsp-sem-highlight-rainbow nil)
      custom
      deft
      evil-snipe
