@@ -119,7 +119,7 @@ This function should only modify configuration layer settings."
                                       visual-regexp-steroids cedit ialign
                                       ;; Search tools
                                       rtags projectile-ripgrep ag helm-ag
-                                      deadgrep ztree w3m
+                                      deadgrep ztree w3m fzf frog-jump-buffer
                                       ;; Evil extensions
                                       evil-lion evil-replace-with-register
                                       evil-fringe-mark evil-textobj-syntax
