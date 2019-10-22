@@ -680,6 +680,7 @@ before packages are loaded."
   ;; (setq powerline-default-separator 'nil) ;; straight bar
   ;; (spaceline-compile)
   (spacemacs|create-align-repeat-x "hex" "0x")
+  (doom-themes-treemacs-config)
 
   ;; Avy and evil-snipe
   (define-key evil-normal-state-map (kbd "n") 'avy-goto-char-2)
