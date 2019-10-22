@@ -901,6 +901,7 @@ lines downward first."
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
   (global-set-key (kbd "C-c g") 'counsel-git)
   (global-set-key (kbd "C-c k") 'counsel-ag)
+  ;; (ivy-prescient-mode)
 
   ;; Eyebrowse
   (defun eyebrowse-auto-rename ()
@@ -931,6 +932,7 @@ lines downward first."
     "ed" 'ediff-buffers
     "er" 'evil-show-registers
     "em" 'evil-show-marks
+    "ck" 'evilnc-comment-and-kill-ring-save
     "dk" 'kill-dired-buffers
     "dj" 'dired-jump
     "do" 'dired-jump-other-window
