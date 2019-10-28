@@ -135,7 +135,7 @@ This function should only modify configuration layer settings."
                                       elmacro helpful elsa flycheck-elsa
                                       package-lint flycheck-package
                                       ;; Misc
-                                      emms
+                                      emms dired-git-info
                                       ;; Non-MELPA
                                       (evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase"))
                                       (snakehump :location (recipe :fetcher github :repo "aes/snakehump"))
@@ -835,6 +835,11 @@ lines downward first."
             (when (eq 'dired-mode (buffer-local-value 'major-mode buffer))
               (kill-buffer buffer)))
           (buffer-list)))
+
+  (use-package dired-git-info
+    :ensure t
+    :bind (:map dired-mode-map
+                (")" . dired-git-info-mode)))
 
   (defun copy-file-basename-to-clipboard ()
     "Copy the current buffer file name to the clipboard."
