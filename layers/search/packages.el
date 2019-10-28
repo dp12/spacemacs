@@ -256,6 +256,12 @@ which require an initialization must be listed explicitly in the list.")
   (define-key ivy-minibuffer-map (kbd "C-c k") (lambda () (interactive) (minibuffer-munch)))
   (define-key ivy-minibuffer-map (kbd "C-c K") (lambda () (interactive) (minibuffer-crunch))))
 
+(defun counsel-ffap-git ()
+  (interactive)
+  (require 'ffap)
+  (let ((ivy-auto-select-single-candidate t))
+    (counsel-git (ffap-string-at-point))))
+
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
 ;; https://github.com/jwiegley/use-package
