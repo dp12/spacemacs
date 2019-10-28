@@ -140,7 +140,7 @@ which require an initialization must be listed explicitly in the list.")
         ;; Provide the options in the order in which they are normally generated.
         (delete he-search-string (reverse he-tried-table))))
 
-
+(defvar company-hippie-num-candidates 5)
 (defun company-hippie (command &optional arg &rest ignored)
   (interactive (list 'interactive))
   (let ((company-transformers nil))
@@ -148,7 +148,7 @@ which require an initialization must be listed explicitly in the list.")
       (interactive (company-begin-backend 'company-hippie))
       (sorted t)
       (prefix (company-grab-symbol))
-      (candidates (subseq (my-hippie-expand-completions) 0 10)))))
+      (candidates (subseq (my-hippie-expand-completions) 0 company-hippie-num-candidates)))))
 
 ;; Python
 (add-hook 'python-mode-hook
