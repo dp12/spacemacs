@@ -631,6 +631,7 @@ before packages are loaded."
   (global-set-key (kbd "M-Y") 'company-ycmd)
   (global-set-key (kbd "M-Q") 'company-lsp)
   (global-set-key (kbd "M-H") 'company-hippie)
+  (global-set-key (kbd "M-D") 'company-dabbrev-code)
   (global-set-key (kbd "C-M-S-h") 'company-try-hard)
   (company-prescient-mode)
   (global-set-key (kbd "M-G") 'git-complete)
