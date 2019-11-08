@@ -135,7 +135,7 @@ This function should only modify configuration layer settings."
                                       elmacro helpful elsa flycheck-elsa
                                       package-lint flycheck-package
                                       ;; Misc
-                                      emms dired-git-info
+                                      emms dired-git-info ox-hugo
                                       ;; Non-MELPA
                                       (evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase"))
                                       (snakehump :location (recipe :fetcher github :repo "aes/snakehump"))
@@ -1091,6 +1091,10 @@ lines downward first."
               (evil-org-set-key-theme '(textobjects navigation additional todo))
               (evil-define-key 'normal evil-org-mode-map
                 (kbd "M-o") (evil-org-define-eol-command org-insert-subheading))))
+
+  (use-package ox-hugo
+    :ensure t
+    :after ox)
 
   ;; LaTeX
   (cond
