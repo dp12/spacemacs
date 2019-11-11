@@ -228,6 +228,19 @@ which require an initialization must be listed explicitly in the list.")
       (rtags-evil-standard-keybindings 'c-mode)
       (rtags-evil-standard-keybindings 'c++-mode))))
 
+(defun minibuffer-toggle (string &optional eol)
+  (save-excursion
+    (let ((found nil))
+      (if eol
+          (progn
+            (end-of-line)
+            (setq found (re-search-backward (regexp-quote string) (line-beginning-position) t)))
+        (beginning-of-line)
+        (setq found (re-search-forward (regexp-quote string) (line-end-position) t)))
+      (if found
+          (replace-match "")
+        (minibuffer-insert string eol)))))
+
 (defun minibuffer-insert (string &optional eol)
   (save-excursion
     (if eol
