@@ -584,6 +584,27 @@ The window scope is determined by `avy-all-windows' or
                         (t
                          (user-error "Unexpected `avy-line-insert-style'"))))))))
 
+;; Doesn't work when cursor is on very first char
+(defun alpha-insert ()
+  (interactive)
+  (let (end-cursor cur-line next-line done)
+    (setq cur-line (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+    (setq end-cursor (point))
+
+    (while (not done)
+      (save-excursion
+        (forward-line -1)
+        (setq next-line (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+        (when (string-match-p "^\\s-*$" next-line)
+          (setq done t)))
+      (if (and (not done) (string< cur-line next-line))
+          (progn
+            (setq end-cursor (point))
+            (transpose-lines 1)
+            (goto-char (1+ end-cursor))
+            (previous-line))
+        (setq done t)))))
+
 ;; Adapted rom http://irreal.org/blog/?p=297
 (defun eval-and-replace (value)
   "Evaluate the sexp at point and replace it with its value"
