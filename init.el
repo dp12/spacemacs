@@ -1096,6 +1096,9 @@ lines downward first."
     :ensure t
     :after ox)
 
+  ;; Wrap words in all text modes (including org-mode)
+  (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+
   ;; LaTeX
   (cond
    ((string-equal system-type "darwin")
